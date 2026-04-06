@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalogues | Print Space India - Luxury Printing</title>
+    <meta name="description" content="Print Space India (Kolkata & New Delhi) - Premium Offset, Digital, and Personalised printing services since 2002. Owned by M. Rahman.">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Ensures the printing-loader is hidden if JS disabled or not needed */
+        .js-hide { display: none !important; }
+    </style>
+</head>
+<body>
+    
+    <!-- Inkjet Laser Animation Loader (Only shown on initial open or refresh) -->
+    <div id="printing-loader" class="js-hide">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <div class="cmyk-cartridges">
+                <div class="cartridge"></div>
+                <div class="cartridge"></div>
+                <div class="cartridge"></div>
+                <div class="cartridge" style="background:var(--accent-gold); border:none;"></div>
+            </div>
+            <div class="inkjet-container">
+                <div class="inkjet-base">PRINT SPACE INDIA</div>
+                <div class="inkjet-fill">PRINT SPACE INDIA</div>
+            </div>
+            <div style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.35rem; color: var(--text-muted); margin-top: 15px;">INITIALIZING PRESS...</div>
+        </div>
+    </div>
+
+    <!-- Dual-Tier Navbar - Midnight Gold -->
+    <div class="top-bar">
+        <div>TRUSTED BY TIER-1 ENTERPRISES ACROSS INDIA</div>
+        <div class="top-bar-links">
+            <div>KOLKATA: <span>+91 9876543210</span></div>
+            <div>DELHI: <span>+91 7982060969</span></div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="brand">
+            <i class="ph-fill ph-check-seal"></i>
+            PRINT SPACE<span style="font-weight: 400; opacity: 0.5;"> INDIA</span>
+        </a>
+        <button class="hamburger" onclick="toggleMenu()"><i class="ph ph-list"></i></button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Master Catalog</a>
+            <a href="commercial.html">Commercial</a>
+            <a href="photo.html">Premium Photo</a>
+            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="padding: 12px 24px;">Deploy Request</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="product-hero reveal">
+    <div>
+        <a href="commercial.html" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 30px; font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1rem; text-transform: uppercase; transition: var(--transition);">
+            <i class="ph ph-arrow-left" style="color: var(--accent-gold);"></i> RETURN TO COMMERCIAL
+        </a>
+        <h1 style="font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; color: var(--text-main);">Product Catalogues</h1>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; line-height: 1.6;">Exquisite booklets for your entire line of products.</p>
+
+        <div class="p-image-panel">
+            <img src="images/commercial_printing_showcase.png" alt="Product Catalogues" onerror="this.src='images/commercial_printing_showcase.png'">
+        </div>
+
+        <div style="margin-top: 60px;">
+            <h3 style="font-size: 2.2rem; margin-bottom: 25px; color: var(--text-main);">Technical Mastery</h3>
+            <table class="specs-table">
+                
+        <tr>
+            <td class="s-label">size</td>
+            <td class="s-value">A4/A5</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">pages</td>
+            <td class="s-value">8 up to 48</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">binding</td>
+            <td class="s-value">Saddle/Perfect</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">minOrder</td>
+            <td class="s-value">50 Units</td>
+        </tr>
+    
+            </table>
+        </div>
+    </div>
+
+    <!-- Order Sidebar - Midnight -->
+    <div class="order-sidebar">
+        <h2 style="margin-bottom: 10px; font-size: 2rem; color: var(--text-main);">Configure Order</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px;">Select your elite variant below to initiate pricing.</p>
+        
+        <h4 style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">1. Select Quality Tier</h4>
+        <div class="v-grid">
+            
+        <div class="v-chip active" data-name="Economy (8-page)" data-price="₹4999">
+            <span class="v-title">Economy (8-page)</span>
+            <span class="v-price">₹4999</span>
+        </div>
+    
+        <div class="v-chip " data-name="Standard (16-page)" data-price="₹9999">
+            <span class="v-title">Standard (16-page)</span>
+            <span class="v-price">₹9999</span>
+        </div>
+    
+        <div class="v-chip " data-name="Premium (24-page)" data-price="₹14999">
+            <span class="v-title">Premium (24-page)</span>
+            <span class="v-price">₹14999</span>
+        </div>
+    
+        </div>
+
+        <form id="orderForm" onsubmit="sendToWhatsApp(event)" style="margin-top: 50px;">
+            <input type="hidden" id="p_name" value="Product Catalogues">
+            <input type="hidden" id="p_variant" value="">
+            
+            <h4 style="margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">2. Fulfillment Details</h4>
+            
+            <label for="name">Point of Contact</label>
+            <input type="text" id="name" class="input-field" placeholder="Full Name" required>
+
+            <label for="quantity">Bulk Quantity</label>
+            <input type="number" id="quantity" class="input-field" placeholder="e.g. 1000" required min="1">
+
+            <label for="delivery_date">Required Delivery Date</label>
+            <input type="date" id="delivery_date" class="input-field" required>
+
+            <label for="address">Kolkata / Delhi Address</label>
+            <textarea id="address" class="input-field" rows="3" placeholder="Enter delivery address and any special material requests..." required></textarea>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px; padding: 22px;">
+                Request Elite Quote <i class="ph ph-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="container reveal" style="padding: 100px 0; border-top: 1px solid var(--border-light);">
+    <h3 style="font-size: 2.8rem; margin-bottom: 50px; text-align: center; color: var(--text-main);">Related Masterpieces</h3>
+    <div class="grid">
+        
+        <a href="business-cards.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/premium_business_card_detail.png" alt="Premium Business Cards">
+            </div>
+            <div class="p-card-info">
+                <h3>Premium Business Cards</h3>
+                <p>Precision-cut luxury cardstocks with tactile UV or metallic foil finishes.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="letterheads.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/letterheads_mockup.png" alt="Executive Letterheads">
+            </div>
+            <div class="p-card-info">
+                <h3>Executive Letterheads</h3>
+                <p>Standard commercial stationery printed on elite 120gsm bond paper.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹799</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="brochures.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/brochures_mockup.png" alt="Multi-Fold Brochures">
+            </div>
+            <div class="p-card-info">
+                <h3>Multi-Fold Brochures</h3>
+                <p>Advanced marketing pamphlets for intricate product showcases.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹1499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+    </div>
+</div>
+
+<script>
+    const variantChips = document.querySelectorAll('.v-chip');
+    const varInput = document.getElementById('p_variant');
+
+    variantChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            variantChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            varInput.value = chip.dataset.name;
+        });
+    });
+
+    if (variantChips.length > 0) variantChips[0].click();
+
+    function sendToWhatsApp(e) {
+        e.preventDefault();
+        const pName = document.getElementById('p_name').value;
+        const pVar = document.getElementById('p_variant').value;
+        const name = document.getElementById('name').value;
+        const qty = document.getElementById('quantity').value;
+        const date = document.getElementById('delivery_date').value;
+        const address = document.getElementById('address').value;
+
+        const waNumber = "917982060969";
+        const text = `*MIDNIGHT GOLD ENTERPRISE ORDER* %0A%0A` +
+                     `*Product:* ${pName} %0A` + 
+                     `*Variant:* ${pVar} %0A` +
+                     `*Quantity:* ${qty} %0A` +
+                     `*Contact:* ${name} %0A` +
+                     `*Timeline:* ${date} %0A` +
+                     `*Address:* ${address} %0A%0A` +
+                     `*Initiated via Desktop Platform*`;
+
+        window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+    }
+</script>
+
+    </main>
+
+    <!-- Luxury Footer -->
+    <footer>
+        <div class="f-grid">
+            <div class="f-col">
+                <div class="brand" style="margin-bottom: 25px;">
+                    <i class="ph-fill ph-check-seal" style="color: var(--accent-gold);"></i>
+                    PRINT SPACE<span style="font-weight: 400; color: #fff; opacity: 0.5;"> INDIA</span>
+                </div>
+                <p>Owned & Operated by <b>M. Rahman</b>.</p>
+                <p>We are your dedicated partner for high-precision luxury printing and corporate branding across India.</p>
+            </div>
+
+            <div class="f-col">
+                <h4>KOLKATA (H.O.)</h4>
+                <p>Beadon Street, Near Girish Park Metro Station, Kolkata, WB-700006</p>
+                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 9876543210</p>
+            </div>
+
+            <div class="f-col">
+                <h4>NEW DELHI (B.O.)</h4>
+                <p>Building No.- B-143, Near Nathus Sweets, Okhla Industrial Area Phase 1, New Delhi-110020</p>
+                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 7982060969</p>
+            </div>
+        </div>
+        <div style="margin-top: 80px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.15rem; text-transform: uppercase;">
+            &copy; 2026 Print Space India. All Rights Reserved. Elite Midnight Gold Build.
+        </div>
+    </footer>
+
+    <!-- Global General Inquiry Modal -->
+    <div class="modal-overlay" id="globalModal">
+        <div class="global-modal">
+            <button class="modal-close" onclick="closeModal()"><i class="ph ph-x"></i></button>
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--text-main); font-family: var(--font-heading);">General Inquiry</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">Describe your enterprise requirement and we'll route it to the Kolkata or Delhi office.</p>
+            
+            <form onsubmit="submitGlobalModal(event)">
+                <label for="m_name">Point of Contact</label>
+                <input type="text" id="m_name" class="input-field" placeholder="Name & Company" required>
+
+                <label for="m_req">Requirement Details</label>
+                <textarea id="m_req" class="input-field" rows="3" placeholder="e.g. Need 500 Custom Gift Boxes and Letterheads..." required></textarea>
+
+                <label for="m_date">Expected Timeline</label>
+                <input type="date" id="m_date" class="input-field" required>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px;">
+                    Send Inquiry to WhatsApp <i class="ph ph-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal() {
+            document.getElementById('globalModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('globalModal').classList.remove('active');
+        }
+        function submitGlobalModal(e) {
+            e.preventDefault();
+            const name = document.getElementById('m_name').value;
+            const req = document.getElementById('m_req').value;
+            const date = document.getElementById('m_date').value;
+
+            const waNumber = "917982060969";
+            const text = `*GENERAL ENTERPRISE INQUIRY* %0A%0A` +
+                         `*Contact/Company:* ${name} %0A` +
+                         `*Requirement Details:* ${req} %0A` +
+                         `*Expected Timeline:* ${date} %0A%0A` +
+                         `*Initiated via Global Desktop Navigation*`;
+
+            window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+            closeModal();
+        }
+
+        // Mobile Menu Logic
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // Intelligent Loader Logic based on Navigation API
+        window.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('printing-loader');
+            
+            // Check if this is a fresh open or a refresh (not a link click across the local site)
+            const navEntries = performance.getEntriesByType("navigation");
+            let shouldShowLoader = true;
+            
+            if (navEntries.length > 0) {
+                const navType = navEntries[0].type;
+                // If it's pure navigation via clicking a link and arriving from an internal page, hide loader
+                if (navType === 'navigate' && document.referrer.includes(window.location.hostname)) {
+                    shouldShowLoader = false;
+                }
+                // If type is 'back_forward', hide loader
+                if (navType === 'back_forward') {
+                    shouldShowLoader = false;
+                }
+            }
+
+            if (shouldShowLoader) {
+                // Show the loader and let CSS animation play
+                loader.classList.remove('js-hide');
+                
+                // Hide loader after animation completes (3 seconds total roughly)
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    setTimeout(() => loader.style.display = 'none', 1000); // Fully remove from view flow after fade out
+                    reveal(); // Trigger initial reveals
+                }, 3200);
+            } else {
+                // Don't show loader at all
+                setTimeout(() => reveal(), 100); 
+            }
+        });
+
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+    </script>
+</body>
+</html>

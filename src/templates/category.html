@@ -1,0 +1,15 @@
+<!-- Midnight Gold Category Hero with Dynamic Image -->
+<div class="cat-hero-panel reveal">
+    <img src="{{RootPath}}{{CategoryImage}}" alt="{{CategoryTitle}} Category" onerror="this.src='{{RootPath}}images/commercial_printing_showcase.png'">
+    <div class="cat-overlay">
+        <h1 style="font-family: var(--font-heading); font-size: 5rem; color: #fff; margin-bottom: 20px; line-height: 1.1; text-shadow: 0 5px 20px rgba(0,0,0,0.8);">{{CategoryTitle}}</h1>
+        <p style="font-size: 1.4rem; color: var(--accent-gold); max-width: 600px; font-weight: 300; letter-spacing: 0.1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.9);">{{CategorySubtitle}}</p>
+    </div>
+</div>
+
+<div class="container pb-100" style="padding-top: 80px;">
+    <h3 style="font-size: 2.2rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.2rem; color: var(--text-main); font-family: var(--font-body); border-left: 3px solid var(--accent-gold); padding-left: 20px;">Available Lines</h3>
+    <div class="grid">
+        {{ProductCards}}
+    </div>
+</div>

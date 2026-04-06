@@ -1,0 +1,98 @@
+<div class="product-hero reveal">
+    <div>
+        <a href="{{RootPath}}{{CategoryLink}}" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 30px; font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1rem; text-transform: uppercase; transition: var(--transition);">
+            <i class="ph ph-arrow-left" style="color: var(--accent-gold);"></i> RETURN TO {{CategoryTitle}}
+        </a>
+        <h1 style="font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; color: var(--text-main);">{{ProductTitle}}</h1>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; line-height: 1.6;">{{ProductDesc}}</p>
+
+        <div class="p-image-panel">
+            <img src="{{ProductImage}}" alt="{{ProductTitle}}" onerror="this.src='{{RootPath}}images/commercial_printing_showcase.png'">
+        </div>
+
+        <div style="margin-top: 60px;">
+            <h3 style="font-size: 2.2rem; margin-bottom: 25px; color: var(--text-main);">Technical Mastery</h3>
+            <table class="specs-table">
+                {{ProductSpecs}}
+            </table>
+        </div>
+    </div>
+
+    <!-- Order Sidebar - Midnight -->
+    <div class="order-sidebar">
+        <h2 style="margin-bottom: 10px; font-size: 2rem; color: var(--text-main);">Configure Order</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px;">Select your elite variant below to initiate pricing.</p>
+        
+        <h4 style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">1. Select Quality Tier</h4>
+        <div class="v-grid">
+            {{ProductVariants}}
+        </div>
+
+        <form id="orderForm" onsubmit="sendToWhatsApp(event)" style="margin-top: 50px;">
+            <input type="hidden" id="p_name" value="{{ProductTitle}}">
+            <input type="hidden" id="p_variant" value="">
+            
+            <h4 style="margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">2. Fulfillment Details</h4>
+            
+            <label for="name">Point of Contact</label>
+            <input type="text" id="name" class="input-field" placeholder="Full Name" required>
+
+            <label for="quantity">Bulk Quantity</label>
+            <input type="number" id="quantity" class="input-field" placeholder="e.g. 1000" required min="1">
+
+            <label for="delivery_date">Required Delivery Date</label>
+            <input type="date" id="delivery_date" class="input-field" required>
+
+            <label for="address">Kolkata / Delhi Address</label>
+            <textarea id="address" class="input-field" rows="3" placeholder="Enter delivery address and any special material requests..." required></textarea>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px; padding: 22px;">
+                Request Elite Quote <i class="ph ph-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="container reveal" style="padding: 100px 0; border-top: 1px solid var(--border-light);">
+    <h3 style="font-size: 2.8rem; margin-bottom: 50px; text-align: center; color: var(--text-main);">Related Masterpieces</h3>
+    <div class="grid">
+        {{RelatedProducts}}
+    </div>
+</div>
+
+<script>
+    const variantChips = document.querySelectorAll('.v-chip');
+    const varInput = document.getElementById('p_variant');
+
+    variantChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            variantChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            varInput.value = chip.dataset.name;
+        });
+    });
+
+    if (variantChips.length > 0) variantChips[0].click();
+
+    function sendToWhatsApp(e) {
+        e.preventDefault();
+        const pName = document.getElementById('p_name').value;
+        const pVar = document.getElementById('p_variant').value;
+        const name = document.getElementById('name').value;
+        const qty = document.getElementById('quantity').value;
+        const date = document.getElementById('delivery_date').value;
+        const address = document.getElementById('address').value;
+
+        const waNumber = "917982060969";
+        const text = `*MIDNIGHT GOLD ENTERPRISE ORDER* %0A%0A` +
+                     `*Product:* ${pName} %0A` + 
+                     `*Variant:* ${pVar} %0A` +
+                     `*Quantity:* ${qty} %0A` +
+                     `*Contact:* ${name} %0A` +
+                     `*Timeline:* ${date} %0A` +
+                     `*Address:* ${address} %0A%0A` +
+                     `*Initiated via Desktop Platform*`;
+
+        window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+    }
+</script>

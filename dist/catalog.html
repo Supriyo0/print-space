@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog | Print Space India - Luxury Printing</title>
+    <meta name="description" content="Print Space India (Kolkata & New Delhi) - Premium Offset, Digital, and Personalised printing services since 2002. Owned by M. Rahman.">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Ensures the printing-loader is hidden if JS disabled or not needed */
+        .js-hide { display: none !important; }
+    </style>
+</head>
+<body>
+    
+    <!-- Inkjet Laser Animation Loader (Only shown on initial open or refresh) -->
+    <div id="printing-loader" class="js-hide">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <div class="cmyk-cartridges">
+                <div class="cartridge"></div>
+                <div class="cartridge"></div>
+                <div class="cartridge"></div>
+                <div class="cartridge" style="background:var(--accent-gold); border:none;"></div>
+            </div>
+            <div class="inkjet-container">
+                <div class="inkjet-base">PRINT SPACE INDIA</div>
+                <div class="inkjet-fill">PRINT SPACE INDIA</div>
+            </div>
+            <div style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.35rem; color: var(--text-muted); margin-top: 15px;">INITIALIZING PRESS...</div>
+        </div>
+    </div>
+
+    <!-- Dual-Tier Navbar - Midnight Gold -->
+    <div class="top-bar">
+        <div>TRUSTED BY TIER-1 ENTERPRISES ACROSS INDIA</div>
+        <div class="top-bar-links">
+            <div>KOLKATA: <span>+91 9876543210</span></div>
+            <div>DELHI: <span>+91 7982060969</span></div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="brand">
+            <i class="ph-fill ph-check-seal"></i>
+            PRINT SPACE<span style="font-weight: 400; opacity: 0.5;"> INDIA</span>
+        </a>
+        <button class="hamburger" onclick="toggleMenu()"><i class="ph ph-list"></i></button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Master Catalog</a>
+            <a href="commercial.html">Commercial</a>
+            <a href="photo.html">Premium Photo</a>
+            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="padding: 12px 24px;">Deploy Request</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Midnight Gold Category Hero with Dynamic Image -->
+<div class="cat-hero-panel reveal">
+    <img src="images/commercial_printing_showcase.png" alt="The 2026 Master Catalog Category" onerror="this.src='images/commercial_printing_showcase.png'">
+    <div class="cat-overlay">
+        <h1 style="font-family: var(--font-heading); font-size: 5rem; color: #fff; margin-bottom: 20px; line-height: 1.1; text-shadow: 0 5px 20px rgba(0,0,0,0.8);">The 2026 Master Catalog</h1>
+        <p style="font-size: 1.4rem; color: var(--accent-gold); max-width: 600px; font-weight: 300; letter-spacing: 0.1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.9);">Every enterprise printing service available at our Kolkata & Delhi factories.</p>
+    </div>
+</div>
+
+<div class="container pb-100" style="padding-top: 80px;">
+    <h3 style="font-size: 2.2rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.2rem; color: var(--text-main); font-family: var(--font-body); border-left: 3px solid var(--accent-gold); padding-left: 20px;">Available Lines</h3>
+    <div class="grid">
+        
+        <a href="business-cards.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/premium_business_card_detail.png" alt="Premium Business Cards">
+            </div>
+            <div class="p-card-info">
+                <h3>Premium Business Cards</h3>
+                <p>Precision-cut luxury cardstocks with tactile UV or metallic foil finishes.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="letterheads.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/letterheads_mockup.png" alt="Executive Letterheads">
+            </div>
+            <div class="p-card-info">
+                <h3>Executive Letterheads</h3>
+                <p>Standard commercial stationery printed on elite 120gsm bond paper.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹799</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="brochures.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/brochures_mockup.png" alt="Multi-Fold Brochures">
+            </div>
+            <div class="p-card-info">
+                <h3>Multi-Fold Brochures</h3>
+                <p>Advanced marketing pamphlets for intricate product showcases.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹1499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="bill-books.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/commercial_printing_showcase.png" alt="GST Bill Books">
+            </div>
+            <div class="p-card-info">
+                <h3>GST Bill Books</h3>
+                <p>Custom carbonless ledger and invoice books with reinforced binding.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹1199</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="envelopes.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/envelopes_mockup.png" alt="Company Envelopes">
+            </div>
+            <div class="p-card-info">
+                <h3>Company Envelopes</h3>
+                <p>Branded stationery envelopes in all standard business sizes.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹699</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="stickers.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/stickers_mockup.png" alt="Die-Cut Vinyl Stickers">
+            </div>
+            <div class="p-card-info">
+                <h3>Die-Cut Vinyl Stickers</h3>
+                <p>Industrial-grade weatherproof stickers for heavy branding.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹349</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="catalogues.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/commercial_printing_showcase.png" alt="Product Catalogues">
+            </div>
+            <div class="p-card-info">
+                <h3>Product Catalogues</h3>
+                <p>Exquisite booklets for your entire line of products.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹4999</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="flyers.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/commercial_printing_showcase.png" alt="High-Volume Flyers">
+            </div>
+            <div class="p-card-info">
+                <h3>High-Volume Flyers</h3>
+                <p>Budget-friendly marketing on vibrant 130gsm stock.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹899</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="wedding-albums.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/luxury_wedding_album_detail.png" alt="Luxury Wedding Albums">
+            </div>
+            <div class="p-card-info">
+                <h3>Luxury Wedding Albums</h3>
+                <p>Seamless lay-flat books with silk-textured Nona-Sheets.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹4499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="canvas-prints.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/photo_printing_showcase.png" alt="Museum Canvas Prints">
+            </div>
+            <div class="p-card-info">
+                <h3>Museum Canvas Prints</h3>
+                <p>Fine-art canvas stretched over solid wooden gallery frames.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹1499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="flex-banners.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/photo_printing_showcase.png" alt="High-Density Flex Banners">
+            </div>
+            <div class="p-card-info">
+                <h3>High-Density Flex Banners</h3>
+                <p>Dynamic weather-resistant banners for massive scale presence.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹15/sqft</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="standees.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/photo_printing_showcase.png" alt="Roll-up Deluxe Standees">
+            </div>
+            <div class="p-card-info">
+                <h3>Roll-up Deluxe Standees</h3>
+                <p>Portable enterprise displays for elite exhibitions.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹1999</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="vinyl-posters.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/photo_printing_showcase.png" alt="Self-Adhesive Vinyl">
+            </div>
+            <div class="p-card-info">
+                <h3>Self-Adhesive Vinyl</h3>
+                <p>High-resolution wall graphics with anti-bubble technology.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹45/sqft</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="acrylic-frames.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/photo_printing_showcase.png" alt="Acrylic Sandwich Frames">
+            </div>
+            <div class="p-card-info">
+                <h3>Acrylic Sandwich Frames</h3>
+                <p>Crystal-clear frameless mounting for luxury photography.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹899</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="polaroids.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/photo_printing_showcase.png" alt="Vintage Polaroid Sets">
+            </div>
+            <div class="p-card-info">
+                <h3>Vintage Polaroid Sets</h3>
+                <p>Retro instant-style memory cards on premium cardstock.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹349</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="custom-mugs.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="Logo Ceramic Mugs">
+            </div>
+            <div class="p-card-info">
+                <h3>Logo Ceramic Mugs</h3>
+                <p>Branded ceramic mugs with high-definition branding.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹149</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="metal-pens.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="Engraved Metal Pens">
+            </div>
+            <div class="p-card-info">
+                <h3>Engraved Metal Pens</h3>
+                <p>Luxury metal pens with intricate laser-carved branding.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹299</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="id-cards.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="PVC ID Solutions">
+            </div>
+            <div class="p-card-info">
+                <h3>PVC ID Solutions</h3>
+                <p>Thermal-printed identification cards for entire workforces.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹89</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="leather-diaries.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="Luxury Embossed Diaries">
+            </div>
+            <div class="p-card-info">
+                <h3>Luxury Embossed Diaries</h3>
+                <p>Bespoke leatherette planners for professional utility.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹499</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="gift-boxes.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="Magnetic Gift Boxes">
+            </div>
+            <div class="p-card-info">
+                <h3>Magnetic Gift Boxes</h3>
+                <p>Rigid magnetic luxury boxes for curated presentation.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹649</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="mousepads.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="HD Printed Mousepads">
+            </div>
+            <div class="p-card-info">
+                <h3>HD Printed Mousepads</h3>
+                <p>Elite cloth-top mousepads for immersive desk branding.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹129</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="keychains.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/corporate_gifting_showcase.png" alt="Bespoke Keyrings">
+            </div>
+            <div class="p-card-info">
+                <h3>Bespoke Keyrings</h3>
+                <p>Branded metal and acrylic key chains for modern utility.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹45</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="shipping-boxes.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/custom_packaging_showcase.png" alt="Corrugated Mailers">
+            </div>
+            <div class="p-card-info">
+                <h3>Corrugated Mailers</h3>
+                <p>Eco-friendly mailers for secure and branded logistics.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹22/pc</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="paper-bags.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/custom_packaging_showcase.png" alt="Luxury Retail Bags">
+            </div>
+            <div class="p-card-info">
+                <h3>Luxury Retail Bags</h3>
+                <p>High-end retail bags for premium customer unboxing.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹16/pc</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="pouches.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/custom_packaging_showcase.png" alt="Standup Mylar Pouches">
+            </div>
+            <div class="p-card-info">
+                <h3>Standup Mylar Pouches</h3>
+                <p>Boutique stand-up bags with resealable zippers.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹14/pc</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="mono-cartons.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/custom_packaging_showcase.png" alt="Vibrant Retail Cartons">
+            </div>
+            <div class="p-card-info">
+                <h3>Vibrant Retail Cartons</h3>
+                <p>Full-color printed retail folding cartons for pharma and cosmetic use.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹8/pc</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="tissue-paper.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/custom_packaging_showcase.png" alt="Branded Tissue Wrapping">
+            </div>
+            <div class="p-card-info">
+                <h3>Branded Tissue Wrapping</h3>
+                <p>Ultra-thin personalized wrapping paper for luxury goods.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹5/sheet</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+    </div>
+</div>
+
+    </main>
+
+    <!-- Luxury Footer -->
+    <footer>
+        <div class="f-grid">
+            <div class="f-col">
+                <div class="brand" style="margin-bottom: 25px;">
+                    <i class="ph-fill ph-check-seal" style="color: var(--accent-gold);"></i>
+                    PRINT SPACE<span style="font-weight: 400; color: #fff; opacity: 0.5;"> INDIA</span>
+                </div>
+                <p>Owned & Operated by <b>M. Rahman</b>.</p>
+                <p>We are your dedicated partner for high-precision luxury printing and corporate branding across India.</p>
+            </div>
+
+            <div class="f-col">
+                <h4>KOLKATA (H.O.)</h4>
+                <p>Beadon Street, Near Girish Park Metro Station, Kolkata, WB-700006</p>
+                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 9876543210</p>
+            </div>
+
+            <div class="f-col">
+                <h4>NEW DELHI (B.O.)</h4>
+                <p>Building No.- B-143, Near Nathus Sweets, Okhla Industrial Area Phase 1, New Delhi-110020</p>
+                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 7982060969</p>
+            </div>
+        </div>
+        <div style="margin-top: 80px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.15rem; text-transform: uppercase;">
+            &copy; 2026 Print Space India. All Rights Reserved. Elite Midnight Gold Build.
+        </div>
+    </footer>
+
+    <!-- Global General Inquiry Modal -->
+    <div class="modal-overlay" id="globalModal">
+        <div class="global-modal">
+            <button class="modal-close" onclick="closeModal()"><i class="ph ph-x"></i></button>
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--text-main); font-family: var(--font-heading);">General Inquiry</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">Describe your enterprise requirement and we'll route it to the Kolkata or Delhi office.</p>
+            
+            <form onsubmit="submitGlobalModal(event)">
+                <label for="m_name">Point of Contact</label>
+                <input type="text" id="m_name" class="input-field" placeholder="Name & Company" required>
+
+                <label for="m_req">Requirement Details</label>
+                <textarea id="m_req" class="input-field" rows="3" placeholder="e.g. Need 500 Custom Gift Boxes and Letterheads..." required></textarea>
+
+                <label for="m_date">Expected Timeline</label>
+                <input type="date" id="m_date" class="input-field" required>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px;">
+                    Send Inquiry to WhatsApp <i class="ph ph-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal() {
+            document.getElementById('globalModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('globalModal').classList.remove('active');
+        }
+        function submitGlobalModal(e) {
+            e.preventDefault();
+            const name = document.getElementById('m_name').value;
+            const req = document.getElementById('m_req').value;
+            const date = document.getElementById('m_date').value;
+
+            const waNumber = "917982060969";
+            const text = `*GENERAL ENTERPRISE INQUIRY* %0A%0A` +
+                         `*Contact/Company:* ${name} %0A` +
+                         `*Requirement Details:* ${req} %0A` +
+                         `*Expected Timeline:* ${date} %0A%0A` +
+                         `*Initiated via Global Desktop Navigation*`;
+
+            window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+            closeModal();
+        }
+
+        // Mobile Menu Logic
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // Intelligent Loader Logic based on Navigation API
+        window.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('printing-loader');
+            
+            // Check if this is a fresh open or a refresh (not a link click across the local site)
+            const navEntries = performance.getEntriesByType("navigation");
+            let shouldShowLoader = true;
+            
+            if (navEntries.length > 0) {
+                const navType = navEntries[0].type;
+                // If it's pure navigation via clicking a link and arriving from an internal page, hide loader
+                if (navType === 'navigate' && document.referrer.includes(window.location.hostname)) {
+                    shouldShowLoader = false;
+                }
+                // If type is 'back_forward', hide loader
+                if (navType === 'back_forward') {
+                    shouldShowLoader = false;
+                }
+            }
+
+            if (shouldShowLoader) {
+                // Show the loader and let CSS animation play
+                loader.classList.remove('js-hide');
+                
+                // Hide loader after animation completes (3 seconds total roughly)
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    setTimeout(() => loader.style.display = 'none', 1000); // Fully remove from view flow after fade out
+                    reveal(); // Trigger initial reveals
+                }, 3200);
+            } else {
+                // Don't show loader at all
+                setTimeout(() => reveal(), 100); 
+            }
+        });
+
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+    </script>
+</body>
+</html>

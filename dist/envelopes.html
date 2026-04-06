@@ -315,7 +315,17 @@
 
         // Mobile Menu Logic
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
+            const nav = document.getElementById('navLinks');
+            const icon = document.querySelector('.hamburger i');
+            nav.classList.toggle('open');
+            
+            if (nav.classList.contains('open')) {
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+            } else {
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+            }
         }
 
         // Intelligent Loader Logic based on Navigation API

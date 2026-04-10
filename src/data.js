@@ -1,309 +1,3163 @@
 const businessInfo = {
-    name: 'Print Space India',
-    owner: 'M. Rahman',
-    locations: [
-        { city: 'Kolkata (H.O)', address: 'Beadon Street, Near Girish Park Metro Station, Kolkata, WB-700006', contact: '+91 9876543210' },
-        { city: 'New Delhi (B.O)', address: 'Building No.- B-143, Near Nathus Sweets, Okhla Industrial Area Phase 1, New Delhi-110020', contact: '+91 7982060969' }
+    "name": "Print Space India",
+    "owner": "M. Rahman",
+    "tagline": "Industrial-Grade Print Engineering",
+    "heritage": "Since 2002",
+    "locations": [
+        {
+            "city": "Kolkata (H.O)",
+            "address": "7/1A, Grant Lane, 1st Floor, Kolkata-700012",
+            "contact": "+91 98310 96069"
+        },
+        {
+            "city": "New Delhi (B.O)",
+            "address": "A-54, Naraina Industrial Area, Phase-I, New Delhi-110028",
+            "contact": "+91 79820 60969"
+        }
     ],
-    whatsapp: '917982060969',
-    tagline: '2026 Enterprise Printing: Precision, Power, Perfection.',
-    stats: { clients: '10,000+', orders: '25,000+', experience: '24 Years', projects: '150k+' }
+    "stats": {
+        "clients": "50k+",
+        "orders": "100k+",
+        "experience": "24+",
+        "projects": "1k+"
+    }
 };
 
 const categories = [
-    { id: 'commercial', title: 'Commercial', subtitle: 'Dynamic Enterprise Presence', color: '#00f2fe', icon: 'ph-briefcase', image: 'images/commercial_printing_showcase.png' },
-    { id: 'photo', title: 'Photo & Display', subtitle: 'Immersive Visual Mastery', color: '#89f7fe', icon: 'ph-camera', image: 'images/photo_printing_showcase.png' },
-    { id: 'corporate', title: 'Corporate Gifting', subtitle: 'Bespoke Executive Authority', color: '#667eea', icon: 'ph-gift', image: 'images/corporate_gifting_showcase.png' },
-    { id: 'packaging', title: 'Custom Packaging', subtitle: 'Future of Unboxing Experiences', color: '#b721ff', icon: 'ph-package', image: 'images/custom_packaging_showcase.png' }
+    {
+        "id": "stationery",
+        "title": "Corporate Stationery",
+        "subtitle": "Architectural Office Ecosystems",
+        "icon": "ph-briefcase",
+        "color": "#b8960c",
+        "image": "https://kaagazprints.com/image/home-page-image/visiting-card.jpg"
+    },
+    {
+        "id": "stickers",
+        "title": "Labels & Stickers",
+        "subtitle": "Industrial Branding Precision",
+        "icon": "ph-sticker",
+        "color": "#b8960c",
+        "image": "https://kaagazprints.com/image/home-page-image/sticker.webp"
+    },
+    {
+        "id": "apparel",
+        "title": "Custom Apparel",
+        "subtitle": "High-Fidelity Corporate Wear",
+        "icon": "ph-t-shirt",
+        "color": "#b8960c",
+        "image": "https://kaagazprints.com/image/home-page-image/Round_Neck_Cotton_T-Shirts.webp"
+    },
+    {
+        "id": "packaging",
+        "title": "Luxury Packaging",
+        "subtitle": "Secure Transit Masterpieces",
+        "icon": "ph-package",
+        "color": "#b8960c",
+        "image": "https://kaagazprints.com/image/home-page-image/Boxes.jpg"
+    },
+    {
+        "id": "marketing",
+        "title": "Marketing & Events",
+        "subtitle": "Strategic Brand Visibility",
+        "icon": "ph-megaphone",
+        "color": "#b8960c",
+        "image": "https://kaagazprints.com/image/home-page-image/standee.png"
+    },
+    {
+        "id": "gifts",
+        "title": "Corporate Gifts",
+        "subtitle": "Bespoke Gratitude Artifacts",
+        "icon": "ph-gift",
+        "color": "#b8960c",
+        "image": "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=800&q=80"
+    },
+    {
+        "id": "photo",
+        "title": "Memories & Albums",
+        "subtitle": "Archival Grade Photo Engineering",
+        "icon": "ph-camera",
+        "color": "#b8960c",
+        "image": "https://images.unsplash.com/photo-1579782500045-8af5dc3e061e?w=800&q=80"
+    }
 ];
 
 const products = [
-    // Commercial
-    { 
-        id: 'business-cards', cat: 'commercial', title: 'Premium Business Cards', 
-        desc: 'Precision-cut luxury cardstocks with tactile UV or metallic foil finishes.', 
-        image: 'images/premium_business_card_detail.png', 
-        features: ['350gsm Matte/Gloss', 'Raised Spot UV Option', 'Luxury Cardstock', 'Nano-Resolution Print'],
-        specs: { weight: '300-450gsm', finish: 'Velvet/Matte/UV', turnaround: '24-48 Hours', minOrder: '100 Units' },
-        variants: [
-            { name: 'Standard (300gsm)', price: '₹499' }, 
-            { name: 'Premium (350gsm MATTE)', price: '₹899' }, 
-            { name: 'Elite (UV SPOT/FOIL)', price: '₹1499' }
-        ] 
+    {
+        "id": "visiting-card",
+        "cat": "stationery",
+        "title": "Visiting Cards",
+        "bentoSize": "bento-large",
+        "desc": "350gsm ultra-premium visiting cards with velvet matte lamination — the definitive mark of professional identity.",
+        "image": "https://kaagazprints.com/image/home-page-image/visiting-card.jpg",
+        "variants": [
+            {
+                "name": "Standard Matte",
+                "price": "₹0.38"
+            },
+            {
+                "name": "Spot UV",
+                "price": "₹1.20"
+            }
+        ],
+        "features": [
+            "350gsm Art Card",
+            "Velvet Matte",
+            "Double Sided"
+        ],
+        "specs": {
+            "Material": "Art Card",
+            "Finish": "Matte / UV",
+            "Cutting": "Square / Rounded"
+        }
     },
-    { 
-        id: 'letterheads', cat: 'commercial', title: 'Executive Letterheads', 
-        desc: 'Standard commercial stationery printed on elite 120gsm bond paper.', 
-        image: 'images/letterheads_mockup.png', 
-        features: ['100gsm Bond Paper', 'Inkjet Friendly', 'A4 Standard Size', 'Laser Precision Layout'],
-        specs: { weight: '80gsm - 120gsm', finish: 'Bright White', turnaround: '3 Days', minOrder: '500 Units' },
-        variants: [
-            { name: 'Standard 100gsm', price: '₹799' }, 
-            { name: 'Premium Executive 120gsm', price: '₹1299' },
-            { name: 'Watermarked 120gsm', price: '₹2499' }
-        ] 
+    {
+        "id": "business-card-premium",
+        "cat": "stationery",
+        "title": "Deluxe Business Cards",
+        "bentoSize": "bento-standard",
+        "desc": "Foil-stamped butterfly-finish cards that command instant authority at every handshake.",
+        "image": "https://kaagazprints.com/image/home-page-image/Business-Cards-With-Butterflies.webp",
+        "variants": [
+            {
+                "name": "Butterfly Finish",
+                "price": "₹2.50"
+            },
+            {
+                "name": "Gold Foil",
+                "price": "₹4.50"
+            }
+        ],
+        "features": [
+            "400gsm Board",
+            "Gold Foil",
+            "Butterfly Emboss"
+        ],
+        "specs": {
+            "Material": "Textured Card",
+            "Effect": "Foil Stamp",
+            "GSM": "400"
+        }
     },
-    { 
-        id: 'brochures', cat: 'commercial', title: 'Multi-Fold Brochures', 
-        desc: 'Advanced marketing pamphlets for intricate product showcases.', 
-        image: 'images/brochures_mockup.png',
-        features: ['170gsm Gloss Paper', 'Tri-fold Precision', 'Double-Sided Print', 'Velvet Smooth Finish'],
-        specs: { weight: '130gsm - 220gsm', finish: 'Gloss/Silk/Matte', folds: 'Bi-fold/Tri-fold', minOrder: '500 Units' },
-        variants: [
-            { name: 'Standard Gloss 170gsm', price: '₹1499' }, 
-            { name: 'Premium Velvet 220gsm', price: '₹2899' },
-            { name: 'Laminated UV 170gsm', price: '₹3499' }
-        ] 
+    {
+        "id": "letterheads",
+        "cat": "stationery",
+        "title": "Executive Letterheads",
+        "bentoSize": "bento-wide",
+        "desc": "Watermark-ready 100gsm bond paper for official correspondence that conveys gravitas.",
+        "image": "https://kaagazprints.com/image/home-page-image/Letter-Heads.webp",
+        "variants": [
+            {
+                "name": "100gsm Bond",
+                "price": "₹1.80"
+            },
+            {
+                "name": "120gsm Royale",
+                "price": "₹2.90"
+            }
+        ],
+        "features": [
+            "Laser Safe",
+            "Watermark Ready",
+            "Crisp Print"
+        ],
+        "specs": {
+            "Size": "A4",
+            "Material": "Bond Paper",
+            "Finish": "Uncoated"
+        }
     },
-    { 
-        id: 'bill-books', cat: 'commercial', title: 'GST Bill Books', 
-        desc: 'Custom carbonless ledger and invoice books with reinforced binding.', 
-        features: ['Carbonless paper', 'Custom Branding', 'Serial Numbering', 'Duplicate/Triplicate'],
-        specs: { pages: '50/100 Sets', size: 'A4/A5', copies: '2 or 3 part', minOrder: '10 Books' },
-        variants: [
-            { name: 'Duplicate (1+1)', price: '₹1199' }, 
-            { name: 'Triplicate (1+2)', price: '₹1999' }
-        ] 
+    {
+        "id": "personalized-notebooks",
+        "cat": "stationery",
+        "title": "Hardbound Journals",
+        "bentoSize": "bento-standard",
+        "desc": "A5 leatherette-bound journals with ivory pages and gold-foil corporate logo stamping.",
+        "image": "https://kaagazprints.com/image/home-page-image/Personalised_Notebooks.webp",
+        "variants": [
+            {
+                "name": "A5 Leatherette",
+                "price": "₹160"
+            },
+            {
+                "name": "Premium Wiro",
+                "price": "₹220"
+            }
+        ],
+        "features": [
+            "Leatherette Cover",
+            "Ivory Paper",
+            "Custom Logo"
+        ],
+        "specs": {
+            "Size": "A5",
+            "Pages": "192",
+            "Binding": "Hardbound"
+        }
     },
-    { 
-        id: 'envelopes', cat: 'commercial', title: 'Company Envelopes', 
-        desc: 'Branded stationery envelopes in all standard business sizes.', 
-        image: 'images/envelopes_mockup.png',
-        features: ['Self-Sealing Option', 'Standard Legal Sizes', 'High-density Paper', 'Consistent Branding'],
-        specs: { size: '9x4/A4/A5/C5', finish: 'Non-transparent', glue: 'Peel & Seal', minOrder: '1000 Units' },
-        variants: [
-            { name: 'Standard White (9x4)', price: '₹699' }, 
-            { name: 'Premium Kraft (9x4)', price: '₹999' },
-            { name: 'Large A4 Window', price: '₹1899' }
-        ] 
+    {
+        "id": "notepads",
+        "cat": "stationery",
+        "title": "Corporate Notepads",
+        "bentoSize": "bento-standard",
+        "desc": "50-leaf custom notepads with branded header — essential desk architecture for every professional.",
+        "image": "https://kaagazprints.com/image/home-page-image/Notepads.webp",
+        "variants": [
+            {
+                "name": "A4 50 Leaf",
+                "price": "₹45"
+            },
+            {
+                "name": "A5 100 Leaf",
+                "price": "₹65"
+            }
+        ],
+        "features": [
+            "Glued Binding",
+            "Custom Header",
+            "100gsm Sheets"
+        ],
+        "specs": {
+            "Size": "A4 / A5",
+            "Leaves": "50-100",
+            "Print": "One / Two Color"
+        }
     },
-    { 
-        id: 'stickers', cat: 'commercial', title: 'Die-Cut Vinyl Stickers', 
-        desc: 'Industrial-grade weatherproof stickers for heavy branding.', 
-        image: 'images/stickers_mockup.png',
-        features: ['Premium Vinyl stock', 'Custom Shape Cuts', 'UV Proof', 'Strong Adhesion'],
-        specs: { material: 'Vinyl/PVC', finish: 'Gloss/Matte', adhesive: 'High-tack', minOrder: '500 Units' },
-        variants: [
-            { name: 'Standard Paper Labels', price: '₹349' }, 
-            { name: 'Weatherproof White Vinyl', price: '₹899' },
-            { name: 'Prismatic/Foil Vinyl', price: '₹1899' }
-        ] 
+    {
+        "id": "id-cards",
+        "cat": "stationery",
+        "title": "Smart PVC ID Cards",
+        "bentoSize": "bento-standard",
+        "desc": "CR80 PVC credentials with precision thermal printing — available NFC-enabled for smart campuses.",
+        "image": "https://kaagazprints.com/image/home-page-image/ID-Cards.webp",
+        "variants": [
+            {
+                "name": "Standard PVC",
+                "price": "₹35"
+            },
+            {
+                "name": "NFC Smart",
+                "price": "₹85"
+            }
+        ],
+        "features": [
+            "Gloss/Matte Finish",
+            "Rounded Corners",
+            "Barcode Ready"
+        ],
+        "specs": {
+            "Size": "CR80 (54×86mm)",
+            "Material": "760µ PVC",
+            "Print": "Thermal/Inkjet"
+        }
     },
-    { 
-        id: 'catalogues', cat: 'commercial', title: 'Product Catalogues', 
-        desc: 'Exquisite booklets for your entire line of products.', 
-        features: ['Saddle-stitch Binding', 'Multi-page Config', 'Silk Paper Interior', 'High-impact Covers'],
-        specs: { size: 'A4/A5', pages: '8 up to 48', binding: 'Saddle/Perfect', minOrder: '50 Units' },
-        variants: [
-            { name: 'Economy (8-page)', price: '₹4999' }, 
-            { name: 'Standard (16-page)', price: '₹9999' },
-            { name: 'Premium (24-page)', price: '₹14999' }
-        ] 
+    {
+        "id": "presentation-folders",
+        "cat": "stationery",
+        "title": "Presentation Folders",
+        "bentoSize": "bento-wide",
+        "desc": "Die-cut executive folders with card slit — the definitive vessel for high-stakes business pitches.",
+        "image": "https://images.unsplash.com/photo-1629858348483-29ec3fed988a?w=800&q=80",
+        "variants": [
+            {
+                "name": "Matte 300gsm",
+                "price": "₹18"
+            },
+            {
+                "name": "Spot UV",
+                "price": "₹28"
+            }
+        ],
+        "features": [
+            "Card Pocket",
+            "300gsm Board",
+            "Full Bleed"
+        ],
+        "specs": {
+            "Size": "9.5×12\"",
+            "Material": "Art Board",
+            "Finish": "Matte/Spot UV"
+        }
     },
-    { 
-        id: 'flyers', cat: 'commercial', title: 'High-Volume Flyers', 
-        desc: 'Budget-friendly marketing on vibrant 130gsm stock.', 
-        features: ['130gsm Art Paper', 'Economical in bulk', 'Same-day Production', 'Full Color CMYK'],
-        specs: { weight: '110gsm - 170gsm', finish: 'Gloss/Matte', size: 'A4/A5', minOrder: '1000 Units' },
-        variants: [
-            { name: 'Standard Gloss 110gsm', price: '₹899' }, 
-            { name: 'Premium Art 150gsm', price: '₹1499' }
-        ] 
+    {
+        "id": "table-calendar",
+        "cat": "stationery",
+        "title": "Executive Desk Calendars",
+        "bentoSize": "bento-standard",
+        "desc": "Tent-style A5 desk calendars — premium brand touchpoints on every executive's table, year-round.",
+        "image": "https://kaagazprints.com/image/home-page-image/table-calendar.webp",
+        "variants": [
+            {
+                "name": "A5 Tent",
+                "price": "₹95"
+            },
+            {
+                "name": "A4 Hard Stand",
+                "price": "₹145"
+            }
+        ],
+        "features": [
+            "Kappa Board Stand",
+            "Textured Leaves",
+            "Foil Dates"
+        ],
+        "specs": {
+            "Size": "A5/A4",
+            "Leaves": "12-14",
+            "Base": "2mm Kappa"
+        }
     },
-    // Photo
-    { 
-        id: 'wedding-albums', cat: 'photo', title: 'Luxury Wedding Albums', 
-        desc: 'Seamless lay-flat books with silk-textured Nona-Sheets.', 
-        image: 'images/luxury_wedding_album_detail.png', 
-        features: ['Lay-flat Binding', 'Nona-Sheet Technology', 'Luxury Presentation Box', 'Anti-Fingerprint'],
-        specs: { sheets: 'Silk Finish', binding: 'Flush Mount', cover: 'Acrylic/Leather', turnaround: '7 Days' },
-        variants: [
-            { name: 'Silk Series (20pg)', price: '₹4499' }, 
-            { name: 'Velvet Royal (40pg)', price: '₹8499' }, 
-            { name: 'Majestic Imperial (60pg)', price: '₹15999' }
-        ] 
+    {
+        "id": "invoice-books",
+        "cat": "stationery",
+        "title": "Invoice & Receipt Books",
+        "bentoSize": "bento-standard",
+        "desc": "Duplicate / triplicate NCR invoice books with custom serial numbering for impeccable audit trails.",
+        "image": "https://kaagazprints.com/image/home-page-image/Invoice-Books.webp",
+        "variants": [
+            {
+                "name": "Duplicate NCR",
+                "price": "₹220"
+            },
+            {
+                "name": "Triplicate NCR",
+                "price": "₹320"
+            }
+        ],
+        "features": [
+            "NCR Paper",
+            "Serial Numbered",
+            "Wax Coated"
+        ],
+        "specs": {
+            "Sets": "50 per book",
+            "Size": "A4 / A5",
+            "Copies": "2 / 3"
+        }
     },
-    { 
-        id: 'canvas-prints', cat: 'photo', title: 'Museum Canvas Prints', 
-        desc: 'Fine-art canvas stretched over solid wooden gallery frames.', 
-        features: ['UV Matte Finish', 'Museum Grade Canvas', 'FSC Wood Frames', 'Hanging Kits Included'],
-        specs: { canvas: 'Cotton 380gsm', finish: 'UV Protected', frame: 'Pinewood', minOrder: '1 Unit' },
-        variants: [
-            { name: 'Standard (12x18)', price: '₹1499' }, 
-            { name: 'Large Gallery (24x36)', price: '₹3999' }
-        ] 
+    {
+        "id": "certificates",
+        "cat": "stationery",
+        "title": "Custom Certificates",
+        "bentoSize": "bento-standard",
+        "desc": "Gold-bordered achievement certificates printed on 170gsm textured ivory for lasting recognition.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Certificates.webp",
+        "variants": [
+            {
+                "name": "Standard Print",
+                "price": "₹15"
+            },
+            {
+                "name": "Gold Border Foil",
+                "price": "₹45"
+            }
+        ],
+        "features": [
+            "Gold/Silver Border",
+            "Textured Paper",
+            "Custom Design"
+        ],
+        "specs": {
+            "Size": "A4 Landscape",
+            "Weight": "170gsm",
+            "Finish": "Gloss/Matte"
+        }
     },
-    { 
-        id: 'flex-banners', cat: 'photo', title: 'High-Density Flex Banners', 
-        desc: 'Dynamic weather-resistant banners for massive scale presence.', 
-        features: ['Star Flex Material', 'Reinforced Eyelets', 'Vibrant Solvent Ink', 'Fade Resistance'],
-        specs: { material: 'PVC Black-back', weight: '280gsm - 440gsm', print: 'Solvent/UV', minOrder: '100 sqft' },
-        variants: [
-            { name: 'Standard Star Flex', price: '₹15/sqft' }, 
-            { name: 'Premium Black-Back', price: '₹28/sqft' }
-        ] 
+    {
+        "id": "vinyl-stickers",
+        "cat": "stickers",
+        "title": "Industrial Vinyl Stickers",
+        "bentoSize": "bento-large",
+        "desc": "UV-resistant, waterproof die-cut vinyl stickers built to outlast weather, chemicals and time.",
+        "image": "https://kaagazprints.com/image/home-page-image/sticker.webp",
+        "variants": [
+            {
+                "name": "Custom Die-Cut",
+                "price": "₹3.50"
+            },
+            {
+                "name": "Transparent",
+                "price": "₹4.20"
+            }
+        ],
+        "features": [
+            "Waterproof",
+            "UV Resistant",
+            "3+ Year Life"
+        ],
+        "specs": {
+            "Adhesive": "High-Tack",
+            "Durability": "3+ Years",
+            "Finish": "Gloss/Matte"
+        }
     },
-    { 
-        id: 'standees', cat: 'photo', title: 'Roll-up Deluxe Standees', 
-        desc: 'Portable enterprise displays for elite exhibitions.', 
-        features: ['Solid Aluminum Base', 'B-curled Banner', 'Padded Case', 'One-Minute Assembly'],
-        specs: { size: '3x6 / 2x5 ft', base: 'Aluminum Alloy', material: 'Non-tear PVC', minOrder: '1 Unit' },
-        variants: [
-            { name: 'Standard 3x6 ft', price: '₹1999' }, 
-            { name: 'Premium Luxury (Heavy)', price: '₹2999' }
-        ] 
+    {
+        "id": "security-stickers",
+        "cat": "stickers",
+        "title": "Tamper-Evident Security Seals",
+        "bentoSize": "bento-standard",
+        "desc": "Void-pattern egg-shell stickers that permanently reveal tampering — essential for warranty protection.",
+        "image": "https://kaagazprints.com/image/home-page-image/Security_sticker.webp",
+        "variants": [
+            {
+                "name": "Standard Void",
+                "price": "₹2.80"
+            },
+            {
+                "name": "Holographic",
+                "price": "₹4.50"
+            }
+        ],
+        "features": [
+            "Void On Removal",
+            "Egg-Shell Destructible",
+            "Serial Numbered"
+        ],
+        "specs": {
+            "Material": "PET/Void",
+            "Security Level": "4",
+            "Use": "Hardware/Pharma"
+        }
     },
-    { 
-        id: 'vinyl-posters', cat: 'photo', title: 'Self-Adhesive Vinyl', 
-        desc: 'High-resolution wall graphics with anti-bubble technology.', 
-        features: ['Easy Application', 'Removable Vinyl', 'Satin Lamination', 'High DPI Output'],
-        specs: { brand: '3M/Avery', finish: 'Matte/Gloss', durability: '3+ Years', minOrder: '50 sqft' },
-        variants: [
-            { name: 'Standard Gloss Vinyl', price: '₹45/sqft' }, 
-            { name: 'Laminated Anti-Glare', price: '₹75/sqft' }
-        ] 
+    {
+        "id": "permanent-stickers",
+        "cat": "stickers",
+        "title": "Permanent Bond Stickers",
+        "bentoSize": "bento-standard",
+        "desc": "Industrial permanent adhesive labels built for high-temperature and chemical-resistant environments.",
+        "image": "https://kaagazprints.com/image/home-page-image/Permanent-Sticker.webp",
+        "variants": [
+            {
+                "name": "White Gloss",
+                "price": "₹2.00"
+            },
+            {
+                "name": "Silver Metalized",
+                "price": "₹3.20"
+            }
+        ],
+        "features": [
+            "Permanent Adhesive",
+            "Heat Resistant",
+            "Waterproof"
+        ],
+        "specs": {
+            "Adhesive": "Super Tack",
+            "Temp Range": "−20°C to 150°C",
+            "Finish": "Gloss/Silver"
+        }
     },
-    { 
-        id: 'acrylic-frames', cat: 'photo', title: 'Acrylic Sandwich Frames', 
-        desc: 'Crystal-clear frameless mounting for luxury photography.', 
-        features: ['Ultra-Clear Cast Acrylic', 'Machine Polished Edges', 'Silver Stud Stand-offs', 'Modern Floating Vibe'],
-        specs: { thickness: '3mm + 3mm', studs: 'Stainless Steel', edges: 'Diamond Polished', minOrder: '1 Unit' },
-        variants: [
-            { name: '8x12 (Desktop)', price: '₹899' }, 
-            { name: '24x36 (Gallery)', price: '₹4999' }
-        ] 
+    {
+        "id": "dome-stickers",
+        "cat": "stickers",
+        "title": "3D Dome Epoxy Stickers",
+        "bentoSize": "bento-standard",
+        "desc": "Resin-coated dome stickers with a premium 3D bubble effect — unforgettable brand tactility.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Dome-Sticker.webp",
+        "variants": [
+            {
+                "name": "Standard Dome",
+                "price": "₹8"
+            },
+            {
+                "name": "Premium Dome",
+                "price": "₹12"
+            }
+        ],
+        "features": [
+            "3D Resin Dome",
+            "UV-Gloss Coat",
+            "Waterproof Base"
+        ],
+        "specs": {
+            "Material": "Epoxy Resin",
+            "Effect": "Raised 3D",
+            "Use": "Branding/Gifts"
+        }
     },
-    { 
-        id: 'polaroids', cat: 'photo', title: 'Vintage Polaroid Sets', 
-        desc: 'Retro instant-style memory cards on premium cardstock.', 
-        features: ['Retro Border Styling', 'Thick Glossy Finish', 'Storage Tin Included', 'Sets of 24/48'],
-        specs: { size: '3.5x4.25 in', paper: 'Silk Gloss 300gsm', packaging: 'Eco Box', minOrder: '1 Set' },
-        variants: [
-            { name: 'Legacy Set (24)', price: '₹349' }, 
-            { name: 'Elite Set (48)', price: '₹599' }
-        ] 
+    {
+        "id": "sartin-labels",
+        "cat": "stickers",
+        "title": "Satin Fabric Labels",
+        "bentoSize": "bento-standard",
+        "desc": "Silky satin woven labels for premium garments — the hallmark of luxury clothing branding.",
+        "image": "https://kaagazprints.com/image/home-page-image/Sartin-Labels.webp",
+        "variants": [
+            {
+                "name": "Woven Satin",
+                "price": "₹5"
+            },
+            {
+                "name": "Iron-On",
+                "price": "₹7"
+            }
+        ],
+        "features": [
+            "Silky Texture",
+            "Printed/Woven",
+            "Wash Proof"
+        ],
+        "specs": {
+            "Material": "Satin",
+            "Application": "Garment",
+            "Width": "25-38mm"
+        }
     },
-    // Corporate
-    { 
-        id: 'custom-mugs', cat: 'corporate', title: 'Logo Ceramic Mugs', 
-        desc: 'Branded ceramic mugs with high-definition branding.', 
-        features: ['Microwave Safe', 'High-Gloss Finish', 'Permanent Print', 'Standard Gift Boxing'],
-        specs: { volume: '330ml', print: 'Sublimation', material: 'Premium A-grade', minOrder: '10 Units' },
-        variants: [
-            { name: 'Classic White', price: '₹149' }, 
-            { name: 'Black Magic (Heat Reveal)', price: '₹399' }
-        ] 
+    {
+        "id": "address-labels",
+        "cat": "stickers",
+        "title": "Custom Address Labels",
+        "bentoSize": "bento-standard",
+        "desc": "Bulk personalized shipping and address labels with variable data printing for e-commerce logistics.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Address-Labels.webp",
+        "variants": [
+            {
+                "name": "A4 Sheet (24 per)",
+                "price": "₹12"
+            },
+            {
+                "name": "Roll Labels",
+                "price": "₹0.50 each"
+            }
+        ],
+        "features": [
+            "Variable Data",
+            "Peel & Stick",
+            "Laser/Inkjet Safe"
+        ],
+        "specs": {
+            "Size": "63.5×33.9mm std",
+            "Sheet": "A4/Roll",
+            "Adhesive": "Removable/Perm"
+        }
     },
-    { 
-        id: 'metal-pens', cat: 'corporate', title: 'Engraved Metal Pens', 
-        desc: 'Luxury metal pens with intricate laser-carved branding.', 
-        features: ['Brass/Steel Body', 'Laser Engraving', 'German Ink Refill', 'Tactile Weight'],
-        specs: { refill: 'Blue/Black', weight: '22g', box: 'Velvet Sleeve', minOrder: '50 Units' },
-        variants: [
-            { name: 'Standard Metal-Grip', price: '₹299' }, 
-            { name: 'Luxury Gold-Trim', price: '₹699' }
-        ] 
+    {
+        "id": "polo-tshirts",
+        "cat": "apparel",
+        "title": "Executive Polo T-Shirts",
+        "bentoSize": "bento-large",
+        "desc": "220gsm honeycomb matty polo shirts with precision corporate embroidery — the uniform of excellence.",
+        "image": "https://kaagazprints.com/image/home-page-image/Polo_T-Shirts.webp",
+        "variants": [
+            {
+                "name": "220gsm Matty",
+                "price": "₹320"
+            },
+            {
+                "name": "Dry-Fit",
+                "price": "₹390"
+            }
+        ],
+        "features": [
+            "Embroidery Ready",
+            "Anti-Shrink",
+            "Honeycomb Knit"
+        ],
+        "specs": {
+            "Fabric": "Matty Cotton",
+            "GSM": "220",
+            "Technique": "Embroidery/DTF"
+        }
     },
-    { 
-        id: 'id-cards', cat: 'corporate', title: 'PVC ID Solutions', 
-        desc: 'Thermal-printed identification cards for entire workforces.', 
-        features: ['Fargo HD Print', 'Tamper Proof', 'Color-matched Lanyards', 'Dual-sided Print'],
-        specs: { material: 'PVC/Teslin', thickness: '760 Microns', chips: 'Optional RFID', minOrder: '10 Units' },
-        variants: [
-            { name: 'Standard PVC', price: '₹89' }, 
-            { name: 'Smart RFID Card', price: '₹199' }
-        ] 
+    {
+        "id": "round-neck-tshirt",
+        "cat": "apparel",
+        "title": "Round Neck Cotton T-Shirts",
+        "bentoSize": "bento-standard",
+        "desc": "100% bio-washed pure cotton with DTF digital printing — vibrant, long-lasting team branding.",
+        "image": "https://kaagazprints.com/image/home-page-image/Round_Neck_Cotton_T-Shirts.webp",
+        "variants": [
+            {
+                "name": "180gsm",
+                "price": "₹180"
+            },
+            {
+                "name": "240gsm Heavy",
+                "price": "₹280"
+            }
+        ],
+        "features": [
+            "Bio-Washed",
+            "DTF Print",
+            "Double-Needle Stitch"
+        ],
+        "specs": {
+            "Material": "100% Cotton",
+            "GSM": "180-240",
+            "Print": "DTF Digital"
+        }
     },
-    { 
-        id: 'leather-diaries', cat: 'corporate', title: 'Luxury Embossed Diaries', 
-        desc: 'Bespoke leatherette planners for professional utility.', 
-        features: ['Heat Debossing', '80gsm Cream Paper', 'Planner Layout', 'Elastic Closure'],
-        specs: { binding: 'Hardbound', paper: '70-80gsm Cream', size: 'A5/B5', minOrder: '50 Units' },
-        variants: [
-            { name: 'A5 Hardcover', price: '₹499' }, 
-            { name: 'B5 Desktop Executive', price: '₹899' }
-        ] 
+    {
+        "id": "custom-hoodies",
+        "cat": "apparel",
+        "title": "Premium Corporate Hoodies",
+        "bentoSize": "bento-standard",
+        "desc": "Heavyweight 320gsm fleece with kangaroo pocket — sophisticated cold-season corporate identity.",
+        "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80",
+        "variants": [
+            {
+                "name": "320gsm Fleece",
+                "price": "₹650"
+            },
+            {
+                "name": "Zipper Hoodie",
+                "price": "₹780"
+            }
+        ],
+        "features": [
+            "Kangaroo Pocket",
+            "Embroidery Ready",
+            "Anti-Pilling"
+        ],
+        "specs": {
+            "Fabric": "Cotton-Poly Blend",
+            "GSM": "320",
+            "Style": "Pullover/Zipper"
+        }
     },
-    { 
-        id: 'gift-boxes', cat: 'corporate', title: 'Magnetic Gift Boxes', 
-        desc: 'Rigid magnetic luxury boxes for curated presentation.', 
-        features: ['1200gsm Rigid Board', 'Strong Magnetic Seal', 'Custom Velvet Foam', 'Ribbon Lacing'],
-        specs: { board: 'Cardboard 2.5mm', finish: 'Vivid Lamination', closure: 'Magnetic Hidden', minOrder: '100 Units' },
-        variants: [
-            { name: 'Small Cube Premium', price: '₹649' }, 
-            { name: 'Large Corporate Hamper', price: '₹1599' }
-        ] 
+    {
+        "id": "sports-tshirts",
+        "cat": "apparel",
+        "title": "Sports Full-Print T-Shirts",
+        "bentoSize": "bento-standard",
+        "desc": "All-over sublimation printed sports jerseys for corporate tournaments and brand activations.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Sports-Full-Printing-T-Shirts.webp",
+        "variants": [
+            {
+                "name": "Full Sublimation",
+                "price": "₹350"
+            },
+            {
+                "name": "Dri-Fit Performance",
+                "price": "₹420"
+            }
+        ],
+        "features": [
+            "All-Over Print",
+            "Moisture Wick",
+            "Quick Dry"
+        ],
+        "specs": {
+            "Material": "Microfiber Polyester",
+            "Print": "Dye Sublimation",
+            "Fit": "Athletic"
+        }
     },
-    { 
-        id: 'mousepads', cat: 'corporate', title: 'HD Printed Mousepads', 
-        desc: 'Elite cloth-top mousepads for immersive desk branding.', 
-        features: ['Non-slip Rubber Base', 'Speed-cloth Top', 'Stitched Edges', 'Full Scale Print'],
-        specs: { thickness: '3mm', base: 'Nature Rubber', print: 'Heat Transfer', minOrder: '50 Units' },
-        variants: [
-            { name: 'Standard Desktop', price: '₹129' }, 
-            { name: 'Extended Large (Gaming Style)', price: '₹549' }
-        ] 
+    {
+        "id": "caps",
+        "cat": "apparel",
+        "title": "Custom Printed Caps",
+        "bentoSize": "bento-standard",
+        "desc": "6-panel structured caps with embroidered logos — the perfect brand extension for field teams.",
+        "image": "https://kaagazprints.com/image/home-page-image/Caps.webp",
+        "variants": [
+            {
+                "name": "Structured 6-panel",
+                "price": "₹220"
+            },
+            {
+                "name": "Trucker Mesh",
+                "price": "₹260"
+            }
+        ],
+        "features": [
+            "Embroidery/Print",
+            "Adjustable Back",
+            "UV Protection"
+        ],
+        "specs": {
+            "Style": "6-Panel/Trucker",
+            "Logo": "Embroidery/Print",
+            "Closure": "Velcro/Snap"
+        }
     },
-    { 
-        id: 'keychains', cat: 'corporate', title: 'Bespoke Keyrings', 
-        desc: 'Branded metal and acrylic key chains for modern utility.', 
-        features: ['Custom Shape Laser', 'Dual Sided Logo', 'Heavy-duty Metal', 'High Shine Coating'],
-        specs: { material: 'Acrylic/SS/Brass', shape: 'Any Shape', chain: 'Rust-proof', minOrder: '100 Units' },
-        variants: [
-            { name: 'Acrylic Custom Shape', price: '₹45' }, 
-            { name: 'Solid Metal Engraved', price: '₹149' }
-        ] 
+    {
+        "id": "tote-bag",
+        "cat": "apparel",
+        "title": "Custom Tote Bags",
+        "bentoSize": "bento-standard",
+        "desc": "Eco-friendly canvas tote bags with full-colour screen printing — sustainable brand ambassadors.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tote-bag.webp",
+        "variants": [
+            {
+                "name": "Canvas Natural",
+                "price": "₹95"
+            },
+            {
+                "name": "Coloured Canvas",
+                "price": "₹120"
+            }
+        ],
+        "features": [
+            "Eco Canvas",
+            "Screen/DTF Print",
+            "Dual Handle"
+        ],
+        "specs": {
+            "Material": "Canvas Cotton",
+            "Handle": "12\" Cotton",
+            "Capacity": "~10L"
+        }
     },
-    // Packaging
-    { 
-        id: 'shipping-boxes', cat: 'packaging', title: 'Corrugated Mailers', 
-        desc: 'Eco-friendly mailers for secure and branded logistics.', 
-        features: ['E-flute Durability', '100% Recyclable', 'Custom Dimensionality', 'Internal Print Option'],
-        specs: { wall: '3-Ply / 5-Ply', print: 'Flexo/Digital', strength: '10kg Load', minOrder: '500 Units' },
-        variants: [
-            { name: 'Small E-Mailer (6x4)', price: '₹22/pc' }, 
-            { name: 'Large Transit Box (12x12)', price: '₹55/pc' }
-        ] 
+    {
+        "id": "product-boxes",
+        "cat": "packaging",
+        "title": "Luxury Product Boxes",
+        "bentoSize": "bento-large",
+        "desc": "Stiff-board top-bottom boxes with UV matte coating and foil stamping for premium retail packaging.",
+        "image": "https://kaagazprints.com/image/home-page-image/Boxes.jpg",
+        "variants": [
+            {
+                "name": "Matte UV Box",
+                "price": "₹12"
+            },
+            {
+                "name": "Rigid Gift Box",
+                "price": "₹45"
+            }
+        ],
+        "features": [
+            "Foil Stamping",
+            "UV Matte Coat",
+            "Custom Inserts"
+        ],
+        "specs": {
+            "Structure": "Top-Bottom",
+            "Material": "3-ply Kraft/Rigid",
+            "Finish": "Matte UV"
+        }
     },
-    { 
-        id: 'paper-bags', cat: 'packaging', title: 'Luxury Retail Bags', 
-        desc: 'High-end retail bags for premium customer unboxing.', 
-        features: ['200gsm Gloss Paper', 'Luxury Cord Handles', 'Reinforced Base', 'Inner Side Printing'],
-        specs: { paper: 'Kraft / Art Paper', handle: 'Twisted / Ribbon', weight: '2kg - 5kg Load', minOrder: '500 Units' },
-        variants: [
-            { name: 'Nature Kraft (Small)', price: '₹16/pc' }, 
-            { name: 'Gloss Luxury (Large)', price: '₹49/pc' }
-        ] 
+    {
+        "id": "paper-bags",
+        "cat": "packaging",
+        "title": "Artisan Paper Bags",
+        "bentoSize": "bento-standard",
+        "desc": "Kraft and coated paper carry bags with reinforced rope handles — luxury unboxing for every brand.",
+        "image": "https://images.unsplash.com/photo-1582298759535-c49ea073df0d?w=800&q=80",
+        "variants": [
+            {
+                "name": "Kraft Brown",
+                "price": "₹15"
+            },
+            {
+                "name": "Laminated White",
+                "price": "₹24"
+            }
+        ],
+        "features": [
+            "Rope Handle",
+            "Reinforced Base",
+            "Eco Kraft/Art"
+        ],
+        "specs": {
+            "Material": "150gsm Kraft/Art",
+            "Handle": "Cotton Rope",
+            "Load": "Up to 5kg"
+        }
     },
-    { 
-        id: 'pouches', cat: 'packaging', title: 'Standup Mylar Pouches', 
-        desc: 'Boutique stand-up bags with resealable zippers.', 
-        features: ['Foil Barrier Protection', 'Easy Tear Notches', 'Resealable Grip', 'Heat Sealable Top'],
-        specs: { material: 'PET/BOPP/PE', finish: 'Matte/Frosted', barrier: 'High Oxygen Barrier', minOrder: '1000 Units' },
-        variants: [
-            { name: '100g Matte Window', price: '₹14/pc' }, 
-            { name: '500g Full Foil', price: '₹26/pc' }
-        ] 
+    {
+        "id": "atm-pouches",
+        "cat": "packaging",
+        "title": "Customized ATM Pouches",
+        "bentoSize": "bento-standard",
+        "desc": "Branded ATM card envelopes for banks and fintechs — a sleek, security-grade delivery vessel.",
+        "image": "https://kaagazprints.com/image/home-page-image/Customized-ATM-Pouches.webp",
+        "variants": [
+            {
+                "name": "Standard Envelope",
+                "price": "₹4"
+            },
+            {
+                "name": "Holographic Seal",
+                "price": "₹7"
+            }
+        ],
+        "features": [
+            "Security Seal",
+            "ATM-Card Fit",
+            "Custom Print"
+        ],
+        "specs": {
+            "Size": "Standard ATM",
+            "Security": "Tamper Seal",
+            "Print": "CMYK Offset"
+        }
     },
-    { 
-        id: 'mono-cartons', cat: 'packaging', title: 'Vibrant Retail Cartons', 
-        desc: 'Full-color printed retail folding cartons for pharma and cosmetic use.', 
-        features: ['300gsm Duplex Board', 'Aqueous Coating', 'Precision Die-Cut', 'Metallic Finish Spot'],
-        specs: { weight: '230gsm - 400gsm', finish: 'UV / Drip / Satin', folding: 'Automatic Glue', minOrder: '2000 Units' },
-        variants: [
-            { name: 'Standard CMYK Gloss', price: '₹8/pc' }, 
-            { name: 'Luxury Metallic Finish', price: '₹16/pc' }
-        ] 
+    {
+        "id": "standee",
+        "cat": "marketing",
+        "title": "Executive Roll-Up Standee",
+        "bentoSize": "bento-large",
+        "desc": "3×6 ft aluminum roll-up standees with 720dpi star-flex print — commanding presence at every event.",
+        "image": "https://kaagazprints.com/image/home-page-image/standee.png",
+        "variants": [
+            {
+                "name": "Aluminum Frame",
+                "price": "₹1200"
+            },
+            {
+                "name": "Chrome Base",
+                "price": "₹1800"
+            }
+        ],
+        "features": [
+            "Star-Flex Print",
+            "Auto-Roll Frame",
+            "PVC Carry Bag"
+        ],
+        "specs": {
+            "Size": "3ft × 6ft",
+            "Print": "720dpi Star",
+            "Frame": "Aluminum"
+        }
     },
-    { 
-        id: 'tissue-paper', cat: 'packaging', title: 'Branded Tissue Wrapping', 
-        desc: 'Ultra-thin personalized wrapping paper for luxury goods.', 
-        features: ['17gsm Prime Tissue', 'Acid-Free pH Safe', 'Pantone Color Match', 'Soft Texture'],
-        specs: { weight: '17gsm - 22gsm', print: '1-2 Color Flexo', sheets: '50x70 cm', minOrder: '2000 Sheets' },
-        variants: [
-            { name: 'Standard Logo Print', price: '₹5/sheet' }, 
-            { name: 'Gold/Silver Metallic Tint', price: '₹10/sheet' }
-        ] 
+    {
+        "id": "tabletop-standee",
+        "cat": "marketing",
+        "title": "Tabletop Standees",
+        "bentoSize": "bento-standard",
+        "desc": "Compact A4/A5 folded desktop standees for point-of-sale Brand messaging.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tabletop_Standees.webp",
+        "variants": [
+            {
+                "name": "A4 Folded",
+                "price": "₹18"
+            },
+            {
+                "name": "A5 Folded",
+                "price": "₹12"
+            }
+        ],
+        "features": [
+            "Folded Display",
+            "350gsm Board",
+            "Self-Standing"
+        ],
+        "specs": {
+            "Size": "A4 / A5",
+            "Material": "350gsm Art",
+            "Style": "Z-fold/L-fold"
+        }
+    },
+    {
+        "id": "wall-calendar",
+        "cat": "marketing",
+        "title": "Artisan Wall Calendars",
+        "bentoSize": "bento-wide",
+        "desc": "12-leaf wire-bound art calendars — an entire year of premium brand engagement on office walls.",
+        "image": "https://images.unsplash.com/photo-1632766860471-182dca9ce466?w=800&q=80",
+        "variants": [
+            {
+                "name": "6-Leaf",
+                "price": "₹120"
+            },
+            {
+                "name": "12-Leaf Pro",
+                "price": "₹190"
+            }
+        ],
+        "features": [
+            "170gsm Art Paper",
+            "Metal Wiro Bind",
+            "Custom Artwork"
+        ],
+        "specs": {
+            "Size": "12×18 / 15×20\"",
+            "Leaves": "6 / 12",
+            "Mount": "Wall Hanger Strip"
+        }
+    },
+    {
+        "id": "banner",
+        "cat": "marketing",
+        "title": "Flex & Fabric Banners",
+        "bentoSize": "bento-standard",
+        "desc": "High-tension fabric and flex banners with vivid eco-solvent inks — outdoor visible at 50 metres.",
+        "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+        "variants": [
+            {
+                "name": "Flex Banner",
+                "price": "₹18/sqft"
+            },
+            {
+                "name": "Fabric Backlit",
+                "price": "₹120/sqft"
+            }
+        ],
+        "features": [
+            "UV Eco-Solvent Ink",
+            "Hem & Grommet",
+            "Weather Proof"
+        ],
+        "specs": {
+            "Material": "Flex/Backlit Fabric",
+            "Inks": "UV Eco-Solvent",
+            "Resolution": "720-1440dpi"
+        }
+    },
+    {
+        "id": "brochures",
+        "cat": "marketing",
+        "title": "Glossy Catalog Brochures",
+        "bentoSize": "bento-standard",
+        "desc": "Tri-fold and book-fold brochures on 170gsm gloss art — immersive brand storytelling in print.",
+        "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80",
+        "variants": [
+            {
+                "name": "Tri-Fold A4",
+                "price": "₹5"
+            },
+            {
+                "name": "Saddle Stitch Booklet",
+                "price": "₹22"
+            }
+        ],
+        "features": [
+            "170gsm Gloss",
+            "Full CMYK",
+            "Multiple Folds"
+        ],
+        "specs": {
+            "Material": "170gsm Art",
+            "Print": "4C+4C",
+            "Folds": "Tri/Z/Book"
+        }
+    },
+    {
+        "id": "signs-posters",
+        "cat": "marketing",
+        "title": "Architectural Signs & Posters",
+        "bentoSize": "bento-standard",
+        "desc": "A0-to-A3 poster prints on anti-glare premium photo paper for corporate lobbies and retail stores.",
+        "image": "https://kaagazprints.com/image/home-page-image/Signs_Posters.webp",
+        "variants": [
+            {
+                "name": "A3 Gloss",
+                "price": "₹35"
+            },
+            {
+                "name": "A1 Canvas",
+                "price": "₹280"
+            }
+        ],
+        "features": [
+            "Anti-Glare Paper",
+            "Vivid Pigment Ink",
+            "Multiple Sizes"
+        ],
+        "specs": {
+            "Max Size": "A0",
+            "Material": "Photo/Canvas",
+            "Finish": "Gloss/Matte/Canvas"
+        }
+    },
+    {
+        "id": "loyalty-cards",
+        "cat": "marketing",
+        "title": "Loyalty & Membership Cards",
+        "bentoSize": "bento-standard",
+        "desc": "Durable PVC loyalty cards with barcode or magnetic strip — engineered for robust rewards programs.",
+        "image": "https://kaagazprints.com/image/home-page-image/Loyalty-Cards.webp",
+        "variants": [
+            {
+                "name": "Standard PVC",
+                "price": "₹28"
+            },
+            {
+                "name": "Magnetic Strip",
+                "price": "₹55"
+            }
+        ],
+        "features": [
+            "Barcode/QR",
+            "Magnetic Strip",
+            "Gloss Laminate"
+        ],
+        "specs": {
+            "Size": "CR80",
+            "Material": "PVC 760µ",
+            "Options": "Barcode/Mag/RFID"
+        }
+    },
+    {
+        "id": "scratch-cards",
+        "cat": "marketing",
+        "title": "Scratch Card Printing",
+        "bentoSize": "bento-standard",
+        "desc": "Silver-panel scratch cards with UV offset print — the ultimate promotional engagement mechanic.",
+        "image": "https://kaagazprints.com/image/home-page-image/Scratch-Card.webp",
+        "variants": [
+            {
+                "name": "Standard Scratch",
+                "price": "₹3.50"
+            },
+            {
+                "name": "Holographic Panel",
+                "price": "₹6"
+            }
+        ],
+        "features": [
+            "Silver Scratch Panel",
+            "Unique Code Under",
+            "CMYK Print"
+        ],
+        "specs": {
+            "Material": "300gsm Art",
+            "Panel": "Silver Scratch",
+            "Format": "Custom"
+        }
+    },
+    {
+        "id": "button-badges",
+        "cat": "marketing",
+        "title": "Button Pin Badges",
+        "bentoSize": "bento-standard",
+        "desc": "58mm pin-back button badges — vibrant, magnetic conversation starters for events and activations.",
+        "image": "https://kaagazprints.com/image/home-page-image/Button-Badges.webp",
+        "variants": [
+            {
+                "name": "25mm Round",
+                "price": "₹8"
+            },
+            {
+                "name": "58mm Standard",
+                "price": "₹14"
+            }
+        ],
+        "features": [
+            "Glossy Dome",
+            "Steel Pin Back",
+            "Vivid Print"
+        ],
+        "specs": {
+            "Sizes": "25/38/58mm",
+            "Back": "Pin/Magnet",
+            "Finish": "Gloss Dome"
+        }
+    },
+    {
+        "id": "fabric-flags",
+        "cat": "marketing",
+        "title": "Custom Fabric Flags",
+        "bentoSize": "bento-standard",
+        "desc": "Dye-sublimated outdoor fabric flags for corporate entrances, exhibitions and brand activations.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Fabric_Flag.webp",
+        "variants": [
+            {
+                "name": "Teardrop Flag",
+                "price": "₹1,800"
+            },
+            {
+                "name": "Feather Flag",
+                "price": "₹2,200"
+            }
+        ],
+        "features": [
+            "Dye Sublimation",
+            "All-Weather",
+            "Pole Included"
+        ],
+        "specs": {
+            "Material": "Polyester",
+            "Print": "Sublimation",
+            "Pole": "Fibreglass"
+        }
+    },
+    {
+        "id": "custom-mugs",
+        "cat": "gifts",
+        "title": "Ceramic Sublimation Mugs",
+        "bentoSize": "bento-standard",
+        "desc": "11oz & 15oz AAA ceramic mugs with full-wrap or patch-print sublimation — microwave and dishwasher safe.",
+        "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800&q=80",
+        "variants": [
+            {
+                "name": "White 325ml",
+                "price": "₹110"
+            },
+            {
+                "name": "Magic Reveal",
+                "price": "₹190"
+            }
+        ],
+        "features": [
+            "Microwave Safe",
+            "Fade Resistant",
+            "Full/Patch Wrap"
+        ],
+        "specs": {
+            "Capacity": "325ml / 450ml",
+            "Material": "Bone China",
+            "Print": "Sublimation"
+        }
+    },
+    {
+        "id": "metal-pens",
+        "cat": "gifts",
+        "title": "Engraved Metal Pens",
+        "bentoSize": "bento-large",
+        "desc": "Weighted executive rollerball pens with laser-engraved brand identity — arriving gift-boxed.",
+        "image": "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=800&q=80",
+        "variants": [
+            {
+                "name": "Aluminum Body",
+                "price": "₹45"
+            },
+            {
+                "name": "Premium Rollerball",
+                "price": "₹180"
+            }
+        ],
+        "features": [
+            "Laser Engraving",
+            "Gift Boxed",
+            "Smooth Ink"
+        ],
+        "specs": {
+            "Body": "Aluminum/Steel",
+            "Ink": "Blue/Black",
+            "Engraving": "Contrast Laser"
+        }
+    },
+    {
+        "id": "lanyards",
+        "cat": "gifts",
+        "title": "Sublimation Lanyards",
+        "bentoSize": "bento-standard",
+        "desc": "20-25mm full-colour satin lanyards — essential ID infrastructure for corporate events and campuses.",
+        "image": "https://images.unsplash.com/photo-1627918451877-bb891a329de4?w=800&q=80",
+        "variants": [
+            {
+                "name": "20mm Satin",
+                "price": "₹22"
+            },
+            {
+                "name": "25mm Premium",
+                "price": "₹28"
+            }
+        ],
+        "features": [
+            "Edge-to-Edge Print",
+            "Fish Hook / Dog Hook",
+            "Silky Satin"
+        ],
+        "specs": {
+            "Width": "20-25mm",
+            "Material": "Satin",
+            "Print": "Sublimation"
+        }
+    },
+    {
+        "id": "mousepads",
+        "cat": "gifts",
+        "title": "Custom Branded Mousepads",
+        "bentoSize": "bento-standard",
+        "desc": "Non-slip natural rubber base with stitched-edge sublimation surface — a daily brand impression.",
+        "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=80",
+        "variants": [
+            {
+                "name": "Standard 3mm",
+                "price": "₹85"
+            },
+            {
+                "name": "XL Desk Mat",
+                "price": "₹350"
+            }
+        ],
+        "features": [
+            "Stitched Edges",
+            "Anti-Slip Rubber",
+            "Edge-to-Edge Print"
+        ],
+        "specs": {
+            "Base": "Natural Rubber",
+            "Top": "Polyester",
+            "Thickness": "3-5mm"
+        }
+    },
+    {
+        "id": "water-bottles",
+        "cat": "gifts",
+        "title": "Branded Water Bottles",
+        "bentoSize": "bento-standard",
+        "desc": "900ml stainless-steel double-wall vacuum bottles with laser-engraved brand logo.",
+        "image": "https://kaagazprints.com/image/home-page-image/Water-Bottles.webp",
+        "variants": [
+            {
+                "name": "Stainless 750ml",
+                "price": "₹380"
+            },
+            {
+                "name": "Sipper Bottle",
+                "price": "₹220"
+            }
+        ],
+        "features": [
+            "Vacuum Insulated",
+            "Laser Engraved",
+            "BPA-Free"
+        ],
+        "specs": {
+            "Capacity": "750-900ml",
+            "Material": "SS304",
+            "Insulation": "Double Wall"
+        }
+    },
+    {
+        "id": "coasters",
+        "cat": "gifts",
+        "title": "Custom Sublimation Coasters",
+        "bentoSize": "bento-standard",
+        "desc": "MDF and cork-back coasters with vivid sublimation print — premium corporate gifting at scale.",
+        "image": "https://kaagazprints.com/image/home-page-image/Coasters.webp",
+        "variants": [
+            {
+                "name": "MDF Round",
+                "price": "₹55"
+            },
+            {
+                "name": "Cork Back Set-4",
+                "price": "₹180"
+            }
+        ],
+        "features": [
+            "Sublimation Print",
+            "Cork/MDF",
+            "Set Packaging"
+        ],
+        "specs": {
+            "Diameter": "9.5cm",
+            "Material": "MDF/Cork",
+            "Print": "Sublimation"
+        }
+    },
+    {
+        "id": "awards",
+        "cat": "gifts",
+        "title": "Acrylic & Crystal Awards",
+        "bentoSize": "bento-standard",
+        "desc": "3D-engraved acrylic and crystal trophies for corporate recognition with permanent laser etching.",
+        "image": "https://kaagazprints.com/image/home-page-image/Awards.webp",
+        "variants": [
+            {
+                "name": "Acrylic Standard",
+                "price": "₹350"
+            },
+            {
+                "name": "Crystal Premium",
+                "price": "₹1,200"
+            }
+        ],
+        "features": [
+            "3D Laser Engraving",
+            "Custom Shape",
+            "Gift Packed"
+        ],
+        "specs": {
+            "Material": "Acrylic/Crystal",
+            "Engraving": "3D Laser",
+            "Base": "Wooden or Metal"
+        }
+    },
+    {
+        "id": "gift-hampers",
+        "cat": "gifts",
+        "title": "Corporate Gift Hampers",
+        "bentoSize": "bento-wide",
+        "desc": "Curated branded gift sets — mug, pen, notepad, and lanyard — packaged in a premium kraft box.",
+        "image": "https://kaagazprints.com/image/home-page-image/Gift-Hampers.webp",
+        "variants": [
+            {
+                "name": "Essential Set (4 items)",
+                "price": "₹850"
+            },
+            {
+                "name": "Executive Set (7 items)",
+                "price": "₹1,800"
+            }
+        ],
+        "features": [
+            "Custom Branded",
+            "Kraft Gift Box",
+            "Mix & Match"
+        ],
+        "specs": {
+            "Items": "4 to 7",
+            "Box": "Kraft Rigid",
+            "Print": "CMYK+Foil"
+        }
+    },
+    {
+        "id": "pen-drive",
+        "cat": "gifts",
+        "title": "Custom USB Pen Drives",
+        "bentoSize": "bento-standard",
+        "desc": "Branded metal or wood-finish USB drives with laser-engraved logo — data gifting with elegance.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Pen-Drive.webp",
+        "variants": [
+            {
+                "name": "8GB Metal",
+                "price": "₹280"
+            },
+            {
+                "name": "16GB Premium",
+                "price": "₹380"
+            }
+        ],
+        "features": [
+            "Laser Engraving",
+            "USB 2.0/3.0",
+            "Cap/Swivel Style"
+        ],
+        "specs": {
+            "Capacity": "8-64GB",
+            "Interface": "USB 2.0/3.0",
+            "Casing": "Metal/Wood"
+        }
+    },
+    {
+        "id": "laptop-skins",
+        "cat": "gifts",
+        "title": "Custom Laptop Skins",
+        "bentoSize": "bento-standard",
+        "desc": "Precision-cut 3M vinyl laptop skins with crystal-clear UV-flat printing — zero-bubble application.",
+        "image": "https://kaagazprints.com/image/home-page-image/Laptop-Skins.webp",
+        "variants": [
+            {
+                "name": "13\" Skin",
+                "price": "₹180"
+            },
+            {
+                "name": "15.6\" Skin",
+                "price": "₹240"
+            }
+        ],
+        "features": [
+            "3M Vinyl",
+            "Bubble-Free",
+            "UV Print"
+        ],
+        "specs": {
+            "Material": "3M Vinyl",
+            "Adhesive": "Removable",
+            "Print": "UV Flatbed"
+        }
+    },
+    {
+        "id": "pin-name-badges",
+        "cat": "gifts",
+        "title": "Pin Name Badges",
+        "bentoSize": "bento-standard",
+        "desc": "Durable metal-frame name badges with pin and magnet back — smart, elegant event identification.",
+        "image": "https://kaagazprints.com/image/home-page-image/Pin-Name-Badge.webp",
+        "variants": [
+            {
+                "name": "Standard Metal Frame",
+                "price": "₹55"
+            },
+            {
+                "name": "Full-Colour PVC",
+                "price": "₹35"
+            }
+        ],
+        "features": [
+            "Pin & Magnet Back",
+            "Custom Insert",
+            "Metal/PVC Frame"
+        ],
+        "specs": {
+            "Frame": "Metal/Plastic",
+            "Back": "Pin or Magnet",
+            "Insert": "Printed Card"
+        }
+    },
+    {
+        "id": "paper-embosser",
+        "cat": "gifts",
+        "title": "Custom Paper Embossers",
+        "bentoSize": "bento-standard",
+        "desc": "Mechanical dry embossers that leave a raised impression — the ultimate certified seal of authority.",
+        "image": "https://kaagazprints.com/image/home-page-image/Paper-Embosser.webp",
+        "variants": [
+            {
+                "name": "Standard Embosser",
+                "price": "₹1,200"
+            },
+            {
+                "name": "Deluxe Chrome",
+                "price": "₹1,800"
+            }
+        ],
+        "features": [
+            "Custom Logo Die",
+            "Raised Impression",
+            "Mechanical Action"
+        ],
+        "specs": {
+            "Die Shape": "Round/Oval",
+            "Diameter": "32-40mm",
+            "Reach": "40-50mm"
+        }
+    },
+    {
+        "id": "hardbound-photo-book",
+        "cat": "photo",
+        "title": "Archival Hardbound Photo Books",
+        "bentoSize": "bento-large",
+        "desc": "The pinnacle of printed memory — lay-flat binding on 250gsm luster with a leatherette hardcover.",
+        "image": "https://images.unsplash.com/photo-1579782500045-8af5dc3e061e?w=800&q=80",
+        "variants": [
+            {
+                "name": "A4 Lay-flat 20pg",
+                "price": "₹1,200"
+            },
+            {
+                "name": "12×12\" Elite 40pg",
+                "price": "₹3,200"
+            }
+        ],
+        "features": [
+            "Lay-Flat Bind",
+            "Leatherette Cover",
+            "Non-Tear Pages"
+        ],
+        "specs": {
+            "Paper": "250gsm Luster",
+            "Binding": "Seamless Lay-flat",
+            "Cover": "Photographic/Leather"
+        }
+    },
+    {
+        "id": "canvas-prints",
+        "cat": "photo",
+        "title": "Gallery Canvas Wraps",
+        "bentoSize": "bento-wide",
+        "desc": "12-color pigment archival inks on 300gsm cotton canvas, gallery-wrapped on a solid pine chassis.",
+        "image": "https://images.unsplash.com/photo-1544458319-75abcb3664d6?w=800&q=80",
+        "variants": [
+            {
+                "name": "8×8\" Square",
+                "price": "₹450"
+            },
+            {
+                "name": "20×30\" Masterpiece",
+                "price": "₹1,900"
+            }
+        ],
+        "features": [
+            "300gsm Cotton Canvas",
+            "Pine Wood Frame",
+            "UV Protected"
+        ],
+        "specs": {
+            "Print": "12-Color Pigment",
+            "Wrap": "Gallery 1.5\"",
+            "Finish": "Matte Polish"
+        }
+    },
+    {
+        "id": "photo-albums",
+        "cat": "photo",
+        "title": "Lay-Flat Wedding Albums",
+        "bentoSize": "bento-standard",
+        "desc": "Flush-mount wedding albums with full-bleed full-colour pages — the heirloom for life's greatest moments.",
+        "image": "https://kaagazprints.com/image/home-page-image/photo-albums.webp",
+        "variants": [
+            {
+                "name": "12×12\" 20 Spreads",
+                "price": "₹3,800"
+            },
+            {
+                "name": "10×10\" 15 Spreads",
+                "price": "₹2,400"
+            }
+        ],
+        "features": [
+            "Flush Mount",
+            "Full-Bleed Pages",
+            "Linen/Leather Cover"
+        ],
+        "specs": {
+            "Pages": "30-60 pages",
+            "Paper": "Lustre/Gloss",
+            "Cover": "Linen/Leather"
+        }
+    },
+    {
+        "id": "photo-frame",
+        "cat": "photo",
+        "title": "Custom Photo Frames",
+        "bentoSize": "bento-standard",
+        "desc": "Sublimation-printed MDF and acrylic photo frames — personalised gifts that speak without words.",
+        "image": "https://kaagazprints.com/image/home-page-image/photo-frame.webp",
+        "variants": [
+            {
+                "name": "4×6 MDF",
+                "price": "₹85"
+            },
+            {
+                "name": "5×7 Acrylic",
+                "price": "₹180"
+            }
+        ],
+        "features": [
+            "Sublimation Print",
+            "Freestanding",
+            "Gift Packed"
+        ],
+        "specs": {
+            "Sizes": "4×6 to 8×10\"",
+            "Material": "MDF/Acrylic",
+            "Print": "Sublimation"
+        }
+    },
+    {
+        "id": "wedding-cards",
+        "cat": "stationery",
+        "title": "Custom Wedding Cards",
+        "bentoSize": "bento-wide",
+        "desc": "Artisan wedding invitations on 350gsm textured imported stock with gold foil and laser cut detailing.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding-card.webp",
+        "variants": [
+            {
+                "name": "Matte 350gsm",
+                "price": "₹18"
+            },
+            {
+                "name": "Gold Foil Laser",
+                "price": "₹55"
+            }
+        ],
+        "features": [
+            "Imported Paper",
+            "Foil Stamping",
+            "Laser Cut Option"
+        ],
+        "specs": {
+            "Size": "5×7\" / Custom",
+            "Paper": "350gsm Textured",
+            "Finish": "Foil/Emboss"
+        }
+    },
+    {
+        "id": "invitations",
+        "cat": "stationery",
+        "title": "Event Invitations",
+        "bentoSize": "bento-standard",
+        "desc": "Full-bleed 350gsm invitations for birthdays, corporate galas and celebrations — printed with ceremony.",
+        "image": "https://kaagazprints.com/image/home-page-image/Birthday-Invitations.webp",
+        "variants": [
+            {
+                "name": "A5 Single",
+                "price": "₹6"
+            },
+            {
+                "name": "A5 With Envelope",
+                "price": "₹12"
+            }
+        ],
+        "features": [
+            "Full CMYK",
+            "Envelope Option",
+            "Custom Design"
+        ],
+        "specs": {
+            "Size": "A5 / Custom",
+            "Material": "300-350gsm",
+            "Finish": "Gloss/Matte"
+        }
+    },
+    {
+        "id": "tent-table-card",
+        "cat": "stationery",
+        "title": "Tent Table Cards",
+        "bentoSize": "bento-standard",
+        "desc": "Precision-scored and folded table name cards for hospitality and corporate dining — elegant and crisp.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tent-Table-Card.webp",
+        "variants": [
+            {
+                "name": "Standard Tent",
+                "price": "₹3.50"
+            },
+            {
+                "name": "Luxury Board",
+                "price": "₹8"
+            }
+        ],
+        "features": [
+            "Pre-Scored Fold",
+            "Custom Print",
+            "Multiple Sizes"
+        ],
+        "specs": {
+            "Size": "A4 folded to A5",
+            "Material": "300gsm Art",
+            "Style": "Tent"
+        }
+    },
+    {
+        "id": "envelopes",
+        "cat": "stationery",
+        "title": "Custom Printed Envelopes",
+        "bentoSize": "bento-standard",
+        "desc": "Branded DL and A4 envelopes with corporate letterhead printing — the first touchpoint in direct mail.",
+        "image": "https://kaagazprints.com/image/home-page-image/Envelope.webp",
+        "variants": [
+            {
+                "name": "DL Window",
+                "price": "₹2.50"
+            },
+            {
+                "name": "A4 Flat",
+                "price": "₹4"
+            }
+        ],
+        "features": [
+            "Window/Non-Window",
+            "1&2 Color Print",
+            "Peel & Seal"
+        ],
+        "specs": {
+            "Sizes": "DL/C5/A4",
+            "Material": "80-120gsm Bond",
+            "Print": "1-4 Color"
+        }
+    },
+    {
+        "id": "shagun-envelope",
+        "cat": "gifts",
+        "title": "Premium Shagun Envelopes",
+        "bentoSize": "bento-standard",
+        "desc": "Opulent shagun/money envelopes with gold foil motifs — the traditional gift elevated to luxury.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Shagun-Envelope.webp",
+        "variants": [
+            {
+                "name": "Gold Print",
+                "price": "₹8"
+            },
+            {
+                "name": "Foil Embossed",
+                "price": "₹18"
+            }
+        ],
+        "features": [
+            "Gold Motifs",
+            "Velvet Ribbon",
+            "Custom Name"
+        ],
+        "specs": {
+            "Material": "Art Paper",
+            "Print": "Gold/Silver Foil",
+            "Size": "Standard Shagun"
+        }
+    },
+    {
+        "id": "hotel-key-card",
+        "cat": "stationery",
+        "title": "Hotel Key Cards",
+        "bentoSize": "bento-standard",
+        "desc": "RFID and magnetic stripe hotel key cards with high-resolution branded artwork — premium hospitality.",
+        "image": "https://kaagazprints.com/image/home-page-image/hotel-key-card.webp",
+        "variants": [
+            {
+                "name": "RFID Card",
+                "price": "₹45"
+            },
+            {
+                "name": "Magnetic Stripe",
+                "price": "₹25"
+            }
+        ],
+        "features": [
+            "RFID/Mag-Stripe",
+            "Gloss Laminate",
+            "Full CMYK"
+        ],
+        "specs": {
+            "Material": "PVC 760µ",
+            "Tech": "RFID/Mag",
+            "Size": "CR80"
+        }
+    },
+    {
+        "id": "wrist-band",
+        "cat": "marketing",
+        "title": "Security Wristbands",
+        "bentoSize": "bento-standard",
+        "desc": "Non-transferable Tyvek and silicone wristbands for events, festivals and hospital identification.",
+        "image": "https://kaagazprints.com/image/home-page-image/Security-Wrist-Band.webp",
+        "variants": [
+            {
+                "name": "Tyvek Paper",
+                "price": "₹3.50"
+            },
+            {
+                "name": "Silicone",
+                "price": "₹18"
+            }
+        ],
+        "features": [
+            "Tamper-Evident",
+            "Waterproof",
+            "Custom Print"
+        ],
+        "specs": {
+            "Material": "Tyvek/Silicone",
+            "Closure": "Permanent",
+            "Print": "CMYK"
+        }
+    },
+    {
+        "id": "rubber-stamp",
+        "cat": "stationery",
+        "title": "Self-Ink Rubber Stamps",
+        "bentoSize": "bento-standard",
+        "desc": "Trodat and Colop self-inking rubber stamps with custom text/logo — permanent, crisp, professional.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Self_Ink_Rubber_Stamp.webp",
+        "variants": [
+            {
+                "name": "38×14mm Rect",
+                "price": "₹280"
+            },
+            {
+                "name": "Circular 40mm",
+                "price": "₹350"
+            }
+        ],
+        "features": [
+            "Self-Inking",
+            "50,000+ Impressions",
+            "Custom Die"
+        ],
+        "specs": {
+            "Brand": "Trodat/Colop",
+            "Ink": "Red/Blue/Black",
+            "Die": "Polymer"
+        }
+    },
+    {
+        "id": "office-wallpaper",
+        "cat": "marketing",
+        "title": "Office Mural Wallpapers",
+        "bentoSize": "bento-wide",
+        "desc": "Custom-printed mural wallpapers for corporate interiors — brand identity at architectural scale.",
+        "image": "https://kaagazprints.com/image/home-page-image/office-customise-wallpaper.webp",
+        "variants": [
+            {
+                "name": "Vinyl Wallpaper",
+                "price": "₹85/sqft"
+            },
+            {
+                "name": "Fabric Mural",
+                "price": "₹120/sqft"
+            }
+        ],
+        "features": [
+            "Peel & Stick",
+            "UV Ink",
+            "Removable/Permanent"
+        ],
+        "specs": {
+            "Material": "Premium Vinyl",
+            "Adhesive": "Repositionable",
+            "Print": "UV Eco"
+        }
+    },
+    {
+        "id": "door-hanger",
+        "cat": "marketing",
+        "title": "Door Hanger Sign Tags",
+        "bentoSize": "bento-standard",
+        "desc": "Custom die-cut door hangers for hotels, offices and retail — tactile branding that demands attention.",
+        "image": "https://kaagazprints.com/image/home-page-image/Room-Privacy-Door-Hanger.webp",
+        "variants": [
+            {
+                "name": "Standard Die-Cut",
+                "price": "₹4"
+            },
+            {
+                "name": "Spot UV Premium",
+                "price": "₹8"
+            }
+        ],
+        "features": [
+            "Die-Cut",
+            "350gsm Art",
+            "Custom Design"
+        ],
+        "specs": {
+            "Material": "350gsm Art",
+            "Finish": "Matte/Spot UV",
+            "Size": "4×9\" Standard"
+        }
+    },
+    {
+        "id": "men-women-t-shirt",
+        "cat": "apparel",
+        "title": "Men-Women T-Shirt",
+        "desc": "High-grade industrial masterpiece crafted specifically for Men-Women T-Shirt requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Men-Women-T-Shirt.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "stickers",
+        "cat": "stickers",
+        "title": "Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/sticker.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "box-carton-packaging",
+        "cat": "packaging",
+        "title": "Box Carton Packaging",
+        "desc": "High-grade industrial masterpiece crafted specifically for Box Carton Packaging requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Boxes.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "stamp",
+        "cat": "marketing",
+        "title": "Stamp",
+        "desc": "High-grade industrial masterpiece crafted specifically for Stamp requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/stamp.avif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "notepads-notebooks-printing",
+        "cat": "stationery",
+        "title": "Notepads Notebooks Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Notepads Notebooks Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/notepad.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "diary-printing",
+        "cat": "stationery",
+        "title": "Diary Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Diary Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Diary_Printing.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "catalog-design-print",
+        "cat": "marketing",
+        "title": "Catalog Design Print",
+        "desc": "High-grade industrial masterpiece crafted specifically for Catalog Design Print requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Catalog_Design_Print.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "customized-wall-calendar",
+        "cat": "marketing",
+        "title": "Customized Wall Calendar",
+        "desc": "High-grade industrial masterpiece crafted specifically for Customized Wall Calendar requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Customized_Wall_Calendar.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "gift-cards",
+        "cat": "stationery",
+        "title": "Gift Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Gift Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Gift_Card.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "scratch-card-printing",
+        "cat": "stationery",
+        "title": "Scratch Card Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Scratch Card Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/scratch-card.jpeg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "envelope-envelope-printing",
+        "cat": "marketing",
+        "title": "Envelope & Envelope Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Envelope & Envelope Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Envelope_%26_Envelope_Printing.gif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "security-sticker",
+        "cat": "stickers",
+        "title": "Security sticker",
+        "desc": "High-grade industrial masterpiece crafted specifically for Security sticker requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Security_sticker.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "permanent-sticker",
+        "cat": "stickers",
+        "title": "Permanent sticker",
+        "desc": "High-grade industrial masterpiece crafted specifically for Permanent sticker requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/permanent_stickers.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "letter-heads",
+        "cat": "stationery",
+        "title": "Letter Heads",
+        "desc": "High-grade industrial masterpiece crafted specifically for Letter Heads requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Letter%20Heads.gif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "notebooks",
+        "cat": "stationery",
+        "title": "Notebooks",
+        "desc": "High-grade industrial masterpiece crafted specifically for Notebooks requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/notebooks.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "bags",
+        "cat": "packaging",
+        "title": "Bags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Bags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Bags.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "pens",
+        "cat": "gifts",
+        "title": "Pens",
+        "desc": "High-grade industrial masterpiece crafted specifically for Pens requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/pens.gif",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "magnets-card",
+        "cat": "stationery",
+        "title": "Magnets Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Magnets Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Magnets_Card.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "mugs",
+        "cat": "gifts",
+        "title": "Mugs",
+        "desc": "High-grade industrial masterpiece crafted specifically for Mugs requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Mugs.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "qr-code-generator",
+        "cat": "marketing",
+        "title": "QR Code Generator",
+        "desc": "High-grade industrial masterpiece crafted specifically for QR Code Generator requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/QR_Code_Generator.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-mouse-pads",
+        "cat": "stationery",
+        "title": "Custom Mouse Pads",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Mouse Pads requirements.",
+        "image": "https://kaagazprints.com/image/product-image/Custom%20Mouse%20Pads.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-pen-drive",
+        "cat": "gifts",
+        "title": "Custom Pen Drive",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Pen Drive requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Pen-Drive.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-certificates",
+        "cat": "marketing",
+        "title": "Custom Certificates",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Certificates requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Certificates.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "personalised-notebooks",
+        "cat": "stationery",
+        "title": "Personalised Notebooks",
+        "desc": "High-grade industrial masterpiece crafted specifically for Personalised Notebooks requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Personalised_Notebooks.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "save-the-date-cards",
+        "cat": "stationery",
+        "title": "Save The Date Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Save The Date Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Save_The_Date_Cards.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wedding-menu",
+        "cat": "marketing",
+        "title": "Wedding Menu",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wedding Menu requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding-Menu.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wedding-programmes-cards",
+        "cat": "stationery",
+        "title": "Wedding Programmes Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wedding Programmes Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding_Programmes.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wedding-stationery",
+        "cat": "marketing",
+        "title": "Wedding Stationery",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wedding Stationery requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding_Stationery.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "thank-you-cards",
+        "cat": "stationery",
+        "title": "Thank You Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Thank You Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Thank-You-Cards.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "birthday-invitations",
+        "cat": "marketing",
+        "title": "Birthday Invitations",
+        "desc": "High-grade industrial masterpiece crafted specifically for Birthday Invitations requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Birthday-Invitations.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "party-invitations",
+        "cat": "marketing",
+        "title": "Party invitations",
+        "desc": "High-grade industrial masterpiece crafted specifically for Party invitations requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Party_invitations.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "corporate-events",
+        "cat": "marketing",
+        "title": "Corporate Events",
+        "desc": "High-grade industrial masterpiece crafted specifically for Corporate Events requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Corporate_Events.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "presentation-file-with-pocket",
+        "cat": "marketing",
+        "title": "Presentation File with Pocket",
+        "desc": "High-grade industrial masterpiece crafted specifically for Presentation File with Pocket requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Presentation_File_with_Pocket.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "tabletop-standees",
+        "cat": "marketing",
+        "title": "Tabletop Standees",
+        "desc": "High-grade industrial masterpiece crafted specifically for Tabletop Standees requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tabletop-Standees.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "premium-wiro-book",
+        "cat": "marketing",
+        "title": "Premium Wiro Book",
+        "desc": "High-grade industrial masterpiece crafted specifically for Premium Wiro Book requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Premium_Wiro_Book.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "pin-name-badge",
+        "cat": "gifts",
+        "title": "Pin Name Badge",
+        "desc": "High-grade industrial masterpiece crafted specifically for Pin Name Badge requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Pin_Name_Badge.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "save-the-date-sticker",
+        "cat": "stickers",
+        "title": "Save the Date Sticker",
+        "desc": "High-grade industrial masterpiece crafted specifically for Save the Date Sticker requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Save_the_Date_Sticker.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "digital-marketing",
+        "cat": "marketing",
+        "title": "Digital Marketing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Digital Marketing requirements.",
+        "image": "https://kaagazprints.com/image/product-image/digital%20marketing.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "hard-bound-photo-book",
+        "cat": "photo",
+        "title": "Hard-Bound Photo Book",
+        "desc": "High-grade industrial masterpiece crafted specifically for Hard-Bound Photo Book requirements.",
+        "image": "https://kaagazprints.com/image/product-image/hard-bound-photo-book8.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "security-wrist-band",
+        "cat": "marketing",
+        "title": "Security Wrist Band",
+        "desc": "High-grade industrial masterpiece crafted specifically for Security Wrist Band requirements.",
+        "image": "https://kaagazprints.com/image/product-image/wrist-band6.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "table-calendar-stand",
+        "cat": "marketing",
+        "title": "Table Calendar Stand",
+        "desc": "High-grade industrial masterpiece crafted specifically for Table Calendar Stand requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Table_Calendar_Stand.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "switch-board-stickers",
+        "cat": "stickers",
+        "title": "Switch Board Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Switch Board Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Switch_Board_Stickers.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "plane-lanyard",
+        "cat": "gifts",
+        "title": "Plane Lanyard",
+        "desc": "High-grade industrial masterpiece crafted specifically for Plane Lanyard requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Plane%20Lanyard.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "embossed-pvc-cards",
+        "cat": "stationery",
+        "title": "Embossed PVC Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Embossed PVC Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Shopping-card.jpg",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "metal-holder",
+        "cat": "marketing",
+        "title": "Metal Holder",
+        "desc": "High-grade industrial masterpiece crafted specifically for Metal Holder requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/metal-holder.jpg",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "round-neck-cotton-t-shirts",
+        "cat": "apparel",
+        "title": "Round Neck Cotton T-Shirts",
+        "desc": "High-grade industrial masterpiece crafted specifically for Round Neck Cotton T-Shirts requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Round_Neck_Cotton_T-Shirts.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "polo-t-shirts",
+        "cat": "apparel",
+        "title": "Polo T-Shirts",
+        "desc": "High-grade industrial masterpiece crafted specifically for Polo T-Shirts requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Polo_T-Shirts.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-hoodies-printed-hoodies",
+        "cat": "apparel",
+        "title": "Custom Hoodies – Printed Hoodies",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Hoodies – Printed Hoodies requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Hoodies%20–%20Printed_Hoodies.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-sports-full-printing-t-shirts",
+        "cat": "apparel",
+        "title": "Custom Sports Full Printing T-Shirts",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Sports Full Printing T-Shirts requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Sports_Full_Printing_T-Shirts.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "office-wallpaper-customization",
+        "cat": "marketing",
+        "title": "Office Wallpaper Customization",
+        "desc": "High-grade industrial masterpiece crafted specifically for Office Wallpaper Customization requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Office_Wallpaper_Customization.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "room-privacy-door-hanger-sign-tags",
+        "cat": "marketing",
+        "title": "Room Privacy Door Hanger Sign Tags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Room Privacy Door Hanger Sign Tags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/do-not-disturb-signs-of-hotel-room-door-hanger-vector.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-fabric-flags",
+        "cat": "marketing",
+        "title": "Custom Fabric Flags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Fabric Flags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Fabric-Flag.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "customized-atm-pouches",
+        "cat": "marketing",
+        "title": "Customized ATM Pouches",
+        "desc": "High-grade industrial masterpiece crafted specifically for Customized ATM Pouches requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/ATM-Card-Pouches-High-Quality-Waterproof.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "business-card",
+        "cat": "stationery",
+        "title": "Business Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Business Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Bulk-Standard-Business-Cards-Custom-Prints.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "butterfly-car-door-advertisement-card",
+        "cat": "stationery",
+        "title": "Butterfly Car Door Advertisement Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Butterfly Car Door Advertisement Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Business-Cards-With-Butterflies.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-address-labels-stickers",
+        "cat": "stickers",
+        "title": "Custom Address Labels Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Address Labels Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Return-Address-Labels-(Multi-Color).webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "personalized-custom-name-label-stickers",
+        "cat": "stickers",
+        "title": "Personalized Custom Name Label Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Personalized Custom Name Label Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Name-Stickers.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
     }
 ];
 

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Branded Hoodies | Print Space India - Elite Light Press</title>
+    <meta name="description" content="Print Space India - Professional Printing & Enterprise Branding solutions. Kolkata & New Delhi. Premium Quality since 2002.">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Firebase SDK (Modular) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD-n72DNWoF7_eLlMSaSyY25fOlMvwkkrg",
+        authDomain: "print-space-india.firebaseapp.com",
+        projectId: "print-space-india",
+        storageBucket: "print-space-india.firebasestorage.app",
+        messagingSenderId: "506473314185",
+        appId: "1:506473314185:web:04e0b7bfc967b714395358",
+        measurementId: "G-RCDM0X9ZNJ"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const analytics = getAnalytics(app);
+
+      // Expose to global window for simple onclick use
+      window.submitQuote = async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="ph ph-spinner-gap ph-spin"></i> Processing...';
+        btn.disabled = true;
+
+        const formData = {
+          product: document.getElementById('q_product').value || 'General Inquiry',
+          name: document.getElementById('q_name').value,
+          contact: document.getElementById('q_contact').value,
+          requirement: document.getElementById('q_req').value,
+          source: 'Website Form',
+          status: 'New',
+          timestamp: serverTimestamp()
+        };
+
+        try {
+          await addDoc(collection(db, "quotes"), formData);
+          btn.innerHTML = '<i class="ph ph-check"></i> Request Sent!';
+          setTimeout(() => {
+            closeModal();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            e.target.reset();
+          }, 2000);
+          
+          // Also trigger WhatsApp for redundancy
+          const waText = `*NEW QUOTE REQUEST* %0A%0A` +
+                         `*Product:* ${formData.product} %0A` +
+                         `*Name:* ${formData.name} %0A` +
+                         `*Contact:* ${formData.contact} %0A` +
+                         `*Requirement:* ${formData.requirement}`;
+          window.open(`https://wa.me/917982060969?text=${waText}`, '_blank');
+          
+        } catch (error) {
+          console.error("Firebase Error:", error);
+          btn.innerHTML = 'Error. Try WhatsApp.';
+          btn.disabled = false;
+        }
+      };
+    </script>
+</head>
+<body>
+    
+    <!-- Minimalist CMYK Pulse Loader -->
+    <div id="printing-loader">
+        <div class="cmyk-pulse">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slick Thin Nav -->
+    <nav>
+        <a href="index.html" class="brand">
+            <i class="ph-fill ph-printer"></i>
+            PRINT SPACE<span> INDIA</span>
+        </a>
+        <button class="hamburger" onclick="toggleMenu()"><i class="ph ph-list"></i></button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">All Products</a>
+            <a href="javascript:void(0)" onclick="openModal('General Inquiry')" class="btn btn-primary">Request a Quote</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container reveal" style="padding: 60px 0;">
+    <a href="marketing.html" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 30px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase;">
+        <i class="ph ph-arrow-left" style="color: var(--accent-primary);"></i> Back to APPAREL & MARKETING
+    </a>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: flex-start;">
+        <div>
+            <div style="border-radius: 12px; overflow: hidden; background: #f3f4f6; border: 1px solid var(--border-light); margin-bottom: 40px; box-shadow: var(--shadow-md);">
+                <img src="images/hoodies.png" alt="Custom Branded Hoodies" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            
+            <h2 class="h-md">Custom Branded Hoodies</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; line-height: 1.7;">Warm and comfortable fleece hoodies with vibrant full-front prints.</p>
+
+            <h3 class="h-sm" style="margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 10px;">Technical Specifications</h3>
+            <table class="specs-table">
+                
+        <tr>
+            <td class="s-label">material</td>
+            <td class="s-value">Cotton/Poly Blend</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">minOrder</td>
+            <td class="s-value">5 Units</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">delivery</td>
+            <td class="s-value">4-5 Days</td>
+        </tr>
+    
+            </table>
+        </div>
+
+        <div style="position: sticky; top: 100px; background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 40px; box-shadow: var(--shadow-lg);">
+            <h3 class="h-sm" style="margin-bottom: 10px;">Request Pricing</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 30px;">Describe your quantity and timeline to receive an optimized quote.</p>
+
+            <form onsubmit="window.submitQuote(event)" class="quote-form">
+                <input type="hidden" id="q_product" value="Custom Branded Hoodies">
+                
+                <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); letter-spacing: 0.05em; margin-bottom: 15px;">1. Product Category</h4>
+                <div class="v-grid" style="margin-bottom: 30px;">
+                    
+        <div class="v-chip active" data-name="Classic Pullover" data-price="₹650">
+            <span class="v-title">Classic Pullover</span>
+            <span class="v-price">₹650</span>
+        </div>
+    
+                </div>
+
+                <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); letter-spacing: 0.05em; margin-bottom: 15px;">2. Inquiry Details</h4>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 0.75rem; font-weight: 600; margin-bottom: 5px;">Your Name</label>
+                    <input type="text" id="q_name" class="input-minimal" placeholder="Full Name" required>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 0.75rem; font-weight: 600; margin-bottom: 5px;">Contact Number</label>
+                    <input type="text" id="q_contact" class="input-minimal" placeholder="WhatsApp Number" required>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.75rem; font-weight: 600; margin-bottom: 5px;">Message (Quantity, Size, etc.)</label>
+                    <textarea id="q_req" class="input-minimal" rows="4" placeholder="e.g. 500 units in Kolkata office..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">Submit Quote Request</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container reveal" style="padding: 80px 0; border-top: 1px solid var(--border-light);">
+    <h3 class="h-md" style="margin-bottom: 50px; text-align: center;">Related Masterpieces</h3>
+    <div class="grid">
+        
+        <a href="polo-tshirts.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/polo_tshirts.png" alt="Premium Polo T-Shirts">
+            </div>
+            <div class="p-card-info">
+                <h3>Premium Polo T-Shirts</h3>
+                <p>High-quality cotton-rich polos (160-240 GSM) for corporate wear.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹220</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="lanyards.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/lanyards.png" alt="Satin Lanyards">
+            </div>
+            <div class="p-card-info">
+                <h3>Satin Lanyards</h3>
+                <p>Full-color sublimation printed lanyards with metal fish-hook holders.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹12</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="roll-up-standees.html" class="card product-card reveal">
+            <div class="p-card-image">
+                <img src="images/standees.png" alt="Deluxe Standees">
+            </div>
+            <div class="p-card-info">
+                <h3>Deluxe Standees</h3>
+                <p>Portable advertising displays with aluminum base and non-tear media.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹1400</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+    </div>
+</div>
+
+<script>
+    const variantChips = document.querySelectorAll('.v-chip');
+    variantChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            variantChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+        });
+    });
+</script>
+
+    </main>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/917982060969" class="wa-float" target="_blank">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Enhanced Global Footer -->
+    <footer>
+        <div class="container">
+            <div class="f-grid">
+                <div class="f-col">
+                    <div class="brand" style="margin-bottom: 20px;">
+                        <i class="ph-fill ph-printer"></i>
+                        PRINT SPACE<span> INDIA</span>
+                    </div>
+                    <p>Enterprise Printing Solutions with 24+ years of heritage. Kolkata & New Delhi operations.</p>
+                    <p>Owned by <b>M. Rahman</b>.</p>
+                </div>
+
+                <div class="f-col">
+                    <h4>Categories</h4>
+                    <a href="category-stationery.html">Stationery</a>
+                    <a href="category-stickers.html">Stickers</a>
+                    <a href="category-marketing.html">Marketing</a>
+                </div>
+
+                <div class="f-col">
+                    <h4>Contact Us</h4>
+                    <p><b>Kolkata:</b> Beadon Street, Kolkata</p>
+                    <p><b>Delhi:</b> Okhla Industrial Area</p>
+                    <p><b>Hotline:</b> +91 7982060969</p>
+                </div>
+
+                <div class="f-col">
+                    <h4>Direct Quote</h4>
+                    <form onsubmit="window.submitQuote(event)" class="quote-form">
+                        <input type="hidden" id="q_product" value="Footer Form">
+                        <input type="text" id="q_name" class="input-minimal" placeholder="Your Name" required>
+                        <input type="text" id="q_contact" class="input-minimal" placeholder="Phone Number" required>
+                        <textarea id="q_req" class="input-minimal" placeholder="Brief requirement..." required></textarea>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+            <div style="margin-top: 60px; text-align: center; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border-light); padding-top: 30px;">
+                &copy; 2026 Print Space India. Built on Firebase. All products represent our actual print capability.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Quote Modal -->
+    <div class="modal-overlay" id="globalModal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px;">
+                <div>
+                    <h2 class="h-sm" id="modalTitle">Request a Quote</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Please provide details for the <span id="productLabel" style="color: var(--accent-primary); font-weight: 600;"></span>.</p>
+                </div>
+                <button onclick="closeModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);"><i class="ph ph-x"></i></button>
+            </div>
+            <form onsubmit="window.submitQuote(event)" class="quote-form">
+                <input type="hidden" id="modal_product" value="">
+                <input type="text" id="q_name_modal" class="input-minimal" placeholder="Full Name" required>
+                <input type="text" id="q_contact_modal" class="input-minimal" placeholder="Mobile / WhatsApp" required>
+                <textarea id="q_req_modal" class="input-minimal" rows="3" placeholder="Quantity, Size, Material..." required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function openModal(product = "General Inquiry") {
+            document.getElementById('globalModal').classList.add('active');
+            document.getElementById('productLabel').innerText = product;
+            document.getElementById('q_product').value = product;
+        }
+        function closeModal() {
+            document.getElementById('globalModal').classList.remove('active');
+        }
+
+        // Loader Persistence
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('printing-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }, 1000);
+        });
+
+        // Simple Intersection Observer for Reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

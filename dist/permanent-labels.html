@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Tack Industrial Labels | Print Space India - Hyper-Premium Perfection</title>
+    <meta name="description" content="Print Space India (Kolkata & New Delhi) - Professional Enterprise Printing Hub since 2002. High-precision luxury branding.">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Firebase SDK (Modular) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD-n72DNWoF7_eLlMSaSyY25fOlMvwkkrg",
+        authDomain: "print-space-india.firebaseapp.com",
+        projectId: "print-space-india",
+        storageBucket: "print-space-india.firebasestorage.app",
+        messagingSenderId: "506473314185",
+        appId: "1:506473314185:web:04e0b7bfc967b714395358",
+        measurementId: "G-RCDM0X9ZNJ"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const analytics = getAnalytics(app);
+
+      window.submitQuote = async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="ph ph-spinner-gap ph-spin"></i> CALCULATING...';
+        btn.disabled = true;
+
+        const formData = {
+          product: document.getElementById('q_product').value || 'General Inquiry',
+          name: document.getElementById('q_name').value,
+          contact: document.getElementById('q_contact').value,
+          requirement: document.getElementById('q_req').value,
+          source: 'Website Perfection Form',
+          status: 'New',
+          timestamp: serverTimestamp()
+        };
+
+        try {
+          await addDoc(collection(db, "quotes"), formData);
+          btn.innerHTML = '<i class="ph ph-check"></i> REQUEST RECORDED';
+          setTimeout(() => {
+            closeModal();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            e.target.reset();
+          }, 2000);
+          
+          const waText = `*ELITE QUOTE REQUEST* %0A%0A` +
+                         `*Product:* ${formData.product} %0A` +
+                         `*Name:* ${formData.name} %0A` +
+                         `*Contact:* ${formData.contact} %0A` +
+                         `*Location:* India %0A%0A` +
+                         `*Requirement:* ${formData.requirement}`;
+          window.open(`https://wa.me/917982060969?text=${waText}`, '_blank');
+          
+        } catch (error) {
+          console.error("Firebase Error:", error);
+          btn.innerHTML = 'ERROR. REDIRECTING...';
+          setTimeout(() => window.open(`https://wa.me/917982060969?text=Hi, I need an elite quote for ${formData.product}`, '_blank'), 1500);
+          btn.disabled = false;
+        }
+      };
+    </script>
+</head>
+<body>
+    
+    <!-- Liquid Perfection Background -->
+    <div class="liquid-bg">
+        <div class="mesh-blob blob-teal"></div>
+        <div class="mesh-blob blob-cyan"></div>
+        <div class="mesh-blob blob-pearl"></div>
+        <!-- Drift Shards -->
+        <div class="glass-shard" style="width: 80px; height: 120px; left: 10%; top: 20%; animation-duration: 20s;"></div>
+        <div class="glass-shard" style="width: 150px; height: 80px; right: 15%; top: 40%; animation-duration: 25s; animation-delay: -5s;"></div>
+    </div>
+
+    <!-- 2026 CMYK Laser Scan Loader -->
+    <div id="printing-loader">
+        <div style="text-align: center;">
+            <div class="brand" style="margin-bottom: 25px; font-size: 2.2rem; gap: 15px;">
+                <i class="ph-fill ph-printer"></i>
+                PRINT SPACE<span> INDIA</span>
+            </div>
+            <div class="laser-frame">
+                <div class="laser-beam"></div>
+            </div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.6em; color: var(--text-muted); margin-top: 20px; font-weight: 700; text-transform: uppercase;">Initializing Elite Press Engine...</div>
+        </div>
+    </div>
+
+    <!-- Elite Glass Navbar + Search -->
+    <nav>
+        <div style="display: flex; align-items: center; gap: 40px; flex: 1;">
+            <a href="index.html" class="brand">
+                <i class="ph-fill ph-printer"></i>
+                PRINT SPACE<span> INDIA</span>
+            </a>
+            <div class="nav-search">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="globalSearch" placeholder="Search product name, category, or industrial SKU..." onkeyup="handleGlobalSearch(event)">
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Elite Catalog</a>
+            <a href="javascript:void(0)" onclick="openModal('General Inquiry')" class="btn btn-primary">Start Project</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container reveal" style="padding: 60px 0;">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" style="margin-bottom: 40px;">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="stickers.html">LABELS & STICKERS</a>
+        <span>/</span>
+        <span style="color: var(--accent-primary); font-weight: 800;">High-Tack Industrial Labels</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: flex-start;">
+        <div>
+            <!-- Large Floating 3D Product Architecture -->
+            <div style="perspective: 1500px; margin-bottom: 60px;">
+                <div style="transform: rotateY(-5deg); border-radius: 30px; overflow: hidden; background: #fff; border: 12px solid #fff; box-shadow: 0 50px 100px rgba(0,0,0,0.18); animation: float 6s infinite ease-in-out;">
+                    <img src="https://kaagazprints.com/image/home-page-image/permanent_stickers.webp" alt="High-Tack Industrial Labels" style="width: 100%; height: 550px; object-fit: cover;">
+                </div>
+            </div>
+            
+            <h1 class="h-lg" style="font-size: 3.8rem; text-align: left; margin-bottom: 25px;">High-Tack Industrial Labels</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 50px; line-height: 1.8; font-weight: 300;">Heavy-duty adhesives for machines, surfaces, and long-term industrial application.</p>
+
+            <div style="background: rgba(0, 128, 128, 0.04); padding: 45px; border-radius: 24px; border: 1px solid var(--border-glass); margin-bottom: 60px;">
+                <h3 class="h-sm" style="margin-bottom: 30px; display: flex; align-items: center; gap: 15px; color: var(--accent-primary); font-size: 1.3rem;">
+                    <i class="ph-fill ph-gear-six"></i> Architectural Build Specifications
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    
+        <tr>
+            <td class="s-label">Material</td>
+            <td class="s-value">3M Vinyl</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">Temp</td>
+            <td class="s-value">-20C to 80C</td>
+        </tr>
+    
+        <tr>
+            <td class="s-label">Quantity</td>
+            <td class="s-value">Min 500 units</td>
+        </tr>
+    
+                </div>
+            </div>
+
+            <div style="background: #fff; padding: 45px; border-radius: 24px; border: 1px solid var(--border-glass);">
+                <h3 class="h-sm" style="margin-bottom: 30px; font-size: 1.3rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 20px;">Elite Knowledge Base</h3>
+                <div class="faq-container">
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-header">What is the minimum volume for enterprise orders? <i class="ph ph-plus"></i></div>
+                        <div class="faq-body">Minumum order volume depends on the industrial line. Typically, stationery starts at 500 units, while luxury packaging starts at 100-200.</div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-header">Can I upload my own architectural artwork? <i class="ph ph-plus"></i></div>
+                        <div class="faq-body">Yes. Once you initialize an inquiry, our technical team will request your high-res PDF or AI vector files for color calibration.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- High-Gloss Conversion Sidebar -->
+        <div style="position: sticky; top: 120px; background: rgba(255,255,255,0.85); backdrop-filter: blur(35px); border: 1px solid var(--border-glass); border-radius: 30px; padding: 60px; box-shadow: var(--shadow-elite);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h3 class="h-sm" style="margin: 0; font-weight: 800; font-size: 1.2rem;">Elite Configuration</h3>
+                <div style="background: #f0fdfa; padding: 8px 16px; border-radius: 100px; font-weight: 800; color: var(--accent-primary); font-size: 0.75rem; text-transform: uppercase;">SKU: PS-PERMANENT-LABELS-2026</div>
+            </div>
+
+            <form onsubmit="window.submitQuote(event)" class="quote-form">
+                <input type="hidden" id="q_product" value="High-Tack Industrial Labels">
+                
+                <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-primary); letter-spacing: 0.2em; font-weight: 900; margin-bottom: 25px;">Engine Calibration</h4>
+                <div class="v-grid" style="margin-bottom: 45px; display: grid; gap: 15px;">
+                    
+        <div class="v-chip active" data-name="Industrial Poly" data-price="₹6.50">
+            <span class="v-title">Industrial Poly</span>
+            <span class="v-price">₹6.50</span>
+        </div>
+    
+        <div class="v-chip " data-name="Metalized Foil" data-price="₹8.20">
+            <span class="v-title">Metalized Foil</span>
+            <span class="v-price">₹8.20</span>
+        </div>
+    
+                </div>
+
+                <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.2em; font-weight: 900; margin-bottom: 30px;">Fulfillment Identity</h4>
+                
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; color: var(--text-muted);">Consultant / Firm Name</label>
+                    <input type="text" id="q_name" class="input-minimal" placeholder="Full Contact Name" required>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; color: var(--text-muted);">Hotline / WhatsApp</label>
+                    <input type="text" id="q_contact" class="input-minimal" placeholder="Ex: +91 9876543210" required>
+                </div>
+
+                <div style="margin-bottom: 40px;">
+                    <label style="display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; color: var(--text-muted);">Digital Strategy Brief</label>
+                    <textarea id="q_req" class="input-minimal" rows="5" placeholder="Quantity, Material finish, and Design window..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 22px; border-radius: 18px; font-size: 1.1rem; box-shadow: 0 25px 50px rgba(0, 128, 128, 0.3);">Launch Inquiry</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container reveal" style="padding: 120px 0; border-top: 1px solid var(--border-glass);">
+    <h3 class="h-md" style="margin-bottom: 70px; text-align: center; font-weight: 800;">Architectural Counterparts</h3>
+    <div class="grid">
+        
+        <a href="general-stickers.html" class="card product-card reveal" data-cat="stickers">
+            <div class="p-card-image">
+                <img src="https://kaagazprints.com/image/home-page-image/sticker.webp" alt="Promotional Die-Cut Stickers">
+            </div>
+            <div class="p-card-info">
+                <h3>Promotional Die-Cut Stickers</h3>
+                <p>Any shape, any size. Waterproof vinyl stickers with vibrant eco-solvent inks.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹3.50</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+        <a href="security-labels.html" class="card product-card reveal" data-cat="stickers">
+            <div class="p-card-image">
+                <img src="https://kaagazprints.com/image/home-page-image/Security_sticker.webp" alt="Tamper-Evident Security Seals">
+            </div>
+            <div class="p-card-info">
+                <h3>Tamper-Evident Security Seals</h3>
+                <p>Void labels or egg-shell stickers that break upon removal. Essential for product warranty.</p>
+                <div class="p-card-bottom">
+                    <span class="p-card-price">₹2.80</span>
+                    <button class="btn btn-primary p-card-btn">Order Now</button>
+                </div>
+            </div>
+        </a>
+    
+    </div>
+</div>
+
+<script>
+    function toggleFaq(el) {
+        document.querySelectorAll('.faq-item').forEach(item => {
+            if (item !== el) item.classList.remove('active');
+        });
+        el.classList.toggle('active');
+        const icon = el.querySelector('i');
+        icon.classList.toggle('ph-plus');
+        icon.classList.toggle('ph-minus');
+    }
+</script>
+
+    </main>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/917982060969" class="wa-float" target="_blank">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Hyper-Premium Footer -->
+    <footer>
+        <div class="container">
+            <!-- Client Logo Marquee -->
+            <div style="margin-bottom: 80px; border-bottom: 1px solid var(--border-glass); padding-bottom: 50px;">
+                <div style="text-align: center; margin-bottom: 40px; font-size: 0.7rem; letter-spacing: 0.4em; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Trusted By Global Enterprises</div>
+                <div style="display: flex; justify-content: space-between; overflow: hidden; opacity: 0.4; filter: contrast(0);">
+                    <img src="https://kaagazprints.com/image/client-logo/Hindustan-Petroleum.png" alt="HP" style="height: 35px;">
+                    <img src="https://kaagazprints.com/image/client-logo/Tata-Group.png" alt="Tata" style="height: 35px;">
+                    <img src="https://kaagazprints.com/image/client-logo/Honda.png" alt="Honda" style="height: 35px;">
+                    <img src="https://kaagazprints.com/image/client-logo/Experian.png" alt="Experian" style="height: 35px;">
+                    <img src="https://kaagazprints.com/image/client-logo/NIIT.png" alt="NIIT" style="height: 35px;">
+                </div>
+            </div>
+
+            <div class="f-grid">
+                <div class="f-col">
+                    <div class="brand" style="margin-bottom: 20px;">
+                        <i class="ph-fill ph-printer"></i>
+                        PRINT SPACE<span> INDIA</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Industrial-Grade Print Engineering. Strategic Branding Hubs in Kolkata (H.O) and New Delhi.</p>
+                    <p style="margin-top: 15px; font-weight: 800; font-size: 0.8rem;">Directed by M. Rahman</p>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-title">Elite Navigation</h4>
+                    <a href="catalog.html" class="f-link">Master Catalog</a>
+                    <a href="javascript:void(0)" onclick="openModal('Support')" class="f-link">Design Support</a>
+                    <a href="javascript:void(0)" onclick="openModal('Bulk')" class="f-link">Bulk Enterprise Orders</a>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-title">Global Hotline</h4>
+                    <p style="font-size: 1.1rem; font-weight: 800;">+91 7982060969</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Available for Architectural Consultation</p>
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <i class="ph-fill ph-facebook-logo" style="font-size: 1.5rem; opacity: 0.3;"></i>
+                        <i class="ph-fill ph-instagram-logo" style="font-size: 1.5rem; opacity: 0.3;"></i>
+                        <i class="ph-fill ph-linkedin-logo" style="font-size: 1.5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4 class="f-title">Initialize Project</h4>
+                    <form onsubmit="window.submitQuote(event)" class="quote-form">
+                        <input type="hidden" id="q_product" value="Footer Inquiry">
+                        <input type="text" id="q_name" class="input-minimal" placeholder="Full Name" required>
+                        <input type="text" id="q_contact" class="input-minimal" placeholder="WhatsApp Number" required>
+                        <textarea id="q_req" class="input-minimal" rows="2" placeholder="Describe requirement..." required></textarea>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Elite Request</button>
+                    </form>
+                </div>
+            </div>
+            <div style="margin-top: 60px; text-align: center; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.2em; border-top: 1px solid var(--border-glass); padding-top: 30px;">
+                &copy; 2026 Print Space India. Engineered by Elite Press Framework.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Glass Modal -->
+    <div class="modal-overlay" id="globalModal">
+        <div class="modal-content" style="background: rgba(255,255,255,0.9); backdrop-filter: blur(30px); border-radius: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 35px;">
+                <div>
+                    <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;">Enterprise Project Initiation</h2>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Product Category: <span id="productLabel" style="color: var(--accent-primary); font-weight: 800;"></span></p>
+                </div>
+                <button onclick="closeModal()" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-muted); opacity: 0.5;"><i class="ph ph-x"></i></button>
+            </div>
+            <form onsubmit="window.submitQuote(event)" class="quote-form">
+                <input type="hidden" id="modal_product" value="">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:800; margin-bottom:10px; color:var(--text-muted); text-transform:uppercase;">Name</label>
+                        <input type="text" id="q_name_modal" class="input-minimal" placeholder="Client Name" required>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:800; margin-bottom:10px; color:var(--text-muted); text-transform:uppercase;">Contact</label>
+                        <input type="text" id="q_contact_modal" class="input-minimal" placeholder="WhatsApp" required>
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <label style="display:block; font-size:0.75rem; font-weight:800; margin-bottom:10px; color:var(--text-muted); text-transform:uppercase;">Technical Brief</label>
+                    <textarea id="q_req_modal" class="input-minimal" rows="3" placeholder="Volume, Finish, Dimensions..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1rem;">Send Elite Brief</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(product = "General Inquiry") {
+            document.getElementById('globalModal').classList.add('active');
+            document.getElementById('productLabel').innerText = product;
+            document.getElementById('q_product').value = product;
+        }
+        function closeModal() {
+            document.getElementById('globalModal').classList.remove('active');
+        }
+
+        function handleGlobalSearch(e) {
+            if (e.key === 'Enter') {
+                const query = e.target.value.toLowerCase();
+                window.location.href = `catalog.html?search=${encodeURIComponent(query)}`;
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('printing-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 1000);
+            }, 2000);
+        });
+
+        // Background Mouse Parallax Perfection
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.querySelector('.blob-teal').style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            document.querySelector('.blob-cyan').style.transform = `translate(${x * -50}px, ${y * -50}px)`;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

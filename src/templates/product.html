@@ -1,98 +1,168 @@
-<div class="product-hero reveal">
-    <div>
-        <a href="{{RootPath}}{{CategoryLink}}" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 30px; font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1rem; text-transform: uppercase; transition: var(--transition);">
-            <i class="ph ph-arrow-left" style="color: var(--accent-gold);"></i> RETURN TO {{CategoryTitle}}
-        </a>
-        <h1 style="font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; color: var(--text-main);">{{ProductTitle}}</h1>
-        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; line-height: 1.6;">{{ProductDesc}}</p>
+<div class="container reveal" style="padding: 60px 0;">
 
-        <div class="p-image-panel">
-            <img src="{{ProductImage}}" alt="{{ProductTitle}}" onerror="this.src='{{RootPath}}images/commercial_printing_showcase.png'">
+    <!-- Premium Breadcrumbs -->
+    <nav style="margin-bottom: 50px; display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
+        <a href="{{RootPath}}index.html" style="color: var(--text-muted); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#b8960c'" onmouseout="this.style.color='#78716c'">Home</a>
+        <span style="color: rgba(0,0,0,0.2); font-size: 1rem;">›</span>
+        <a href="{{RootPath}}{{CategoryLink}}" style="color: var(--text-muted); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#b8960c'" onmouseout="this.style.color='#78716c'">{{CategoryTitle}}</a>
+        <span style="color: rgba(0,0,0,0.2); font-size: 1rem;">›</span>
+        <span style="color: #b8960c; font-weight: 900;">{{ProductTitle}}</span>
+    </nav>
+
+    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 70px; align-items: flex-start;">
+
+        <!-- LEFT COLUMN: Image + Info -->
+        <div>
+            <!-- 3D Floating Product Image -->
+            <div style="perspective: 1800px; margin-bottom: 50px;" id="prodImgWrap">
+                <div id="prodImg3d" style="border-radius: 28px; overflow: hidden; background: #f0ede8; border: 10px solid #fff; box-shadow: 0 40px 90px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06); transform: rotateY(-6deg) rotateX(3deg); transition: transform 0.12s ease;">
+                    <img src="{{ProductImage}}" alt="{{ProductTitle}}" style="width: 100%; height: 500px; object-fit: cover; display: block;">
+                </div>
+            </div>
+
+            <!-- Product Title & Desc -->
+            <div style="margin-bottom: 10px;">
+                <div class="s-label">Artisan Product</div>
+            </div>
+            <h1 style="font-family: var(--font-heading); font-size: clamp(2.2rem,4vw,3.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--text-pure); margin-bottom: 22px;">{{ProductTitle}}</h1>
+            <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 50px; line-height: 1.85; font-weight: 400; max-width: 580px;">{{ProductDesc}}</p>
+
+            <!-- Specs Grid -->
+            <div style="margin-bottom: 50px;">
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+                    <i class="ph-fill ph-gear-six" style="font-size: 1.3rem; color: #b8960c;"></i>
+                    <h3 style="font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-pure);">Build Specifications</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    {{ProductSpecs}}
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div style="border: 1px solid rgba(0,0,0,0.08); border-radius: 24px; overflow: hidden;">
+                <div style="padding: 30px 36px; border-bottom: 1px solid rgba(0,0,0,0.06); background: #fff;">
+                    <h3 style="font-size: 0.9rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-pure);">Common Questions</h3>
+                </div>
+                <div class="faq-container" style="background: #fff;">
+                    <div class="faq-item" onclick="toggleFaq(this)" style="padding: 24px 36px; border-bottom: 1px solid rgba(0,0,0,0.06); cursor: pointer;">
+                        <div class="faq-header" style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; color: var(--text-pure);">What is the minimum volume for enterprise orders? <i class="ph ph-plus" style="color: #b8960c; font-size: 1.1rem; flex-shrink:0;"></i></div>
+                        <div class="faq-body" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 14px; display: none;">Minimum order volume depends on the industrial line. Typically, stationery starts at 500 units, while luxury packaging starts at 100–200.</div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)" style="padding: 24px 36px; cursor: pointer;">
+                        <div class="faq-header" style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; color: var(--text-pure);">Can I upload my own artwork? <i class="ph ph-plus" style="color: #b8960c; font-size: 1.1rem; flex-shrink:0;"></i></div>
+                        <div class="faq-body" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 14px; display: none;">Yes. Once you initialize an inquiry, our technical team will request your high-res PDF or AI vector files for colour calibration.</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div style="margin-top: 60px;">
-            <h3 style="font-size: 2.2rem; margin-bottom: 25px; color: var(--text-main);">Technical Mastery</h3>
-            <table class="specs-table">
-                {{ProductSpecs}}
-            </table>
+        <!-- RIGHT COLUMN: Sticky Quote Sidebar -->
+        <div style="position: sticky; top: 105px;">
+
+            <!-- Pricing badge -->
+            <div style="background: linear-gradient(135deg, #b8960c, #e8c96a); border-radius: 20px; padding: 28px 32px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.75); margin-bottom: 6px;">Starting From</div>
+                    <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #fff; line-height: 1;">{{StartingPrice}}</div>
+                    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 4px;">per unit · MOQ applies</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); border-radius: 14px; padding: 14px;">
+                    <i class="ph-fill ph-seal-check" style="font-size: 2rem; color: #fff;"></i>
+                </div>
+            </div>
+
+            <!-- Config card -->
+            <div style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 24px; padding: 40px; box-shadow: 0 8px 40px rgba(0,0,0,0.07);">
+
+                <!-- SKU Tag -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+                    <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--text-pure); margin: 0;">Configure Order</h3>
+                    <div style="background: rgba(184,150,12,0.1); border: 1px solid rgba(184,150,12,0.25); padding: 5px 12px; border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #b8960c; text-transform: uppercase; letter-spacing: 0.12em;">SKU: PS-{{ProductID}}</div>
+                </div>
+
+                <form onsubmit="window.submitQuote(event)">
+                    <input type="hidden" id="q_product" value="{{ProductTitle}}">
+
+                    <!-- Variants -->
+                    <div style="font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: #b8960c; margin-bottom: 14px;">Select Pack</div>
+                    <div style="display: grid; gap: 10px; margin-bottom: 32px;">
+                        {{ProductVariants}}
+                    </div>
+
+                    <!-- Divider -->
+                    <div style="border-top: 1px solid rgba(0,0,0,0.07); margin-bottom: 26px;"></div>
+
+                    <!-- Name -->
+                    <div style="margin-bottom: 18px;">
+                        <label style="display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 8px;">Your Name / Firm</label>
+                        <input type="text" id="q_name" placeholder="Full Contact Name" required style="width: 100%; padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-pure); background: #faf9f7; outline: none; transition: border-color 0.3s, box-shadow 0.3s;" onfocus="this.style.borderColor='#b8960c';this.style.boxShadow='0 0 0 3px rgba(184,150,12,0.12)'" onblur="this.style.borderColor='rgba(0,0,0,0.1)';this.style.boxShadow='none'">
+                    </div>
+
+                    <!-- Phone -->
+                    <div style="margin-bottom: 18px;">
+                        <label style="display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 8px;">WhatsApp Number</label>
+                        <input type="text" id="q_contact" placeholder="+91 98765 43210" required style="width: 100%; padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-pure); background: #faf9f7; outline: none; transition: border-color 0.3s, box-shadow 0.3s;" onfocus="this.style.borderColor='#b8960c';this.style.boxShadow='0 0 0 3px rgba(184,150,12,0.12)'" onblur="this.style.borderColor='rgba(0,0,0,0.1)';this.style.boxShadow='none'">
+                    </div>
+
+                    <!-- Brief -->
+                    <div style="margin-bottom: 28px;">
+                        <label style="display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 8px;">Project Brief</label>
+                        <textarea id="q_req" rows="4" placeholder="Quantity, finish, delivery timeline..." required style="width: 100%; padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-pure); background: #faf9f7; outline: none; resize: vertical; transition: border-color 0.3s, box-shadow 0.3s;" onfocus="this.style.borderColor='#b8960c';this.style.boxShadow='0 0 0 3px rgba(184,150,12,0.12)'" onblur="this.style.borderColor='rgba(0,0,0,0.1)';this.style.boxShadow='none'"></textarea>
+                    </div>
+
+                    <!-- CTA -->
+                    <button type="submit" class="btn btn-gold" style="width: 100%; padding: 20px; border-radius: 16px; font-size: 0.95rem; justify-content: center; box-shadow: 0 16px 40px rgba(184,150,12,0.3);">
+                        <i class="ph ph-paper-plane-tilt"></i> Launch Forge Inquiry
+                    </button>
+
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; color: var(--text-muted); font-size: 0.7rem; font-weight: 700;">
+                        <i class="ph ph-whatsapp-logo" style="color: #25d366; font-size: 1.1rem;"></i>
+                        Redirects to WhatsApp after submission
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <!-- Order Sidebar - Midnight -->
-    <div class="order-sidebar">
-        <h2 style="margin-bottom: 10px; font-size: 2rem; color: var(--text-main);">Configure Order</h2>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px;">Select your elite variant below to initiate pricing.</p>
-        
-        <h4 style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">1. Select Quality Tier</h4>
-        <div class="v-grid">
-            {{ProductVariants}}
-        </div>
-
-        <form id="orderForm" onsubmit="sendToWhatsApp(event)" style="margin-top: 50px;">
-            <input type="hidden" id="p_name" value="{{ProductTitle}}">
-            <input type="hidden" id="p_variant" value="">
-            
-            <h4 style="margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">2. Fulfillment Details</h4>
-            
-            <label for="name">Point of Contact</label>
-            <input type="text" id="name" class="input-field" placeholder="Full Name" required>
-
-            <label for="quantity">Bulk Quantity</label>
-            <input type="number" id="quantity" class="input-field" placeholder="e.g. 1000" required min="1">
-
-            <label for="delivery_date">Required Delivery Date</label>
-            <input type="date" id="delivery_date" class="input-field" required>
-
-            <label for="address">Kolkata / Delhi Address</label>
-            <textarea id="address" class="input-field" rows="3" placeholder="Enter delivery address and any special material requests..." required></textarea>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px; padding: 22px;">
-                Request Elite Quote <i class="ph ph-arrow-right"></i>
-            </button>
-        </form>
     </div>
 </div>
 
-<div class="container reveal" style="padding: 100px 0; border-top: 1px solid var(--border-light);">
-    <h3 style="font-size: 2.8rem; margin-bottom: 50px; text-align: center; color: var(--text-main);">Related Masterpieces</h3>
-    <div class="grid">
+<!-- Related Products -->
+<div class="container reveal" style="padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.07);">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <div class="s-label" style="justify-content: center;">More from this line</div>
+        <h3 style="font-size: 2rem; font-weight: 900; color: var(--text-pure);">Related Products</h3>
+    </div>
+    <div class="prod-grid">
         {{RelatedProducts}}
     </div>
 </div>
 
 <script>
-    const variantChips = document.querySelectorAll('.v-chip');
-    const varInput = document.getElementById('p_variant');
-
-    variantChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            variantChips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            varInput.value = chip.dataset.name;
+    // Product image 3D tilt
+    const wrap3d = document.getElementById('prodImgWrap');
+    const img3d  = document.getElementById('prodImg3d');
+    if (wrap3d && img3d) {
+        wrap3d.addEventListener('mousemove', e => {
+            const r = wrap3d.getBoundingClientRect();
+            const x = ((e.clientX - r.left) / r.width  - 0.5) * 14;
+            const y = ((e.clientY - r.top)  / r.height - 0.5) * -10;
+            img3d.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
         });
-    });
+        wrap3d.addEventListener('mouseleave', () => {
+            img3d.style.transform = 'rotateY(-6deg) rotateX(3deg)';
+        });
+    }
 
-    if (variantChips.length > 0) variantChips[0].click();
-
-    function sendToWhatsApp(e) {
-        e.preventDefault();
-        const pName = document.getElementById('p_name').value;
-        const pVar = document.getElementById('p_variant').value;
-        const name = document.getElementById('name').value;
-        const qty = document.getElementById('quantity').value;
-        const date = document.getElementById('delivery_date').value;
-        const address = document.getElementById('address').value;
-
-        const waNumber = "917982060969";
-        const text = `*MIDNIGHT GOLD ENTERPRISE ORDER* %0A%0A` +
-                     `*Product:* ${pName} %0A` + 
-                     `*Variant:* ${pVar} %0A` +
-                     `*Quantity:* ${qty} %0A` +
-                     `*Contact:* ${name} %0A` +
-                     `*Timeline:* ${date} %0A` +
-                     `*Address:* ${address} %0A%0A` +
-                     `*Initiated via Desktop Platform*`;
-
-        window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+    // FAQ accordion
+    function toggleFaq(el) {
+        const body = el.querySelector('.faq-body');
+        const icon = el.querySelector('i');
+        const isOpen = body.style.display === 'block';
+        document.querySelectorAll('.faq-item .faq-body').forEach(b => b.style.display = 'none');
+        document.querySelectorAll('.faq-item i').forEach(i => { i.classList.add('ph-plus'); i.classList.remove('ph-minus'); });
+        if (!isOpen) {
+            body.style.display = 'block';
+            icon.classList.remove('ph-plus');
+            icon.classList.add('ph-minus');
+        }
     }
 </script>

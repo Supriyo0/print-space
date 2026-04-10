@@ -1,117 +1,78 @@
-<section class="hero reveal">
-    <div style="font-family: var(--font-alt); color: var(--accent-gold); letter-spacing: 0.3rem; margin-bottom: 20px; font-size: 0.9rem;">ESTD 2002 • KOLKATA & DELHI</div>
-    <h1>Premium Print.<br><span style="font-style: italic; font-weight: 400; color: var(--accent-gold);">Elite Authority.</span></h1>
-    <p>From luxury wedding albums to executive corporate stationery, we redefine how your brand is perceived. Join the tier-1 businesses across India trusting Print Space.</p>
-    <a href="catalog.html" class="btn btn-primary">Discover the Masterpieces</a>
+<!-- Obsidian Artisan Forge - Master Home -->
+<section class="hero-obsidian reveal">
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;">
+        <div>
+            <div class="h-xl mask-reveal active">
+                <div class="mask-inner">Mastering the Art of the <span class="gold-animate">Print.</span></div>
+            </div>
+            <p class="h-sub reveal" style="transition-delay: 0.2s;">Forging Industrial-Grade Brand Identity Architecture.</p>
+            <div class="reveal" style="display: flex; gap: 30px; transition-delay: 0.4s;">
+                <a href="catalog.html" class="btn btn-gold">The 2026 Catalog</a>
+                <a href="javascript:void(0)" onclick="openModal('Elite Consult')" class="btn btn-outline">Project Consultation</a>
+            </div>
+        </div>
+        <div class="masterpiece-container reveal" style="transition-delay: 0.6s;">
+            <!-- The 3D Masterpiece Reveal -->
+            <div class="masterpiece-3d">
+                <img src="https://kaagazprints.com/image/home-page-image/visiting-card.jpg" alt="Business Card Masterpiece">
+            </div>
+            <div style="margin-top: 30px; display: flex; align-items: center; gap: 20px; opacity: 0.5;">
+                <div style="width: 100px; height: 1px; background: var(--text-pure);"></div>
+                <div style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em;">Industrial Grade Finish 0.1mm Precision</div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Luxury Marquee -->
-<div class="marquee-container reveal">
-    <div class="marquee-content">
-        <span class="brand-logo">CUEMATH</span>
-        <span class="brand-logo">HONDA</span>
-        <span class="brand-logo">CENTRE FOR SIGHT</span>
-        <span class="brand-logo">HARVEST GOLD</span>
-        <span class="brand-logo">OPTEL</span>
-        <span class="brand-logo">INOCHI CARE</span>
-        <span class="brand-logo">REDVERSITY</span>
-        <span class="brand-logo">BABY JOY</span>
-        <span class="brand-logo">WURTH</span>
-        <span class="brand-logo">SOLVATE</span>
-        
-        <!-- Duplicated for seamless scrolling -->
-        <span class="brand-logo">CUEMATH</span>
-        <span class="brand-logo">HONDA</span>
-        <span class="brand-logo">CENTRE FOR SIGHT</span>
-        <span class="brand-logo">HARVEST GOLD</span>
-        <span class="brand-logo">OPTEL</span>
-        <span class="brand-logo">INOCHI CARE</span>
-        <span class="brand-logo">REDVERSITY</span>
-        <span class="brand-logo">BABY JOY</span>
-        <span class="brand-logo">WURTH</span>
-        <span class="brand-logo">SOLVATE</span>
+<!-- The Asymmetric Bento Mosaic Showcase -->
+<section class="container reveal" style="padding: 80px 0;">
+    <div style="text-align: left; margin-bottom: 60px;">
+        <h2 style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 900; margin-bottom: 20px;">The Service Forge</h2>
+        <p style="color: var(--text-muted); font-size: 1.25rem; font-weight: 400; max-width: 600px;">Every production line is a masterpiece of architectural precision and industrial fulfillment.</p>
     </div>
-</div>
 
-<!-- Interactive Stats -->
-<div class="container reveal" style="padding: 100px 0; border-bottom: 1px solid var(--border-light);">
-    <div class="stats-grid">
-        <div>
-            <h2 class="stat-number">{{ClientsStat}}</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">Enterprise Clients</p>
-        </div>
-        <div>
-            <h2 class="stat-number">{{OrdersStat}}</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">Units Delivered</p>
-        </div>
-        <div>
-            <h2 class="stat-number">{{ExpStat}}</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">of Legacy</p>
-        </div>
-        <div>
-            <h2 class="stat-number">{{ProjectsStat}}</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">Master Projects</p>
-        </div>
-    </div>
-</div>
-
-<!-- Category Showcase -->
-<div class="container pb-100 reveal" style="padding-top: 100px;">
-    <h3 class="h-md" style="margin-bottom: 60px; text-align: center; color: var(--text-main);">Explore Our Collections</h3>
-    <div class="grid">
+    <!-- The Mosaic Grid -->
+    <div class="bento-grid">
         {{CategoryCards}}
     </div>
-</div>
+</section>
 
-<!-- Process Section -->
-<section class="process-section">
+<!-- Authority Trust - Minimalist Obsidian -->
+<section style="background: var(--bg-carbon); padding: 150px 0; border-top: 1px solid var(--border-glass);">
     <div class="container reveal">
-        <div class="split-grid split-grid-1-5">
-            <div>
-                <h2 class="h-md" style="margin-bottom: 30px; color: var(--text-main);">The Master<br><span style="color: var(--accent-gold);">Standard.</span></h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">A four-step meticulous methodology ensuring that every final print is flawlessly aligned with your corporate identity.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 80px; text-align: center;">
+            <div class="stat-block stat-card" style="background: transparent; border: none;">
+                <div style="font-size: 4.5rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-heading); margin-bottom: 10px;">{{ClientsStat}}</div>
+                <div style="font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-muted); font-weight: 800;">Enterprise Clients</div>
             </div>
-            <div class="process-grid">
-                <div class="process-step">
-                    <h4>01. Design</h4>
-                    <p>Submit your assets or consult with our Kolkata & Delhi design hubs.</p>
-                </div>
-                <div class="process-step">
-                    <h4>02. Proofing</h4>
-                    <p>High-fidelity physical proofs guaranteed to match the final run.</p>
-                </div>
-                <div class="process-step">
-                    <h4>03. Crafting</h4>
-                    <p>Heavy-duty offset presses managed by veteran pressmen.</p>
-                </div>
-                <div class="process-step">
-                    <h4>04. Delivery</h4>
-                    <p>Tracked, pristine delivery straight to your headquarters.</p>
-                </div>
+            <div class="stat-block stat-card" style="background: transparent; border: none;">
+                <div style="font-size: 4.5rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-heading); margin-bottom: 10px;">{{ExpStat}}</div>
+                <div style="font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-muted); font-weight: 800;">Years Heritage</div>
+            </div>
+            <div class="stat-block stat-card" style="background: transparent; border: none;">
+                <div style="font-size: 4.5rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-heading); margin-bottom: 10px;">{{OrdersStat}}</div>
+                <div style="font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-muted); font-weight: 800;">Projects Forged</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Ownership Story -->
-<section class="container reveal" style="padding: 120px 0;">
-    <div class="split-grid split-grid-1-2">
-        <div style="border-radius: 12px; overflow: hidden; height: 600px; border: 1px solid var(--border-light); position: relative; box-shadow: var(--shadow-hover);">
-            <img src="images/owner_office_context.png" alt="M. Rahman Office" style="width:100%; height:100%; object-fit:cover; opacity: 0.85;">
-            <div class="owner-badge">
-                <h3 style="margin:0; font-size: 1.5rem; color: var(--text-main);">M. Rahman</h3>
-                <p style="margin:0; font-size: 0.8rem; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.1rem;">Founder & CEO</p>
+<!-- The Artisanal Process Reveal -->
+<section class="container reveal" style="padding: 150px 0;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;">
+        <div class="reveal">
+            <h2 style="font-family: var(--font-heading); font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 35px;">Engineering <br>Sublime Finishes.</h2>
+            <div style="border-left: 2px solid var(--accent-gold); padding-left: 35px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                From foil-stamping corporate letterheads in Kolkata to high-volume industrial labeling in Delhi, our hubs are forged on the principle of absolute fidelity.
             </div>
+            <a href="catalog.html" class="btn btn-outline" style="margin-top: 50px;">Inquire Engineering</a>
         </div>
-        <div style="text-align: left;">
-            <h4 style="color: var(--accent-gold); letter-spacing: 0.2rem; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; font-family: var(--font-body); font-size: 0.8rem;">Our Heritage</h4>
-            <h2 class="h-md" style="margin-bottom: 30px; color: var(--text-main);">Building a Legacy in Print Since 2002</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 25px; line-height: 1.8;">
-                Guided by the vision of <b style="color:#fff;">M. Rahman</b>, Print Space India evolved from a boutique operation in <b style="color:#fff;">Girish Park, Kolkata</b> into a premier multi-city enterprise. 
-            </p>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8;">
-                By combining elite craftsmanship with cutting-edge 2026 press technology in both our Kolkata Head Office and New Delhi Branch, we guarantee an unmatched tactile experience.
-            </p>
+        <div class="bento-tall reveal" style="border-radius: 40px; overflow: hidden; height: 600px; position: relative;">
+            <img src="https://kaagazprints.com/image/home-page-image/Letter%20Heads.gif" alt="Artisanal Process" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(transparent, rgba(0,0,0,0.75)); display: flex; flex-direction: column; justify-content: flex-end; padding: 50px;">
+                <h4 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; margin-bottom: 10px;">Phase 01: Calibration</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">Every drop of ink. Every micron of paper.</p>
+            </div>
         </div>
     </div>
 </section>

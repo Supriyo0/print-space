@@ -1,15 +1,125 @@
-<!-- Midnight Gold Category Hero with Dynamic Image -->
-<div class="cat-hero-panel reveal">
-    <img src="{{RootPath}}{{CategoryImage}}" alt="{{CategoryTitle}} Category" onerror="this.src='{{RootPath}}images/commercial_printing_showcase.png'">
-    <div class="cat-overlay">
-        <h1 style="font-family: var(--font-heading); font-size: 5rem; color: #fff; margin-bottom: 20px; line-height: 1.1; text-shadow: 0 5px 20px rgba(0,0,0,0.8);">{{CategoryTitle}}</h1>
-        <p style="font-size: 1.4rem; color: var(--accent-gold); max-width: 600px; font-weight: 300; letter-spacing: 0.1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.9);">{{CategorySubtitle}}</p>
-    </div>
-</div>
+<!-- Elite Hyper-Premium Category Architecture -->
+<!-- Category Hero Banner -->
+<section class="reveal" style="padding: 140px 6% 0; position: relative; overflow: hidden;">
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <nav style="display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 40px;">
+            <a href="{{RootPath}}index.html" style="color: var(--text-muted); text-decoration: none;" onmouseover="this.style.color='var(--accent-gold)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
+            <span style="color: rgba(0,0,0,0.2); font-size: 1rem;">›</span>
+            <span style="color: var(--accent-gold); font-weight: 900;">{{CategoryTitle}}</span>
+        </nav>
 
-<div class="container pb-100" style="padding-top: 80px;">
-    <h3 style="font-size: 2.2rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.2rem; color: var(--text-main); font-family: var(--font-body); border-left: 3px solid var(--accent-gold); padding-left: 20px;">Available Lines</h3>
-    <div class="grid">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding-bottom: 80px;">
+            <div>
+                <div class="s-label">Artisan Collection</div>
+                <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.04em; color: var(--text-pure); margin-bottom: 28px;">{{CategoryTitle}}</h1>
+                <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 500px; font-weight: 400; line-height: 1.8; margin-bottom: 40px;">{{CategorySubtitle}}</p>
+                <a href="javascript:void(0)" onclick="openModal('{{CategoryTitle}} Inquiry')" class="btn btn-gold">
+                    <i class="ph ph-paper-plane-tilt"></i> Start Forge Inquiry
+                </a>
+            </div>
+            <div style="perspective: 1600px;">
+                <div style="transform: rotateY(-8deg) rotateX(3deg); border-radius: 32px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.15); border: 10px solid #fff; transition: transform 0.12s ease;"
+                     onmouseover="this.style.transform='rotateY(0deg) rotateX(0deg) scale(1.02)'" onmouseout="this.style.transform='rotateY(-8deg) rotateX(3deg)'">
+                    <img src="{{CategoryImage}}" alt="{{CategoryTitle}}" style="width: 100%; height: 420px; object-fit: cover; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Functional Discovery Hub -->
+<div class="container reveal" style="padding: 80px 0;">
+    <!-- Interactive Tabs -->
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 50px;">
+        <button class="tab-btn active" onclick="filterCategory('all')" style="padding: 10px 24px; border: 1.5px solid var(--accent-gold); background: var(--accent-gold); color: #fff; border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;">All Lines</button>
+        <button class="tab-btn" onclick="filterCategory('stationery')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Stationery</button>
+        <button class="tab-btn" onclick="filterCategory('stickers')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Labels & Stickers</button>
+        <button class="tab-btn" onclick="filterCategory('apparel')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Apparel</button>
+        <button class="tab-btn" onclick="filterCategory('packaging')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Packaging</button>
+        <button class="tab-btn" onclick="filterCategory('marketing')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Marketing</button>
+        <button class="tab-btn" onclick="filterCategory('gifts')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Gifts</button>
+        <button class="tab-btn" onclick="filterCategory('photo')" style="padding: 10px 24px; border: 1.5px solid rgba(0,0,0,0.12); background: transparent; color: var(--text-pure); border-radius: 100px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.classList.contains('active')||(this.style.borderColor='rgba(0,0,0,0.12)',this.style.color='var(--text-pure)')">Photo & Art</button>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; border-bottom: 1px solid var(--border-glass); padding-bottom: 24px;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 4px; height: 40px; background: var(--accent-gold); border-radius: 3px;"></div>
+            <h2 style="margin: 0; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: var(--text-pure);">Artisan Product Lines</h2>
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">Industrial Grade Precision</div>
+    </div>
+    
+    <div class="prod-grid" id="productGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); grid-auto-flow: dense; gap: 40px; align-items: stretch;">
         {{ProductCards}}
     </div>
 </div>
+
+<!-- Authority Trust Block -->
+<section style="background: var(--bg-secondary); padding: 120px 0; border-top: 1px solid var(--border-glass);">
+    <div class="container reveal">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; text-align: center;">
+            <div class="card" style="padding: 40px; background: transparent; border: none; box-shadow: none;">
+                <i class="ph-fill ph-target" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 25px;"></i>
+                <h4 style="margin-bottom: 20px; font-weight: 900; font-size: 1.2rem;">Enterprise Calibration</h4>
+                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">Every project is manually tuned by M. Rahman’s engineering team for absolute brand accuracy and industrial-grade fulfillment.</p>
+            </div>
+            <div class="card" style="padding: 40px; background: transparent; border: none; box-shadow: none;">
+                <i class="ph-fill ph-drop" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 25px;"></i>
+                <h4 style="margin-bottom: 20px; font-weight: 900; font-size: 1.2rem;">True-Color Pigment</h4>
+                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">We use world-class ink chemistry to ensure your corporate branding remains consistent across continents and decades.</p>
+            </div>
+            <div class="card" style="padding: 40px; background: transparent; border: none; box-shadow: none;">
+                <i class="ph-fill ph-clock-countdown" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 25px;"></i>
+                <h4 style="margin-bottom: 20px; font-weight: 900; font-size: 1.2rem;">Express Logistics</h4>
+                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">Our high-priority lanes for Kolkata and Delhi ensure your architectural projects reach their destination within a 48-hour window.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Hybrid Filter Logic for Search & Tabs
+    function filterCategory(catId) {
+        // Update Tabs UI
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText.toLowerCase().includes(catId) || (catId === 'all' && btn.innerText === 'All Elite Lines')) {
+                btn.classList.add('active');
+            }
+        });
+
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach(card => {
+            const href = card.getAttribute('href');
+            // This assumes product IDs are indicative or we need data attributes
+            // For now, simple visual toggle if on All Catalog, 
+            // otherwise redirect to specific category page
+            if (window.location.pathname.includes('catalog.html')) {
+                // We'll need a way to know which category a card belongs to
+                // I'll update the genProductCard to include data-cat
+                if (catId === 'all' || card.dataset.cat === catId) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            } else {
+                window.location.href = catId === 'all' ? 'catalog.html' : `${catId}.html`;
+            }
+        });
+    }
+
+    // Search Logic
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchVal = urlParams.get('search');
+    if (searchVal) {
+        document.querySelectorAll('.product-card').forEach(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            if (title.includes(searchVal.toLowerCase())) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>

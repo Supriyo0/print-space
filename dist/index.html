@@ -3,378 +3,770 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Print Space India - Luxury Printing</title>
-    <meta name="description" content="Print Space India (Kolkata & New Delhi) - Premium Offset, Digital, and Personalised printing services since 2002. Owned by M. Rahman.">
+    <title>Master Artisan Home | Print Space India - Artisan Light Forge</title>
+    <meta name="description" content="Kolkata & New Delhi's premier hub for industrial-grade print engineering and luxury branding since 2002.">
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="styles/main.css">
-    <style>
-        /* Ensures the printing-loader is hidden if JS disabled or not needed */
-        .js-hide { display: none !important; }
-    </style>
-</head>
-<body>
     
-    <!-- Inkjet Laser Animation Loader (Only shown on initial open or refresh) -->
-    <div id="printing-loader" class="js-hide">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-            <div class="cmyk-cartridges">
-                <div class="cartridge"></div>
-                <div class="cartridge"></div>
-                <div class="cartridge"></div>
-                <div class="cartridge" style="background:var(--accent-gold); border:none;"></div>
+    <!-- Firebase SDK (Modular) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD-n72DNWoF7_eLlMSaSyY25fOlMvwkkrg",
+        authDomain: "print-space-india.firebaseapp.com",
+        projectId: "print-space-india",
+        storageBucket: "print-space-india.firebasestorage.app",
+        messagingSenderId: "506473314185",
+        appId: "1:506473314185:web:04e0b7bfc967b714395358"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      window.submitQuote = async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="ph ph-spinner-gap ph-spin"></i> CALIBRATING...';
+        btn.disabled = true;
+
+        const formData = {
+          product: document.getElementById('q_product') ? document.getElementById('q_product').value : 'General Inquiry',
+          name: document.getElementById('q_name').value,
+          contact: document.getElementById('q_contact').value,
+          requirement: document.getElementById('q_req') ? document.getElementById('q_req').value : 'Forge Request',
+          timestamp: serverTimestamp()
+        };
+
+        try {
+          await addDoc(collection(db, "quotes"), formData);
+          btn.innerHTML = '<i class="ph ph-check"></i> FORGED SUCCESSFULLY';
+          setTimeout(() => { 
+              closeModal();
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+              e.target.reset();
+          }, 2000);
+          
+          window.open(`https://wa.me/917982060969?text=Hi, I need an elite quote for ${formData.product}`, '_blank');
+        } catch (error) {
+          console.error("Forge Error:", error);
+          btn.innerHTML = 'RETRYING...';
+          setTimeout(() => window.open(`https://wa.me/917982060969?text=Hi, I need an elite quote for ${formData.product}`, '_blank'), 1000);
+        }
+      };
+    </script>
+</head>
+<body class="obsidian-theme">
+
+    <!-- ═══════════════════════════════════════════
+         ARTISAN LIGHT PRELOADER
+    ════════════════════════════════════════════ -->
+    <div id="ps-loader">
+        <style>
+            #ps-loader {
+                position: fixed; inset: 0; z-index: 99999;
+                background: #f9f7f4;
+                display: flex; flex-direction: column;
+                justify-content: center; align-items: center;
+                transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+                            opacity 0.6s ease;
+                overflow: hidden;
+            }
+            #ps-loader.hide {
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            /* Grain overlay same as body */
+            #ps-loader::before {
+                content: '';
+                position: absolute; inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+                opacity: 0.025; pointer-events: none;
+            }
+
+            /* Warm glow blob */
+            #ps-loader::after {
+                content: '';
+                position: absolute;
+                width: 700px; height: 700px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(232,201,106,0.35) 0%, transparent 70%);
+                top: -20%; right: -15%;
+                animation: loaderBlob 6s ease-in-out infinite alternate;
+                pointer-events: none;
+            }
+            @keyframes loaderBlob {
+                to { transform: translate(-60px, 80px) scale(1.12); }
+            }
+
+            /* ── Brand block ── */
+            .ldr-brand {
+                position: relative; z-index: 2;
+                text-align: center; margin-bottom: 60px;
+            }
+            .ldr-brand-name {
+                font-family: 'Outfit', sans-serif;
+                font-size: clamp(1.8rem, 5vw, 3rem);
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                color: #1c1917;
+                line-height: 1;
+                margin-bottom: 6px;
+            }
+            .ldr-brand-name span { color: #b8960c; }
+            .ldr-tagline {
+                font-family: 'Playfair Display', serif;
+                font-style: italic;
+                font-size: 0.95rem;
+                color: #78716c;
+                letter-spacing: 0.05em;
+            }
+
+            /* ── Scan-line printer track ── */
+            .ldr-track {
+                position: relative; z-index: 2;
+                width: min(480px, 86vw);
+                margin-bottom: 28px;
+            }
+            /* Paper strip */
+            .ldr-paper {
+                width: 100%;
+                height: 64px;
+                background: #fff;
+                border-radius: 10px;
+                border: 1px solid rgba(0,0,0,0.08);
+                box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+                overflow: hidden;
+                position: relative;
+            }
+            /* Ink lines that appear on the paper */
+            .ldr-ink-line {
+                position: absolute; left: 0;
+                width: 0%; height: 100%;
+                background: linear-gradient(90deg, #f9f7f4 0%, #ede8df 100%);
+                transition: width 0.05s linear;
+            }
+            /* Gold print head */
+            .ldr-head {
+                position: absolute;
+                top: 0; left: 0;
+                width: 4px; height: 100%;
+                background: #b8960c;
+                border-radius: 2px;
+                box-shadow: 0 0 16px rgba(184,150,12,0.6), 0 0 40px rgba(184,150,12,0.25);
+                transition: left 0.05s linear;
+            }
+            /* Tiny dot spray from head */
+            .ldr-head::after {
+                content: '';
+                position: absolute;
+                top: 50%; left: 8px;
+                transform: translateY(-50%);
+                width: 6px; height: 6px;
+                border-radius: 50%;
+                background: #b8960c;
+                opacity: 0.5;
+                animation: dotPulse 0.4s ease-in-out infinite alternate;
+            }
+            @keyframes dotPulse {
+                to { opacity: 0.1; transform: translateY(-50%) scale(0.4); }
+            }
+
+            /* ── Progress bar below ── */
+            .ldr-bar-wrap {
+                position: relative; z-index: 2;
+                width: min(480px, 86vw);
+                display: flex; justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .ldr-status {
+                font-family: 'Outfit', sans-serif;
+                font-size: 0.68rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.22em;
+                color: #78716c;
+            }
+            .ldr-pct {
+                font-family: 'Outfit', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 900;
+                color: #b8960c;
+                letter-spacing: 0.05em;
+            }
+
+            /* ── Thin gold progress line ── */
+            .ldr-progress-rail {
+                position: relative; z-index: 2;
+                width: min(480px, 86vw);
+                height: 2px;
+                background: rgba(0,0,0,0.07);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            .ldr-progress-fill {
+                height: 100%;
+                width: 0%;
+                background: linear-gradient(90deg, #b8960c, #e8c96a);
+                border-radius: 2px;
+                transition: width 0.08s linear;
+            }
+        </style>
+
+        <div class="ldr-brand">
+            <div class="ldr-brand-name">PRINT SPACE<span> INDIA</span></div>
+            <div class="ldr-tagline">Calibrating the Artisan Forge…</div>
+        </div>
+
+        <div class="ldr-track">
+            <div class="ldr-paper">
+                <div class="ldr-ink-line" id="ldrInk"></div>
+                <div class="ldr-head"    id="ldrHead"></div>
             </div>
-            <div class="inkjet-container">
-                <div class="inkjet-base">PRINT SPACE INDIA</div>
-                <div class="inkjet-fill">PRINT SPACE INDIA</div>
-            </div>
-            <div style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.35rem; color: var(--text-muted); margin-top: 15px;">INITIALIZING PRESS...</div>
+        </div>
+
+        <div class="ldr-bar-wrap">
+            <div class="ldr-status" id="ldrStatus">Initializing</div>
+            <div class="ldr-pct"    id="ldrPct">0%</div>
+        </div>
+        <div class="ldr-progress-rail">
+            <div class="ldr-progress-fill" id="ldrFill"></div>
         </div>
     </div>
 
-    <!-- Elite Sticky Header - Midnight Gold -->
+    <script>
+    (function () {
+        var phases = [
+            { pct: 18,  label: 'Loading Assets'       },
+            { pct: 40,  label: 'Mixing Ink'            },
+            { pct: 62,  label: 'Aligning Print Head'   },
+            { pct: 80,  label: 'Calibrating Colors'    },
+            { pct: 95,  label: 'Final Inspection'      },
+            { pct: 100, label: 'Press Ready'           }
+        ];
+
+        var ink    = document.getElementById('ldrInk');
+        var head   = document.getElementById('ldrHead');
+        var status = document.getElementById('ldrStatus');
+        var pct    = document.getElementById('ldrPct');
+        var fill   = document.getElementById('ldrFill');
+        var loader = document.getElementById('ps-loader');
+
+        var current = 0;
+
+        function setProgress(p, label) {
+            ink.style.width  = p + '%';
+            head.style.left  = p + '%';
+            fill.style.width = p + '%';
+            pct.textContent  = p + '%';
+            if (label) status.textContent = label;
+        }
+
+        function runPhases(i) {
+            if (i >= phases.length) {
+                // Done — dismiss
+                setTimeout(function () {
+                    loader.classList.add('hide');
+                    setTimeout(function () {
+                        loader.style.display = 'none';
+                    }, 950);
+                }, 320);
+                return;
+            }
+            var phase = phases[i];
+            var step  = (phase.pct - current) / 18;
+            var count = 0;
+            status.textContent = phase.label;
+            var iv = setInterval(function () {
+                count++;
+                current = Math.min(current + step, phase.pct);
+                setProgress(Math.round(current), null);
+                if (count >= 18) {
+                    clearInterval(iv);
+                    current = phase.pct;
+                    setProgress(current, null);
+                    setTimeout(function () { runPhases(i + 1); }, 180);
+                }
+            }, 28);
+        }
+
+        // Kick off after tiny delay so fonts load
+        setTimeout(function () { runPhases(0); }, 150);
+    })();
+    </script>
+    
+    <!-- Luminous Warm Background -->
+    <div class="obsidian-fluid">
+        <div class="smoke-blob smoke-gold"></div>
+        <div class="smoke-blob smoke-mint"></div>
+    </div>
+
+    <!-- Master Glass Navbar -->
     <nav>
         <a href="index.html" class="brand">
-            <i class="ph-fill ph-check-seal"></i>
-            PRINT SPACE<span style="font-weight: 400; opacity: 0.5;"> INDIA</span>
+            <i class="ph-fill ph-printer" style="color: var(--accent-gold); font-size: 2.2rem;"></i>
+            PRINT SPACE<span> INDIA</span>
         </a>
-        <button class="hamburger" onclick="toggleMenu()"><i class="ph ph-list"></i></button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="catalog.html">Master Catalog</a>
-            <a href="commercial.html">Commercial</a>
-            <a href="photo.html">Premium Photo</a>
-            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="padding: 12px 24px;">Deploy Request</a>
+        <div class="nav-links">
+            <a href="index.html">Master Home</a>
+            <a href="catalog.html">Elite Catalog</a>
+            <a href="javascript:void(0)" onclick="openModal('Forge Inquiry')" class="btn btn-gold">Start Forge</a>
         </div>
     </nav>
 
     <main>
-        <section class="hero reveal">
-    <div style="font-family: var(--font-alt); color: var(--accent-gold); letter-spacing: 0.3rem; margin-bottom: 20px; font-size: 0.9rem;">ESTD 2002 • KOLKATA & DELHI</div>
-    <h1>Premium Print.<br><span style="font-style: italic; font-weight: 400; color: var(--accent-gold);">Elite Authority.</span></h1>
-    <p>From luxury wedding albums to executive corporate stationery, we redefine how your brand is perceived. Join the tier-1 businesses across India trusting Print Space.</p>
-    <a href="catalog.html" class="btn btn-primary">Discover the Masterpieces</a>
+        <!-- Obsidian Artisan Forge - Master Home -->
+<section class="hero-obsidian reveal">
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;">
+        <div>
+            <div class="h-xl mask-reveal active">
+                <div class="mask-inner">Mastering the Art of the <span class="gold-animate">Print.</span></div>
+            </div>
+            <p class="h-sub reveal" style="transition-delay: 0.2s;">Forging Industrial-Grade Brand Identity Architecture.</p>
+            <div class="reveal" style="display: flex; gap: 30px; transition-delay: 0.4s;">
+                <a href="catalog.html" class="btn btn-gold">The 2026 Catalog</a>
+                <a href="javascript:void(0)" onclick="openModal('Elite Consult')" class="btn btn-outline">Project Consultation</a>
+            </div>
+        </div>
+        <div class="masterpiece-container reveal" style="transition-delay: 0.6s;">
+            <!-- The 3D Masterpiece Reveal -->
+            <div class="masterpiece-3d">
+                <img src="https://kaagazprints.com/image/home-page-image/visiting-card.jpg" alt="Business Card Masterpiece">
+            </div>
+            <div style="margin-top: 30px; display: flex; align-items: center; gap: 20px; opacity: 0.5;">
+                <div style="width: 100px; height: 1px; background: var(--text-pure);"></div>
+                <div style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em;">Industrial Grade Finish 0.1mm Precision</div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Luxury Marquee -->
-<div class="marquee-container reveal">
-    <div class="marquee-content">
-        <span class="brand-logo">CUEMATH</span>
-        <span class="brand-logo">HONDA</span>
-        <span class="brand-logo">CENTRE FOR SIGHT</span>
-        <span class="brand-logo">HARVEST GOLD</span>
-        <span class="brand-logo">OPTEL</span>
-        <span class="brand-logo">INOCHI CARE</span>
-        <span class="brand-logo">REDVERSITY</span>
-        <span class="brand-logo">BABY JOY</span>
-        <span class="brand-logo">WURTH</span>
-        <span class="brand-logo">SOLVATE</span>
+<!-- The Asymmetric Bento Mosaic Showcase -->
+<section class="container reveal" style="padding: 80px 0;">
+    <div style="text-align: left; margin-bottom: 60px;">
+        <h2 style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 900; margin-bottom: 20px;">The Service Forge</h2>
+        <p style="color: var(--text-muted); font-size: 1.25rem; font-weight: 400; max-width: 600px;">Every production line is a masterpiece of architectural precision and industrial fulfillment.</p>
+    </div>
+
+    <!-- The Mosaic Grid -->
+    <div class="bento-grid">
         
-        <!-- Duplicated for seamless scrolling -->
-        <span class="brand-logo">CUEMATH</span>
-        <span class="brand-logo">HONDA</span>
-        <span class="brand-logo">CENTRE FOR SIGHT</span>
-        <span class="brand-logo">HARVEST GOLD</span>
-        <span class="brand-logo">OPTEL</span>
-        <span class="brand-logo">INOCHI CARE</span>
-        <span class="brand-logo">REDVERSITY</span>
-        <span class="brand-logo">BABY JOY</span>
-        <span class="brand-logo">WURTH</span>
-        <span class="brand-logo">SOLVATE</span>
-    </div>
-</div>
-
-<!-- Interactive Stats -->
-<div class="container reveal" style="padding: 100px 0; border-bottom: 1px solid var(--border-light);">
-    <div class="stats-grid">
-        <div>
-            <h2 class="stat-number">10,000+</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">Enterprise Clients</p>
-        </div>
-        <div>
-            <h2 class="stat-number">25,000+</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">Units Delivered</p>
-        </div>
-        <div>
-            <h2 class="stat-number">24 Years</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">of Legacy</p>
-        </div>
-        <div>
-            <h2 class="stat-number">150k+</h2>
-            <p style="text-transform: uppercase; font-weight: 600; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.2rem;">Master Projects</p>
-        </div>
-    </div>
-</div>
-
-<!-- Category Showcase -->
-<div class="container pb-100 reveal" style="padding-top: 100px;">
-    <h3 class="h-md" style="margin-bottom: 60px; text-align: center; color: var(--text-main);">Explore Our Collections</h3>
-    <div class="grid">
-        
-        <a href="commercial.html" class="card reveal">
-            <div class="card-img-bg">
-                <img src="images/commercial_printing_showcase.png" alt="Commercial">
-            </div>
-            <div class="card-top">
-                <div class="card-icon" style="color: #00f2fe;">
-                    <i class="ph-fill ph-briefcase"></i>
-                </div>
-                <h2>Commercial</h2>
-                <p>Dynamic Enterprise Presence</p>
-                <div class="card-footer">
-                    DISCOVER MASTERPIECE <i class="ph ph-arrow-right"></i>
-                </div>
+        <a href="visiting-card.html" class="bento-item bento-large reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/visiting-card.jpg" class="bento-img" alt="Visiting Cards">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Visiting Cards</h3>
+                <p>350gsm ultra-premium visiting cards with velvet matte lamination — the definitive mark of professional identity.</p>
             </div>
         </a>
     
-        <a href="photo.html" class="card reveal">
-            <div class="card-img-bg">
-                <img src="images/photo_printing_showcase.png" alt="Photo & Display">
-            </div>
-            <div class="card-top">
-                <div class="card-icon" style="color: #89f7fe;">
-                    <i class="ph-fill ph-camera"></i>
-                </div>
-                <h2>Photo & Display</h2>
-                <p>Immersive Visual Mastery</p>
-                <div class="card-footer">
-                    DISCOVER MASTERPIECE <i class="ph ph-arrow-right"></i>
-                </div>
+        <a href="business-card-premium.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/Business-Cards-With-Butterflies.webp" class="bento-img" alt="Deluxe Business Cards">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Deluxe Business Cards</h3>
+                <p>Foil-stamped butterfly-finish cards that command instant authority at every handshake.</p>
             </div>
         </a>
     
-        <a href="corporate.html" class="card reveal">
-            <div class="card-img-bg">
-                <img src="images/corporate_gifting_showcase.png" alt="Corporate Gifting">
-            </div>
-            <div class="card-top">
-                <div class="card-icon" style="color: #667eea;">
-                    <i class="ph-fill ph-gift"></i>
-                </div>
-                <h2>Corporate Gifting</h2>
-                <p>Bespoke Executive Authority</p>
-                <div class="card-footer">
-                    DISCOVER MASTERPIECE <i class="ph ph-arrow-right"></i>
-                </div>
+        <a href="letterheads.html" class="bento-item bento-wide reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/Letter-Heads.webp" class="bento-img" alt="Executive Letterheads">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Executive Letterheads</h3>
+                <p>Watermark-ready 100gsm bond paper for official correspondence that conveys gravitas.</p>
             </div>
         </a>
     
-        <a href="packaging.html" class="card reveal">
-            <div class="card-img-bg">
-                <img src="images/custom_packaging_showcase.png" alt="Custom Packaging">
+        <a href="personalized-notebooks.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/Personalised_Notebooks.webp" class="bento-img" alt="Hardbound Journals">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Hardbound Journals</h3>
+                <p>A5 leatherette-bound journals with ivory pages and gold-foil corporate logo stamping.</p>
             </div>
-            <div class="card-top">
-                <div class="card-icon" style="color: #b721ff;">
-                    <i class="ph-fill ph-package"></i>
-                </div>
-                <h2>Custom Packaging</h2>
-                <p>Future of Unboxing Experiences</p>
-                <div class="card-footer">
-                    DISCOVER MASTERPIECE <i class="ph ph-arrow-right"></i>
-                </div>
+        </a>
+    
+        <a href="notepads.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/Notepads.webp" class="bento-img" alt="Corporate Notepads">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Corporate Notepads</h3>
+                <p>50-leaf custom notepads with branded header — essential desk architecture for every professional.</p>
+            </div>
+        </a>
+    
+        <a href="id-cards.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/ID-Cards.webp" class="bento-img" alt="Smart PVC ID Cards">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Smart PVC ID Cards</h3>
+                <p>CR80 PVC credentials with precision thermal printing — available NFC-enabled for smart campuses.</p>
+            </div>
+        </a>
+    
+        <a href="presentation-folders.html" class="bento-item bento-wide reveal">
+            <img src="https://images.unsplash.com/photo-1629858348483-29ec3fed988a?w=800&q=80" class="bento-img" alt="Presentation Folders">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Presentation Folders</h3>
+                <p>Die-cut executive folders with card slit — the definitive vessel for high-stakes business pitches.</p>
+            </div>
+        </a>
+    
+        <a href="table-calendar.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/table-calendar.webp" class="bento-img" alt="Executive Desk Calendars">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Executive Desk Calendars</h3>
+                <p>Tent-style A5 desk calendars — premium brand touchpoints on every executive's table, year-round.</p>
+            </div>
+        </a>
+    
+        <a href="invoice-books.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/Invoice-Books.webp" class="bento-img" alt="Invoice & Receipt Books">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Invoice & Receipt Books</h3>
+                <p>Duplicate / triplicate NCR invoice books with custom serial numbering for impeccable audit trails.</p>
+            </div>
+        </a>
+    
+        <a href="certificates.html" class="bento-item bento-standard reveal">
+            <img src="https://kaagazprints.com/image/home-page-image/Custom-Certificates.webp" class="bento-img" alt="Custom Certificates">
+            <div class="bento-content">
+                <div style="font-size: 0.6rem; color: var(--accent-gold); letter-spacing: 0.3em; text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Line</div>
+                <h3>Custom Certificates</h3>
+                <p>Gold-bordered achievement certificates printed on 170gsm textured ivory for lasting recognition.</p>
             </div>
         </a>
     
     </div>
-</div>
+</section>
 
-<!-- Process Section -->
-<section class="process-section">
+<!-- Authority Trust - Minimalist Obsidian -->
+<section style="background: var(--bg-carbon); padding: 150px 0; border-top: 1px solid var(--border-glass);">
     <div class="container reveal">
-        <div class="split-grid split-grid-1-5">
-            <div>
-                <h2 class="h-md" style="margin-bottom: 30px; color: var(--text-main);">The Master<br><span style="color: var(--accent-gold);">Standard.</span></h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">A four-step meticulous methodology ensuring that every final print is flawlessly aligned with your corporate identity.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 80px; text-align: center;">
+            <div class="stat-block stat-card" style="background: transparent; border: none;">
+                <div style="font-size: 4.5rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-heading); margin-bottom: 10px;">50k+</div>
+                <div style="font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-muted); font-weight: 800;">Enterprise Clients</div>
             </div>
-            <div class="process-grid">
-                <div class="process-step">
-                    <h4>01. Design</h4>
-                    <p>Submit your assets or consult with our Kolkata & Delhi design hubs.</p>
-                </div>
-                <div class="process-step">
-                    <h4>02. Proofing</h4>
-                    <p>High-fidelity physical proofs guaranteed to match the final run.</p>
-                </div>
-                <div class="process-step">
-                    <h4>03. Crafting</h4>
-                    <p>Heavy-duty offset presses managed by veteran pressmen.</p>
-                </div>
-                <div class="process-step">
-                    <h4>04. Delivery</h4>
-                    <p>Tracked, pristine delivery straight to your headquarters.</p>
-                </div>
+            <div class="stat-block stat-card" style="background: transparent; border: none;">
+                <div style="font-size: 4.5rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-heading); margin-bottom: 10px;">24+</div>
+                <div style="font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-muted); font-weight: 800;">Years Heritage</div>
+            </div>
+            <div class="stat-block stat-card" style="background: transparent; border: none;">
+                <div style="font-size: 4.5rem; font-weight: 900; color: var(--accent-gold); font-family: var(--font-heading); margin-bottom: 10px;">100k+</div>
+                <div style="font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-muted); font-weight: 800;">Projects Forged</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Ownership Story -->
-<section class="container reveal" style="padding: 120px 0;">
-    <div class="split-grid split-grid-1-2">
-        <div style="border-radius: 12px; overflow: hidden; height: 600px; border: 1px solid var(--border-light); position: relative; box-shadow: var(--shadow-hover);">
-            <img src="images/owner_office_context.png" alt="M. Rahman Office" style="width:100%; height:100%; object-fit:cover; opacity: 0.85;">
-            <div class="owner-badge">
-                <h3 style="margin:0; font-size: 1.5rem; color: var(--text-main);">M. Rahman</h3>
-                <p style="margin:0; font-size: 0.8rem; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.1rem;">Founder & CEO</p>
+<!-- The Artisanal Process Reveal -->
+<section class="container reveal" style="padding: 150px 0;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;">
+        <div class="reveal">
+            <h2 style="font-family: var(--font-heading); font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 35px;">Engineering <br>Sublime Finishes.</h2>
+            <div style="border-left: 2px solid var(--accent-gold); padding-left: 35px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                From foil-stamping corporate letterheads in Kolkata to high-volume industrial labeling in Delhi, our hubs are forged on the principle of absolute fidelity.
             </div>
+            <a href="catalog.html" class="btn btn-outline" style="margin-top: 50px;">Inquire Engineering</a>
         </div>
-        <div style="text-align: left;">
-            <h4 style="color: var(--accent-gold); letter-spacing: 0.2rem; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; font-family: var(--font-body); font-size: 0.8rem;">Our Heritage</h4>
-            <h2 class="h-md" style="margin-bottom: 30px; color: var(--text-main);">Building a Legacy in Print Since 2002</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 25px; line-height: 1.8;">
-                Guided by the vision of <b style="color:#fff;">M. Rahman</b>, Print Space India evolved from a boutique operation in <b style="color:#fff;">Girish Park, Kolkata</b> into a premier multi-city enterprise. 
-            </p>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8;">
-                By combining elite craftsmanship with cutting-edge 2026 press technology in both our Kolkata Head Office and New Delhi Branch, we guarantee an unmatched tactile experience.
-            </p>
+        <div class="bento-tall reveal" style="border-radius: 40px; overflow: hidden; height: 600px; position: relative;">
+            <img src="https://kaagazprints.com/image/home-page-image/Letter%20Heads.gif" alt="Artisanal Process" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(transparent, rgba(0,0,0,0.75)); display: flex; flex-direction: column; justify-content: flex-end; padding: 50px;">
+                <h4 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; margin-bottom: 10px;">Phase 01: Calibration</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">Every drop of ink. Every micron of paper.</p>
+            </div>
         </div>
     </div>
 </section>
 
     </main>
 
-    <!-- Luxury Footer -->
-    <footer>
-        <div class="f-grid">
+    <!-- Premium Light Footer -->
+    <footer style="background: #f0ede8; padding: 120px 6% 60px; border-top: 1px solid var(--border-glass);">
+        <div class="f-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 80px;">
             <div class="f-col">
-                <div class="brand" style="margin-bottom: 25px;">
-                    <i class="ph-fill ph-check-seal" style="color: var(--accent-gold);"></i>
-                    PRINT SPACE<span style="font-weight: 400; color: #fff; opacity: 0.5;"> INDIA</span>
+                <div class="brand" style="margin-bottom: 30px;">
+                    <i class="ph-fill ph-printer" style="color: var(--accent-gold);"></i>
+                    PRINT SPACE<span> INDIA</span>
                 </div>
-                <p>Owned & Operated by <b>M. Rahman</b>.</p>
-                <p>We are your dedicated partner for high-precision luxury printing and corporate branding across India.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 350px; color: var(--text-muted);">Architecturally Precise Print Engineering. Kolkata & Delhi Industrial Strategic Hubs. Directed by M. Rahman since 2002.</p>
             </div>
-
             <div class="f-col">
-                <h4>KOLKATA (H.O.)</h4>
-                <p>Beadon Street, Near Girish Park Metro Station, Kolkata, WB-700006</p>
-                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 9876543210</p>
+                <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 30px;">Architecture</h4>
+                <a href="catalog.html" style="display: block; color: var(--text-pure); text-decoration: none; margin-bottom: 15px; font-size: 0.85rem; font-weight: 700;">Full Catalog</a>
+                <a href="javascript:void(0)" onclick="openModal('Bulk')" style="display: block; color: var(--text-pure); text-decoration: none; margin-bottom: 15px; font-size: 0.85rem; font-weight: 700;">Enterprise Solutions</a>
             </div>
-
             <div class="f-col">
-                <h4>NEW DELHI (B.O.)</h4>
-                <p>Building No.- B-143, Near Nathus Sweets, Okhla Industrial Area Phase 1, New Delhi-110020</p>
-                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 7982060969</p>
+                <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 30px;">Hotline</h4>
+                <p style="font-size: 1.2rem; font-weight: 900; margin-bottom: 10px;">+91 79820 60969</p>
+                <p style="color: var(--text-muted); font-size: 0.75rem;">Global Industrial Support</p>
+            </div>
+            <div class="f-col">
+                <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 30px;">The Forge Brief</h4>
+                <form onsubmit="window.submitQuote(event)">
+                    <input type="text" id="q_name" style="width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; color: var(--text-pure); padding: 12px 0; margin-bottom: 20px; font-size: 0.85rem;" placeholder="Client Name" required>
+                    <input type="text" id="q_contact" style="width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; color: var(--text-pure); padding: 12px 0; margin-bottom: 25px; font-size: 0.85rem;" placeholder="WhatsApp Number" required>
+                    <button type="submit" class="btn btn-outline" style="width: 100%; font-size:0.7rem; padding: 12px;">Initialize Briefing</button>
+                </form>
             </div>
         </div>
-        <div style="margin-top: 80px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.15rem; text-transform: uppercase;">
-            &copy; 2026 Print Space India. All Rights Reserved. Elite Midnight Gold Build.
+        <div style="margin-top: 100px; text-align: center; border-top: 1px solid var(--border-glass); padding-top: 40px; color: var(--text-muted); font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 800;">
+            &copy; 2026 Print Space India. The Artisan Light Forge.
         </div>
     </footer>
 
-    <!-- Global General Inquiry Modal -->
-    <div class="modal-overlay" id="globalModal">
-        <div class="global-modal">
-            <button class="modal-close" onclick="closeModal()"><i class="ph ph-x"></i></button>
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--text-main); font-family: var(--font-heading);">General Inquiry</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">Describe your enterprise requirement and we'll route it to the Kolkata or Delhi office.</p>
-            
-            <form onsubmit="submitGlobalModal(event)">
-                <label for="m_name">Point of Contact</label>
-                <input type="text" id="m_name" class="input-field" placeholder="Name & Company" required>
+    <!-- Master Floating CTA Pill -->
+    <div class="quick-pill">
+        <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Direct Line: +91 7982060969</div>
+        <div style="width: 1px; height: 15px; background: rgba(0,0,0,0.15);"></div>
+        <a href="javascript:void(0)" onclick="openModal('Quick Start')" style="color: var(--accent-gold); text-decoration: none; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;">Start Infinite Quote</a>
+    </div>
 
-                <label for="m_req">Requirement Details</label>
-                <textarea id="m_req" class="input-field" rows="3" placeholder="e.g. Need 500 Custom Gift Boxes and Letterheads..." required></textarea>
-
-                <label for="m_date">Expected Timeline</label>
-                <input type="date" id="m_date" class="input-field" required>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px;">
-                    Send Inquiry to WhatsApp <i class="ph ph-arrow-right"></i>
-                </button>
+    <!-- Global Light Modal -->
+    <div class="modal-overlay" id="globalModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(16px); z-index: 9999; display: none; justify-content: center; align-items: center;">
+        <div class="modal-obsidian" style="width: 90%; max-width: 500px; padding: 60px; border-radius: 40px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+                <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-pure);">The Project Forge</h2>
+                <button onclick="closeModal()" style="background: none; border: none; color: var(--text-pure); font-size: 2rem; cursor: pointer; opacity: 0.4;"><i class="ph ph-x"></i></button>
+            </div>
+            <form onsubmit="window.submitQuote(event)">
+                <input type="hidden" id="q_product" value="Modal Inquiry">
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Full Identity</label>
+                    <input type="text" id="q_name_modal" style="width: 100%; padding: 18px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-glass); border-radius: 15px; color: var(--text-pure); font-family: var(--font-body);" placeholder="Firm or Client Name" required>
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Direct Contact</label>
+                    <input type="text" id="q_contact_modal" style="width: 100%; padding: 18px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-glass); border-radius: 15px; color: var(--text-pure); font-family: var(--font-body);" placeholder="WhatsApp Phone" required>
+                </div>
+                <div style="margin-bottom: 40px;">
+                    <label style="display: block; font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Brief</label>
+                    <textarea id="q_req_modal" style="width: 100%; padding: 18px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-glass); border-radius: 15px; color: var(--text-pure); font-family: var(--font-body);" rows="4" placeholder="Materials, Volume, Timelines..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; padding: 25px; border-radius: 20px; font-size: 1rem;">Launch Project Forge</button>
             </form>
         </div>
     </div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"  id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Page Transition Curtain -->
+    <div class="page-curtain" id="pageCurtain"></div>
 
     <script>
-        // Modal Logic
-        function openModal() {
-            document.getElementById('globalModal').classList.add('active');
+        /* ──────────────────────────────────────
+           MODAL
+        ────────────────────────────────────── */
+        function openModal(topic = "General Inquiry") {
+            document.getElementById('globalModal').style.display = 'flex';
         }
         function closeModal() {
-            document.getElementById('globalModal').classList.remove('active');
-        }
-        function submitGlobalModal(e) {
-            e.preventDefault();
-            const name = document.getElementById('m_name').value;
-            const req = document.getElementById('m_req').value;
-            const date = document.getElementById('m_date').value;
-
-            const waNumber = "917982060969";
-            const text = `*GENERAL ENTERPRISE INQUIRY* %0A%0A` +
-                         `*Contact/Company:* ${name} %0A` +
-                         `*Requirement Details:* ${req} %0A` +
-                         `*Expected Timeline:* ${date} %0A%0A` +
-                         `*Initiated via Global Desktop Navigation*`;
-
-            window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
-            closeModal();
+            document.getElementById('globalModal').style.display = 'none';
         }
 
-        // Mobile Menu Logic
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            const icon = document.querySelector('.hamburger i');
-            nav.classList.toggle('open');
-            
-            if (nav.classList.contains('open')) {
-                icon.classList.remove('ph-list');
-                icon.classList.add('ph-x');
-            } else {
-                icon.classList.remove('ph-x');
-                icon.classList.add('ph-list');
-            }
+        /* ──────────────────────────────────────
+           CUSTOM CURSOR
+        ────────────────────────────────────── */
+        const cursorDot  = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
+        let rafCursor;
+
+        document.addEventListener('mousemove', (e) => {
+            dotX = e.clientX; dotY = e.clientY;
+            cursorDot.style.left = dotX + 'px';
+            cursorDot.style.top  = dotY + 'px';
+            if (!rafCursor) rafCursor = requestAnimationFrame(animRing);
+        });
+        function animRing() {
+            ringX += (dotX - ringX) * 0.14;
+            ringY += (dotY - ringY) * 0.14;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top  = ringY + 'px';
+            rafCursor = requestAnimationFrame(animRing);
         }
+        document.addEventListener('mouseenter', () => {
+            document.querySelectorAll('a, button, .btn, .bento-item').forEach(el => {
+                el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+            });
+        });
+        document.addEventListener('mousedown', () => cursorRing.classList.add('clicking'));
+        document.addEventListener('mouseup',   () => cursorRing.classList.remove('clicking'));
 
-        // Intelligent Loader Logic based on Navigation API
-        window.addEventListener('DOMContentLoaded', () => {
-            const loader = document.getElementById('printing-loader');
-            
-            // Check if this is a fresh open or a refresh (not a link click across the local site)
-            const navEntries = performance.getEntriesByType("navigation");
-            let shouldShowLoader = true;
-            
-            if (navEntries.length > 0) {
-                const navType = navEntries[0].type;
-                // If it's pure navigation via clicking a link and arriving from an internal page, hide loader
-                if (navType === 'navigate' && document.referrer.includes(window.location.hostname)) {
-                    shouldShowLoader = false;
-                }
-                // If type is 'back_forward', hide loader
-                if (navType === 'back_forward') {
-                    shouldShowLoader = false;
-                }
-            }
-
-            if (shouldShowLoader) {
-                // Show the loader and let CSS animation play
-                loader.classList.remove('js-hide');
-                
-                // Hide loader after animation completes (3 seconds total roughly)
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                    setTimeout(() => loader.style.display = 'none', 1000); // Fully remove from view flow after fade out
-                    reveal(); // Trigger initial reveals
-                }, 3200);
-            } else {
-                // Don't show loader at all
-                setTimeout(() => reveal(), 100); 
-            }
+        /* ──────────────────────────────────────
+           BUTTON RIPPLE
+        ────────────────────────────────────── */
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const r = document.createElement('span');
+                r.classList.add('btn-ripple');
+                r.style.left = e.offsetX + 'px';
+                r.style.top  = e.offsetY + 'px';
+                this.appendChild(r);
+                setTimeout(() => r.remove(), 750);
+            });
         });
 
-        // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        /* ──────────────────────────────────────
+           MAGNETIC BUTTONS
+        ────────────────────────────────────── */
+        document.querySelectorAll('.btn-gold, .btn-outline').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width  / 2) * 0.35;
+                const y = (e.clientY - rect.top  - rect.height / 2) * 0.35;
+                this.style.transform = `translate(${x}px, ${y}px) translateY(-5px)`;
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+
+        /* ──────────────────────────────────────
+           3D HERO CARD — TILT + AUTO FLOAT
+        ────────────────────────────────────── */
+        const masterpiece = document.querySelector('.masterpiece-3d');
+        if (masterpiece) {
+            let floating = true;
+            masterpiece.classList.add('auto-float');
+
+            document.addEventListener('mousemove', (e) => {
+                if (!floating) {
+                    const x = (window.innerWidth  / 2 - e.clientX) / 22;
+                    const y = (window.innerHeight / 2 - e.clientY) / 22;
+                    masterpiece.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
                 }
-            }
+            });
+            masterpiece.addEventListener('mouseenter', () => {
+                floating = false;
+                masterpiece.classList.remove('auto-float');
+                masterpiece.style.transition = 'transform 0.15s ease';
+            });
+            masterpiece.addEventListener('mouseleave', () => {
+                floating = true;
+                masterpiece.style.transform = '';
+                setTimeout(() => {
+                    masterpiece.style.transition = '';
+                    masterpiece.classList.add('auto-float');
+                }, 200);
+            });
         }
-        window.addEventListener("scroll", reveal);
+
+        /* ──────────────────────────────────────
+           INTERSECTION OBSERVER — REVEALS
+        ────────────────────────────────────── */
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('.reveal, .mask-reveal').forEach(el => revealObs.observe(el));
+
+        // Force-activate elements already in viewport on load (fixes blank catalog bug)
+        function activateVisibleReveals() {
+            document.querySelectorAll('.reveal, .mask-reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight + 100 && rect.bottom > -100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        // Run immediately and again after load
+        activateVisibleReveals();
+        window.addEventListener('load', activateVisibleReveals);
+        setTimeout(activateVisibleReveals, 300);
+        setTimeout(activateVisibleReveals, 800);
+
+        /* ──────────────────────────────────────
+           STAGGERED BENTO REVEAL
+        ────────────────────────────────────── */
+        const bentoItems = document.querySelectorAll('.bento-item');
+        bentoItems.forEach((el, i) => {
+            el.classList.add('pre-reveal');
+            el.style.transitionDelay = (i * 0.07) + 's';
+        });
+        const bentoObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    bentoObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        bentoItems.forEach(el => bentoObs.observe(el));
+
+        /* ──────────────────────────────────────
+           STAT BLOCK BOUNCE-IN (stagger)
+        ────────────────────────────────────── */
+        const statBlocks = document.querySelectorAll('.stat-block');
+        const statObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    statObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        statBlocks.forEach((el, i) => {
+            el.style.transitionDelay = (i * 0.15) + 's';
+            statObs.observe(el);
+        });
+
+        /* ──────────────────────────────────────
+           PAGE TRANSITION CURTAIN
+        ────────────────────────────────────── */
+        const curtain = document.getElementById('pageCurtain');
+        document.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('javascript') || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.href;
+                curtain.classList.add('enter');
+                curtain.classList.remove('exit');
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 500);
+            });
+        });
+        window.addEventListener('pageshow', () => {
+            if (curtain.classList.contains('enter')) {
+                curtain.classList.remove('enter');
+                curtain.classList.add('exit');
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll(".product-card"), {
+                    max: 6,
+                    speed: 600,
+                    glare: true,
+                    "max-glare": 0.1,
+                    scale: 1.01,
+                    easing: "cubic-bezier(.16,1,.3,1)"
+                });
+            }
+        });
     </script>
 </body>
 </html>

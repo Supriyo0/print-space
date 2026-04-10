@@ -3,184 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die-Cut Vinyl Stickers | Print Space India - Luxury Printing</title>
-    <meta name="description" content="Print Space India (Kolkata & New Delhi) - Premium Offset, Digital, and Personalised printing services since 2002. Owned by M. Rahman.">
+    <title>Stickers | Print Space India - Artisan Light Forge</title>
+    <meta name="description" content="Kolkata & New Delhi's premier hub for industrial-grade print engineering and luxury branding since 2002.">
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="styles/main.css">
-    <style>
-        /* Ensures the printing-loader is hidden if JS disabled or not needed */
-        .js-hide { display: none !important; }
-    </style>
-</head>
-<body>
     
-    <!-- Inkjet Laser Animation Loader (Only shown on initial open or refresh) -->
-    <div id="printing-loader" class="js-hide">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-            <div class="cmyk-cartridges">
-                <div class="cartridge"></div>
-                <div class="cartridge"></div>
-                <div class="cartridge"></div>
-                <div class="cartridge" style="background:var(--accent-gold); border:none;"></div>
+    <!-- Firebase SDK (Modular) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD-n72DNWoF7_eLlMSaSyY25fOlMvwkkrg",
+        authDomain: "print-space-india.firebaseapp.com",
+        projectId: "print-space-india",
+        storageBucket: "print-space-india.firebasestorage.app",
+        messagingSenderId: "506473314185",
+        appId: "1:506473314185:web:04e0b7bfc967b714395358"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      window.submitQuote = async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="ph ph-spinner-gap ph-spin"></i> CALIBRATING...';
+        btn.disabled = true;
+
+        const formData = {
+          product: document.getElementById('q_product') ? document.getElementById('q_product').value : 'General Inquiry',
+          name: document.getElementById('q_name').value,
+          contact: document.getElementById('q_contact').value,
+          requirement: document.getElementById('q_req') ? document.getElementById('q_req').value : 'Forge Request',
+          timestamp: serverTimestamp()
+        };
+
+        try {
+          await addDoc(collection(db, "quotes"), formData);
+          btn.innerHTML = '<i class="ph ph-check"></i> FORGED SUCCESSFULLY';
+          setTimeout(() => { 
+              closeModal();
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+              e.target.reset();
+          }, 2000);
+          
+          window.open(`https://wa.me/917982060969?text=Hi, I need an elite quote for ${formData.product}`, '_blank');
+        } catch (error) {
+          console.error("Forge Error:", error);
+          btn.innerHTML = 'RETRYING...';
+          setTimeout(() => window.open(`https://wa.me/917982060969?text=Hi, I need an elite quote for ${formData.product}`, '_blank'), 1000);
+        }
+      };
+    </script>
+</head>
+<body class="obsidian-theme">
+
+    <!-- ═══════════════════════════════════════════
+         ARTISAN LIGHT PRELOADER
+    ════════════════════════════════════════════ -->
+    <div id="ps-loader">
+        <style>
+            #ps-loader {
+                position: fixed; inset: 0; z-index: 99999;
+                background: #f9f7f4;
+                display: flex; flex-direction: column;
+                justify-content: center; align-items: center;
+                transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+                            opacity 0.6s ease;
+                overflow: hidden;
+            }
+            #ps-loader.hide {
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            /* Grain overlay same as body */
+            #ps-loader::before {
+                content: '';
+                position: absolute; inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+                opacity: 0.025; pointer-events: none;
+            }
+
+            /* Warm glow blob */
+            #ps-loader::after {
+                content: '';
+                position: absolute;
+                width: 700px; height: 700px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(232,201,106,0.35) 0%, transparent 70%);
+                top: -20%; right: -15%;
+                animation: loaderBlob 6s ease-in-out infinite alternate;
+                pointer-events: none;
+            }
+            @keyframes loaderBlob {
+                to { transform: translate(-60px, 80px) scale(1.12); }
+            }
+
+            /* ── Brand block ── */
+            .ldr-brand {
+                position: relative; z-index: 2;
+                text-align: center; margin-bottom: 60px;
+            }
+            .ldr-brand-name {
+                font-family: 'Outfit', sans-serif;
+                font-size: clamp(1.8rem, 5vw, 3rem);
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                color: #1c1917;
+                line-height: 1;
+                margin-bottom: 6px;
+            }
+            .ldr-brand-name span { color: #b8960c; }
+            .ldr-tagline {
+                font-family: 'Playfair Display', serif;
+                font-style: italic;
+                font-size: 0.95rem;
+                color: #78716c;
+                letter-spacing: 0.05em;
+            }
+
+            /* ── Scan-line printer track ── */
+            .ldr-track {
+                position: relative; z-index: 2;
+                width: min(480px, 86vw);
+                margin-bottom: 28px;
+            }
+            /* Paper strip */
+            .ldr-paper {
+                width: 100%;
+                height: 64px;
+                background: #fff;
+                border-radius: 10px;
+                border: 1px solid rgba(0,0,0,0.08);
+                box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+                overflow: hidden;
+                position: relative;
+            }
+            /* Ink lines that appear on the paper */
+            .ldr-ink-line {
+                position: absolute; left: 0;
+                width: 0%; height: 100%;
+                background: linear-gradient(90deg, #f9f7f4 0%, #ede8df 100%);
+                transition: width 0.05s linear;
+            }
+            /* Gold print head */
+            .ldr-head {
+                position: absolute;
+                top: 0; left: 0;
+                width: 4px; height: 100%;
+                background: #b8960c;
+                border-radius: 2px;
+                box-shadow: 0 0 16px rgba(184,150,12,0.6), 0 0 40px rgba(184,150,12,0.25);
+                transition: left 0.05s linear;
+            }
+            /* Tiny dot spray from head */
+            .ldr-head::after {
+                content: '';
+                position: absolute;
+                top: 50%; left: 8px;
+                transform: translateY(-50%);
+                width: 6px; height: 6px;
+                border-radius: 50%;
+                background: #b8960c;
+                opacity: 0.5;
+                animation: dotPulse 0.4s ease-in-out infinite alternate;
+            }
+            @keyframes dotPulse {
+                to { opacity: 0.1; transform: translateY(-50%) scale(0.4); }
+            }
+
+            /* ── Progress bar below ── */
+            .ldr-bar-wrap {
+                position: relative; z-index: 2;
+                width: min(480px, 86vw);
+                display: flex; justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .ldr-status {
+                font-family: 'Outfit', sans-serif;
+                font-size: 0.68rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.22em;
+                color: #78716c;
+            }
+            .ldr-pct {
+                font-family: 'Outfit', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 900;
+                color: #b8960c;
+                letter-spacing: 0.05em;
+            }
+
+            /* ── Thin gold progress line ── */
+            .ldr-progress-rail {
+                position: relative; z-index: 2;
+                width: min(480px, 86vw);
+                height: 2px;
+                background: rgba(0,0,0,0.07);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            .ldr-progress-fill {
+                height: 100%;
+                width: 0%;
+                background: linear-gradient(90deg, #b8960c, #e8c96a);
+                border-radius: 2px;
+                transition: width 0.08s linear;
+            }
+        </style>
+
+        <div class="ldr-brand">
+            <div class="ldr-brand-name">PRINT SPACE<span> INDIA</span></div>
+            <div class="ldr-tagline">Calibrating the Artisan Forge…</div>
+        </div>
+
+        <div class="ldr-track">
+            <div class="ldr-paper">
+                <div class="ldr-ink-line" id="ldrInk"></div>
+                <div class="ldr-head"    id="ldrHead"></div>
             </div>
-            <div class="inkjet-container">
-                <div class="inkjet-base">PRINT SPACE INDIA</div>
-                <div class="inkjet-fill">PRINT SPACE INDIA</div>
-            </div>
-            <div style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.35rem; color: var(--text-muted); margin-top: 15px;">INITIALIZING PRESS...</div>
+        </div>
+
+        <div class="ldr-bar-wrap">
+            <div class="ldr-status" id="ldrStatus">Initializing</div>
+            <div class="ldr-pct"    id="ldrPct">0%</div>
+        </div>
+        <div class="ldr-progress-rail">
+            <div class="ldr-progress-fill" id="ldrFill"></div>
         </div>
     </div>
 
-    <!-- Elite Sticky Header - Midnight Gold -->
+    <script>
+    (function () {
+        var phases = [
+            { pct: 18,  label: 'Loading Assets'       },
+            { pct: 40,  label: 'Mixing Ink'            },
+            { pct: 62,  label: 'Aligning Print Head'   },
+            { pct: 80,  label: 'Calibrating Colors'    },
+            { pct: 95,  label: 'Final Inspection'      },
+            { pct: 100, label: 'Press Ready'           }
+        ];
+
+        var ink    = document.getElementById('ldrInk');
+        var head   = document.getElementById('ldrHead');
+        var status = document.getElementById('ldrStatus');
+        var pct    = document.getElementById('ldrPct');
+        var fill   = document.getElementById('ldrFill');
+        var loader = document.getElementById('ps-loader');
+
+        var current = 0;
+
+        function setProgress(p, label) {
+            ink.style.width  = p + '%';
+            head.style.left  = p + '%';
+            fill.style.width = p + '%';
+            pct.textContent  = p + '%';
+            if (label) status.textContent = label;
+        }
+
+        function runPhases(i) {
+            if (i >= phases.length) {
+                // Done — dismiss
+                setTimeout(function () {
+                    loader.classList.add('hide');
+                    setTimeout(function () {
+                        loader.style.display = 'none';
+                    }, 950);
+                }, 320);
+                return;
+            }
+            var phase = phases[i];
+            var step  = (phase.pct - current) / 18;
+            var count = 0;
+            status.textContent = phase.label;
+            var iv = setInterval(function () {
+                count++;
+                current = Math.min(current + step, phase.pct);
+                setProgress(Math.round(current), null);
+                if (count >= 18) {
+                    clearInterval(iv);
+                    current = phase.pct;
+                    setProgress(current, null);
+                    setTimeout(function () { runPhases(i + 1); }, 180);
+                }
+            }, 28);
+        }
+
+        // Kick off after tiny delay so fonts load
+        setTimeout(function () { runPhases(0); }, 150);
+    })();
+    </script>
+    
+    <!-- Luminous Warm Background -->
+    <div class="obsidian-fluid">
+        <div class="smoke-blob smoke-gold"></div>
+        <div class="smoke-blob smoke-mint"></div>
+    </div>
+
+    <!-- Master Glass Navbar -->
     <nav>
         <a href="index.html" class="brand">
-            <i class="ph-fill ph-check-seal"></i>
-            PRINT SPACE<span style="font-weight: 400; opacity: 0.5;"> INDIA</span>
+            <i class="ph-fill ph-printer" style="color: var(--accent-gold); font-size: 2.2rem;"></i>
+            PRINT SPACE<span> INDIA</span>
         </a>
-        <button class="hamburger" onclick="toggleMenu()"><i class="ph ph-list"></i></button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="catalog.html">Master Catalog</a>
-            <a href="commercial.html">Commercial</a>
-            <a href="photo.html">Premium Photo</a>
-            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="padding: 12px 24px;">Deploy Request</a>
+        <div class="nav-links">
+            <a href="index.html">Master Home</a>
+            <a href="catalog.html">Elite Catalog</a>
+            <a href="javascript:void(0)" onclick="openModal('Forge Inquiry')" class="btn btn-gold">Start Forge</a>
         </div>
     </nav>
 
     <main>
-        <div class="product-hero reveal">
-    <div>
-        <a href="commercial.html" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 30px; font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1rem; text-transform: uppercase; transition: var(--transition);">
-            <i class="ph ph-arrow-left" style="color: var(--accent-gold);"></i> RETURN TO COMMERCIAL
-        </a>
-        <h1 style="font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; color: var(--text-main);">Die-Cut Vinyl Stickers</h1>
-        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; line-height: 1.6;">Industrial-grade weatherproof stickers for heavy branding.</p>
+        <div class="container reveal" style="padding: 60px 0;">
 
-        <div class="p-image-panel">
-            <img src="images/stickers_mockup.png" alt="Die-Cut Vinyl Stickers" onerror="this.src='images/commercial_printing_showcase.png'">
-        </div>
+    <!-- Premium Breadcrumbs -->
+    <nav style="margin-bottom: 50px; display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#b8960c'" onmouseout="this.style.color='#78716c'">Home</a>
+        <span style="color: rgba(0,0,0,0.2); font-size: 1rem;">›</span>
+        <a href="stickers.html" style="color: var(--text-muted); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#b8960c'" onmouseout="this.style.color='#78716c'">LABELS & STICKERS</a>
+        <span style="color: rgba(0,0,0,0.2); font-size: 1rem;">›</span>
+        <span style="color: #b8960c; font-weight: 900;">Stickers</span>
+    </nav>
 
-        <div style="margin-top: 60px;">
-            <h3 style="font-size: 2.2rem; margin-bottom: 25px; color: var(--text-main);">Technical Mastery</h3>
-            <table class="specs-table">
-                
-        <tr>
-            <td class="s-label">material</td>
-            <td class="s-value">Vinyl/PVC</td>
-        </tr>
-    
-        <tr>
-            <td class="s-label">finish</td>
-            <td class="s-value">Gloss/Matte</td>
-        </tr>
-    
-        <tr>
-            <td class="s-label">adhesive</td>
-            <td class="s-value">High-tack</td>
-        </tr>
-    
-        <tr>
-            <td class="s-label">minOrder</td>
-            <td class="s-value">500 Units</td>
-        </tr>
-    
-            </table>
-        </div>
-    </div>
+    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 70px; align-items: flex-start;">
 
-    <!-- Order Sidebar - Midnight -->
-    <div class="order-sidebar">
-        <h2 style="margin-bottom: 10px; font-size: 2rem; color: var(--text-main);">Configure Order</h2>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px;">Select your elite variant below to initiate pricing.</p>
-        
-        <h4 style="margin-bottom: 15px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">1. Select Quality Tier</h4>
-        <div class="v-grid">
-            
-        <div class="v-chip active" data-name="Standard Paper Labels" data-price="₹349">
-            <span class="v-title">Standard Paper Labels</span>
-            <span class="v-price">₹349</span>
+        <!-- LEFT COLUMN: Image + Info -->
+        <div>
+            <!-- 3D Floating Product Image -->
+            <div style="perspective: 1800px; margin-bottom: 50px;" id="prodImgWrap">
+                <div id="prodImg3d" style="border-radius: 28px; overflow: hidden; background: #f0ede8; border: 10px solid #fff; box-shadow: 0 40px 90px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06); transform: rotateY(-6deg) rotateX(3deg); transition: transform 0.12s ease;">
+                    <img src="https://kaagazprints.com/image/home-page-image/sticker.webp" alt="Stickers" style="width: 100%; height: 500px; object-fit: cover; display: block;">
+                </div>
+            </div>
+
+            <!-- Product Title & Desc -->
+            <div style="margin-bottom: 10px;">
+                <div class="s-label">Artisan Product</div>
+            </div>
+            <h1 style="font-family: var(--font-heading); font-size: clamp(2.2rem,4vw,3.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--text-pure); margin-bottom: 22px;">Stickers</h1>
+            <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 50px; line-height: 1.85; font-weight: 400; max-width: 580px;">High-grade industrial masterpiece crafted specifically for Stickers requirements.</p>
+
+            <!-- Specs Grid -->
+            <div style="margin-bottom: 50px;">
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+                    <i class="ph-fill ph-gear-six" style="font-size: 1.3rem; color: #b8960c;"></i>
+                    <h3 style="font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-pure);">Build Specifications</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    
+        <div style="background: rgba(0,0,0,0.025); border: 1px solid rgba(0,0,0,0.07); border-radius: 14px; padding: 18px 20px;">
+            <div style="font-size: 0.62rem; color: #b8960c; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; margin-bottom: 6px;">Grade</div>
+            <div style="font-size: 1rem; color: #1c1917; font-weight: 700;">A+</div>
         </div>
     
-        <div class="v-chip " data-name="Weatherproof White Vinyl" data-price="₹899">
-            <span class="v-title">Weatherproof White Vinyl</span>
-            <span class="v-price">₹899</span>
+        <div style="background: rgba(0,0,0,0.025); border: 1px solid rgba(0,0,0,0.07); border-radius: 14px; padding: 18px 20px;">
+            <div style="font-size: 0.62rem; color: #b8960c; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; margin-bottom: 6px;">Tolerance</div>
+            <div style="font-size: 1rem; color: #1c1917; font-weight: 700;">Zero</div>
         </div>
     
-        <div class="v-chip " data-name="Prismatic/Foil Vinyl" data-price="₹1899">
-            <span class="v-title">Prismatic/Foil Vinyl</span>
-            <span class="v-price">₹1899</span>
+        <div style="background: rgba(0,0,0,0.025); border: 1px solid rgba(0,0,0,0.07); border-radius: 14px; padding: 18px 20px;">
+            <div style="font-size: 0.62rem; color: #b8960c; text-transform: uppercase; font-weight: 900; letter-spacing: 0.2em; margin-bottom: 6px;">Lifespan</div>
+            <div style="font-size: 1rem; color: #1c1917; font-weight: 700;">Extended</div>
         </div>
     
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div style="border: 1px solid rgba(0,0,0,0.08); border-radius: 24px; overflow: hidden;">
+                <div style="padding: 30px 36px; border-bottom: 1px solid rgba(0,0,0,0.06); background: #fff;">
+                    <h3 style="font-size: 0.9rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-pure);">Common Questions</h3>
+                </div>
+                <div class="faq-container" style="background: #fff;">
+                    <div class="faq-item" onclick="toggleFaq(this)" style="padding: 24px 36px; border-bottom: 1px solid rgba(0,0,0,0.06); cursor: pointer;">
+                        <div class="faq-header" style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; color: var(--text-pure);">What is the minimum volume for enterprise orders? <i class="ph ph-plus" style="color: #b8960c; font-size: 1.1rem; flex-shrink:0;"></i></div>
+                        <div class="faq-body" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 14px; display: none;">Minimum order volume depends on the industrial line. Typically, stationery starts at 500 units, while luxury packaging starts at 100–200.</div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)" style="padding: 24px 36px; cursor: pointer;">
+                        <div class="faq-header" style="display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; color: var(--text-pure);">Can I upload my own artwork? <i class="ph ph-plus" style="color: #b8960c; font-size: 1.1rem; flex-shrink:0;"></i></div>
+                        <div class="faq-body" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 14px; display: none;">Yes. Once you initialize an inquiry, our technical team will request your high-res PDF or AI vector files for colour calibration.</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <form id="orderForm" onsubmit="sendToWhatsApp(event)" style="margin-top: 50px;">
-            <input type="hidden" id="p_name" value="Die-Cut Vinyl Stickers">
-            <input type="hidden" id="p_variant" value="">
-            
-            <h4 style="margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 0.1rem; color: var(--accent-gold); text-transform: uppercase;">2. Fulfillment Details</h4>
-            
-            <label for="name">Point of Contact</label>
-            <input type="text" id="name" class="input-field" placeholder="Full Name" required>
+        <!-- RIGHT COLUMN: Sticky Quote Sidebar -->
+        <div style="position: sticky; top: 105px;">
 
-            <label for="quantity">Bulk Quantity</label>
-            <input type="number" id="quantity" class="input-field" placeholder="e.g. 1000" required min="1">
+            <!-- Pricing badge -->
+            <div style="background: linear-gradient(135deg, #b8960c, #e8c96a); border-radius: 20px; padding: 28px 32px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.75); margin-bottom: 6px;">Starting From</div>
+                    <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #fff; line-height: 1;">Custom</div>
+                    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 4px;">per unit · MOQ applies</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); border-radius: 14px; padding: 14px;">
+                    <i class="ph-fill ph-seal-check" style="font-size: 2rem; color: #fff;"></i>
+                </div>
+            </div>
 
-            <label for="delivery_date">Required Delivery Date</label>
-            <input type="date" id="delivery_date" class="input-field" required>
+            <!-- Config card -->
+            <div style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 24px; padding: 40px; box-shadow: 0 8px 40px rgba(0,0,0,0.07);">
 
-            <label for="address">Kolkata / Delhi Address</label>
-            <textarea id="address" class="input-field" rows="3" placeholder="Enter delivery address and any special material requests..." required></textarea>
+                <!-- SKU Tag -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+                    <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--text-pure); margin: 0;">Configure Order</h3>
+                    <div style="background: rgba(184,150,12,0.1); border: 1px solid rgba(184,150,12,0.25); padding: 5px 12px; border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #b8960c; text-transform: uppercase; letter-spacing: 0.12em;">SKU: PS-STICKERS</div>
+                </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px; padding: 22px;">
-                Request Elite Quote <i class="ph ph-arrow-right"></i>
-            </button>
-        </form>
+                <form onsubmit="window.submitQuote(event)">
+                    <input type="hidden" id="q_product" value="Stickers">
+
+                    <!-- Variants -->
+                    <div style="font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: #b8960c; margin-bottom: 14px;">Select Pack</div>
+                    <div style="display: grid; gap: 10px; margin-bottom: 32px;">
+                        
+        <div class="v-chip active" style="
+            background: rgba(184,150,12,0.08);
+            padding: 16px 20px; border-radius: 14px;
+            border: 1.5px solid #b8960c;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: all 0.3s;
+        ">
+            <span style="font-weight: 800; font-size: 0.9rem; color: #1c1917;">Standard Base</span>
+            <span style="color: #b8960c; font-weight: 900; font-size: 1.05rem;">Custom<small style="font-size:0.65rem; color:#78716c; font-weight:600;"> /unit</small></span>
+        </div>
+    
+                    </div>
+
+                    <!-- Divider -->
+                    <div style="border-top: 1px solid rgba(0,0,0,0.07); margin-bottom: 26px;"></div>
+
+                    <!-- Name -->
+                    <div style="margin-bottom: 18px;">
+                        <label style="display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 8px;">Your Name / Firm</label>
+                        <input type="text" id="q_name" placeholder="Full Contact Name" required style="width: 100%; padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-pure); background: #faf9f7; outline: none; transition: border-color 0.3s, box-shadow 0.3s;" onfocus="this.style.borderColor='#b8960c';this.style.boxShadow='0 0 0 3px rgba(184,150,12,0.12)'" onblur="this.style.borderColor='rgba(0,0,0,0.1)';this.style.boxShadow='none'">
+                    </div>
+
+                    <!-- Phone -->
+                    <div style="margin-bottom: 18px;">
+                        <label style="display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 8px;">WhatsApp Number</label>
+                        <input type="text" id="q_contact" placeholder="+91 98765 43210" required style="width: 100%; padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-pure); background: #faf9f7; outline: none; transition: border-color 0.3s, box-shadow 0.3s;" onfocus="this.style.borderColor='#b8960c';this.style.boxShadow='0 0 0 3px rgba(184,150,12,0.12)'" onblur="this.style.borderColor='rgba(0,0,0,0.1)';this.style.boxShadow='none'">
+                    </div>
+
+                    <!-- Brief -->
+                    <div style="margin-bottom: 28px;">
+                        <label style="display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 8px;">Project Brief</label>
+                        <textarea id="q_req" rows="4" placeholder="Quantity, finish, delivery timeline..." required style="width: 100%; padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-pure); background: #faf9f7; outline: none; resize: vertical; transition: border-color 0.3s, box-shadow 0.3s;" onfocus="this.style.borderColor='#b8960c';this.style.boxShadow='0 0 0 3px rgba(184,150,12,0.12)'" onblur="this.style.borderColor='rgba(0,0,0,0.1)';this.style.boxShadow='none'"></textarea>
+                    </div>
+
+                    <!-- CTA -->
+                    <button type="submit" class="btn btn-gold" style="width: 100%; padding: 20px; border-radius: 16px; font-size: 0.95rem; justify-content: center; box-shadow: 0 16px 40px rgba(184,150,12,0.3);">
+                        <i class="ph ph-paper-plane-tilt"></i> Launch Forge Inquiry
+                    </button>
+
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; color: var(--text-muted); font-size: 0.7rem; font-weight: 700;">
+                        <i class="ph ph-whatsapp-logo" style="color: #25d366; font-size: 1.1rem;"></i>
+                        Redirects to WhatsApp after submission
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container reveal" style="padding: 100px 0; border-top: 1px solid var(--border-light);">
-    <h3 style="font-size: 2.8rem; margin-bottom: 50px; text-align: center; color: var(--text-main);">Related Masterpieces</h3>
-    <div class="grid">
+<!-- Related Products -->
+<div class="container reveal" style="padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.07);">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <div class="s-label" style="justify-content: center;">More from this line</div>
+        <h3 style="font-size: 2rem; font-weight: 900; color: var(--text-pure);">Related Products</h3>
+    </div>
+    <div class="prod-grid">
         
-        <a href="business-cards.html" class="card product-card reveal">
-            <div class="p-card-image">
-                <img src="images/premium_business_card_detail.png" alt="Premium Business Cards">
+        <a href="vinyl-stickers.html" class="product-card reveal bento-large" data-cat="stickers" style="
+            background: linear-gradient(145deg, #ffffff, #fdfbf7);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 28px;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,0.8);
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s, border-color 0.6s;
+        "
+        onmouseover="this.style.transform='translateY(-12px) scale(1.02)';this.style.boxShadow='0 30px 60px rgba(0,0,0,0.08), 0 0 0 1.5px #b8960c, 0 10px 30px rgba(184,150,12,0.15)';this.style.borderColor='#b8960c'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,0.8)';this.style.borderColor='rgba(0,0,0,0.05)'">
+            <div style="position: relative; height: 260px; overflow: hidden; background: #e8e4db;">
+                <img src="https://kaagazprints.com/image/home-page-image/sticker.webp" alt="Industrial Vinyl Stickers" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.95) contrast(1.05); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="position:absolute; top:18px; left:18px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border: 1px solid rgba(0,0,0,0.05); padding: 6px 14px; border-radius:100px; font-size:0.6rem; font-weight:900; color:#b8960c; text-transform:uppercase; letter-spacing:0.2em; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">Labels & Stickers</div>
+                <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.4)); pointer-events:none;"></div>
             </div>
-            <div class="p-card-info">
-                <h3>Premium Business Cards</h3>
-                <p>Precision-cut luxury cardstocks with tactile UV or metallic foil finishes.</p>
-                <div class="p-card-bottom">
-                    <span class="p-card-price">₹499</span>
-                    <button class="btn btn-primary p-card-btn">Order Now</button>
+            <div style="padding: 32px; flex: 1; display: flex; flex-direction: column; position: relative;">
+                <h3 style="color: #1c1917; margin-bottom: 10px; font-size: 1.3rem; font-weight: 900; line-height: 1.25; letter-spacing: -0.02em;">Industrial Vinyl Stickers</h3>
+                <p style="color: #6b635e; font-size: 0.9rem; margin-bottom: 22px; line-height: 1.6; flex:1; font-weight: 500;">UV-resistant, waterproof die-cut vinyl stickers built to outlast weather, chemicals and time.</p>
+                <div style="margin-bottom: 24px;"><span style="display:inline-block; padding: 4px 10px; background: rgba(184,150,12,0.06); border: 1px solid rgba(184,150,12,0.3); border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #a38200; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; box-shadow: 0 2px 8px rgba(184,150,12,0.05);">Waterproof</span><span style="display:inline-block; padding: 4px 10px; background: rgba(184,150,12,0.06); border: 1px solid rgba(184,150,12,0.3); border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #a38200; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; box-shadow: 0 2px 8px rgba(184,150,12,0.05);">UV Resistant</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 22px;">
+                    <div>
+                        <div style="font-size:0.6rem; color:#8c827a; text-transform:uppercase; letter-spacing:0.2em; font-weight:800; margin-bottom:4px;">Starting Base</div>
+                        <div style="color: #b8960c; font-weight: 900; font-size: 1.3rem; font-family: 'Outfit', sans-serif;">₹3.50<span style="font-size:0.7rem; font-weight:700; color:#8c827a;"> /unit</span></div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1c1917, #2d2a27); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: background 0.3s;" onmouseover="this.style.background='#b8960c'" onmouseout="this.style.background='linear-gradient(135deg, #1c1917, #2d2a27)'">View Project</div>
                 </div>
             </div>
         </a>
     
-        <a href="letterheads.html" class="card product-card reveal">
-            <div class="p-card-image">
-                <img src="images/letterheads_mockup.png" alt="Executive Letterheads">
+        <a href="security-stickers.html" class="product-card reveal bento-standard" data-cat="stickers" style="
+            background: linear-gradient(145deg, #ffffff, #fdfbf7);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 28px;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,0.8);
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s, border-color 0.6s;
+        "
+        onmouseover="this.style.transform='translateY(-12px) scale(1.02)';this.style.boxShadow='0 30px 60px rgba(0,0,0,0.08), 0 0 0 1.5px #b8960c, 0 10px 30px rgba(184,150,12,0.15)';this.style.borderColor='#b8960c'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,0.8)';this.style.borderColor='rgba(0,0,0,0.05)'">
+            <div style="position: relative; height: 260px; overflow: hidden; background: #e8e4db;">
+                <img src="https://kaagazprints.com/image/home-page-image/Security_sticker.webp" alt="Tamper-Evident Security Seals" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.95) contrast(1.05); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="position:absolute; top:18px; left:18px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border: 1px solid rgba(0,0,0,0.05); padding: 6px 14px; border-radius:100px; font-size:0.6rem; font-weight:900; color:#b8960c; text-transform:uppercase; letter-spacing:0.2em; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">Labels & Stickers</div>
+                <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.4)); pointer-events:none;"></div>
             </div>
-            <div class="p-card-info">
-                <h3>Executive Letterheads</h3>
-                <p>Standard commercial stationery printed on elite 120gsm bond paper.</p>
-                <div class="p-card-bottom">
-                    <span class="p-card-price">₹799</span>
-                    <button class="btn btn-primary p-card-btn">Order Now</button>
+            <div style="padding: 32px; flex: 1; display: flex; flex-direction: column; position: relative;">
+                <h3 style="color: #1c1917; margin-bottom: 10px; font-size: 1.3rem; font-weight: 900; line-height: 1.25; letter-spacing: -0.02em;">Tamper-Evident Security Seals</h3>
+                <p style="color: #6b635e; font-size: 0.9rem; margin-bottom: 22px; line-height: 1.6; flex:1; font-weight: 500;">Void-pattern egg-shell stickers that permanently reveal tampering — essential for warranty protection.</p>
+                <div style="margin-bottom: 24px;"><span style="display:inline-block; padding: 4px 10px; background: rgba(184,150,12,0.06); border: 1px solid rgba(184,150,12,0.3); border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #a38200; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; box-shadow: 0 2px 8px rgba(184,150,12,0.05);">Void On Removal</span><span style="display:inline-block; padding: 4px 10px; background: rgba(184,150,12,0.06); border: 1px solid rgba(184,150,12,0.3); border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #a38200; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; box-shadow: 0 2px 8px rgba(184,150,12,0.05);">Egg-Shell Destructible</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 22px;">
+                    <div>
+                        <div style="font-size:0.6rem; color:#8c827a; text-transform:uppercase; letter-spacing:0.2em; font-weight:800; margin-bottom:4px;">Starting Base</div>
+                        <div style="color: #b8960c; font-weight: 900; font-size: 1.3rem; font-family: 'Outfit', sans-serif;">₹2.80<span style="font-size:0.7rem; font-weight:700; color:#8c827a;"> /unit</span></div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1c1917, #2d2a27); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: background 0.3s;" onmouseover="this.style.background='#b8960c'" onmouseout="this.style.background='linear-gradient(135deg, #1c1917, #2d2a27)'">View Project</div>
                 </div>
             </div>
         </a>
     
-        <a href="brochures.html" class="card product-card reveal">
-            <div class="p-card-image">
-                <img src="images/brochures_mockup.png" alt="Multi-Fold Brochures">
+        <a href="permanent-stickers.html" class="product-card reveal bento-standard" data-cat="stickers" style="
+            background: linear-gradient(145deg, #ffffff, #fdfbf7);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 28px;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,0.8);
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s, border-color 0.6s;
+        "
+        onmouseover="this.style.transform='translateY(-12px) scale(1.02)';this.style.boxShadow='0 30px 60px rgba(0,0,0,0.08), 0 0 0 1.5px #b8960c, 0 10px 30px rgba(184,150,12,0.15)';this.style.borderColor='#b8960c'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,0.8)';this.style.borderColor='rgba(0,0,0,0.05)'">
+            <div style="position: relative; height: 260px; overflow: hidden; background: #e8e4db;">
+                <img src="https://kaagazprints.com/image/home-page-image/Permanent-Sticker.webp" alt="Permanent Bond Stickers" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.95) contrast(1.05); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="position:absolute; top:18px; left:18px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border: 1px solid rgba(0,0,0,0.05); padding: 6px 14px; border-radius:100px; font-size:0.6rem; font-weight:900; color:#b8960c; text-transform:uppercase; letter-spacing:0.2em; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">Labels & Stickers</div>
+                <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.4)); pointer-events:none;"></div>
             </div>
-            <div class="p-card-info">
-                <h3>Multi-Fold Brochures</h3>
-                <p>Advanced marketing pamphlets for intricate product showcases.</p>
-                <div class="p-card-bottom">
-                    <span class="p-card-price">₹1499</span>
-                    <button class="btn btn-primary p-card-btn">Order Now</button>
+            <div style="padding: 32px; flex: 1; display: flex; flex-direction: column; position: relative;">
+                <h3 style="color: #1c1917; margin-bottom: 10px; font-size: 1.3rem; font-weight: 900; line-height: 1.25; letter-spacing: -0.02em;">Permanent Bond Stickers</h3>
+                <p style="color: #6b635e; font-size: 0.9rem; margin-bottom: 22px; line-height: 1.6; flex:1; font-weight: 500;">Industrial permanent adhesive labels built for high-temperature and chemical-resistant environments.</p>
+                <div style="margin-bottom: 24px;"><span style="display:inline-block; padding: 4px 10px; background: rgba(184,150,12,0.06); border: 1px solid rgba(184,150,12,0.3); border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #a38200; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; box-shadow: 0 2px 8px rgba(184,150,12,0.05);">Permanent Adhesive</span><span style="display:inline-block; padding: 4px 10px; background: rgba(184,150,12,0.06); border: 1px solid rgba(184,150,12,0.3); border-radius: 100px; font-size: 0.6rem; font-weight: 900; color: #a38200; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; box-shadow: 0 2px 8px rgba(184,150,12,0.05);">Heat Resistant</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 22px;">
+                    <div>
+                        <div style="font-size:0.6rem; color:#8c827a; text-transform:uppercase; letter-spacing:0.2em; font-weight:800; margin-bottom:4px;">Starting Base</div>
+                        <div style="color: #b8960c; font-weight: 900; font-size: 1.3rem; font-family: 'Outfit', sans-serif;">₹2.00<span style="font-size:0.7rem; font-weight:700; color:#8c827a;"> /unit</span></div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1c1917, #2d2a27); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: background 0.3s;" onmouseover="this.style.background='#b8960c'" onmouseout="this.style.background='linear-gradient(135deg, #1c1917, #2d2a27)'">View Project</div>
                 </div>
             </div>
         </a>
@@ -189,186 +586,312 @@
 </div>
 
 <script>
-    const variantChips = document.querySelectorAll('.v-chip');
-    const varInput = document.getElementById('p_variant');
-
-    variantChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            variantChips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            varInput.value = chip.dataset.name;
+    // Product image 3D tilt
+    const wrap3d = document.getElementById('prodImgWrap');
+    const img3d  = document.getElementById('prodImg3d');
+    if (wrap3d && img3d) {
+        wrap3d.addEventListener('mousemove', e => {
+            const r = wrap3d.getBoundingClientRect();
+            const x = ((e.clientX - r.left) / r.width  - 0.5) * 14;
+            const y = ((e.clientY - r.top)  / r.height - 0.5) * -10;
+            img3d.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
         });
-    });
+        wrap3d.addEventListener('mouseleave', () => {
+            img3d.style.transform = 'rotateY(-6deg) rotateX(3deg)';
+        });
+    }
 
-    if (variantChips.length > 0) variantChips[0].click();
-
-    function sendToWhatsApp(e) {
-        e.preventDefault();
-        const pName = document.getElementById('p_name').value;
-        const pVar = document.getElementById('p_variant').value;
-        const name = document.getElementById('name').value;
-        const qty = document.getElementById('quantity').value;
-        const date = document.getElementById('delivery_date').value;
-        const address = document.getElementById('address').value;
-
-        const waNumber = "917982060969";
-        const text = `*MIDNIGHT GOLD ENTERPRISE ORDER* %0A%0A` +
-                     `*Product:* ${pName} %0A` + 
-                     `*Variant:* ${pVar} %0A` +
-                     `*Quantity:* ${qty} %0A` +
-                     `*Contact:* ${name} %0A` +
-                     `*Timeline:* ${date} %0A` +
-                     `*Address:* ${address} %0A%0A` +
-                     `*Initiated via Desktop Platform*`;
-
-        window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+    // FAQ accordion
+    function toggleFaq(el) {
+        const body = el.querySelector('.faq-body');
+        const icon = el.querySelector('i');
+        const isOpen = body.style.display === 'block';
+        document.querySelectorAll('.faq-item .faq-body').forEach(b => b.style.display = 'none');
+        document.querySelectorAll('.faq-item i').forEach(i => { i.classList.add('ph-plus'); i.classList.remove('ph-minus'); });
+        if (!isOpen) {
+            body.style.display = 'block';
+            icon.classList.remove('ph-plus');
+            icon.classList.add('ph-minus');
+        }
     }
 </script>
 
     </main>
 
-    <!-- Luxury Footer -->
-    <footer>
-        <div class="f-grid">
+    <!-- Premium Light Footer -->
+    <footer style="background: #f0ede8; padding: 120px 6% 60px; border-top: 1px solid var(--border-glass);">
+        <div class="f-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 80px;">
             <div class="f-col">
-                <div class="brand" style="margin-bottom: 25px;">
-                    <i class="ph-fill ph-check-seal" style="color: var(--accent-gold);"></i>
-                    PRINT SPACE<span style="font-weight: 400; color: #fff; opacity: 0.5;"> INDIA</span>
+                <div class="brand" style="margin-bottom: 30px;">
+                    <i class="ph-fill ph-printer" style="color: var(--accent-gold);"></i>
+                    PRINT SPACE<span> INDIA</span>
                 </div>
-                <p>Owned & Operated by <b>M. Rahman</b>.</p>
-                <p>We are your dedicated partner for high-precision luxury printing and corporate branding across India.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 350px; color: var(--text-muted);">Architecturally Precise Print Engineering. Kolkata & Delhi Industrial Strategic Hubs. Directed by M. Rahman since 2002.</p>
             </div>
-
             <div class="f-col">
-                <h4>KOLKATA (H.O.)</h4>
-                <p>Beadon Street, Near Girish Park Metro Station, Kolkata, WB-700006</p>
-                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 9876543210</p>
+                <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 30px;">Architecture</h4>
+                <a href="catalog.html" style="display: block; color: var(--text-pure); text-decoration: none; margin-bottom: 15px; font-size: 0.85rem; font-weight: 700;">Full Catalog</a>
+                <a href="javascript:void(0)" onclick="openModal('Bulk')" style="display: block; color: var(--text-pure); text-decoration: none; margin-bottom: 15px; font-size: 0.85rem; font-weight: 700;">Enterprise Solutions</a>
             </div>
-
             <div class="f-col">
-                <h4>NEW DELHI (B.O.)</h4>
-                <p>Building No.- B-143, Near Nathus Sweets, Okhla Industrial Area Phase 1, New Delhi-110020</p>
-                <p style="margin-top: 10px; font-weight: 600; color: #fff;">+91 7982060969</p>
+                <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 30px;">Hotline</h4>
+                <p style="font-size: 1.2rem; font-weight: 900; margin-bottom: 10px;">+91 79820 60969</p>
+                <p style="color: var(--text-muted); font-size: 0.75rem;">Global Industrial Support</p>
+            </div>
+            <div class="f-col">
+                <h4 style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 30px;">The Forge Brief</h4>
+                <form onsubmit="window.submitQuote(event)">
+                    <input type="text" id="q_name" style="width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; color: var(--text-pure); padding: 12px 0; margin-bottom: 20px; font-size: 0.85rem;" placeholder="Client Name" required>
+                    <input type="text" id="q_contact" style="width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.15); background: transparent; color: var(--text-pure); padding: 12px 0; margin-bottom: 25px; font-size: 0.85rem;" placeholder="WhatsApp Number" required>
+                    <button type="submit" class="btn btn-outline" style="width: 100%; font-size:0.7rem; padding: 12px;">Initialize Briefing</button>
+                </form>
             </div>
         </div>
-        <div style="margin-top: 80px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.15rem; text-transform: uppercase;">
-            &copy; 2026 Print Space India. All Rights Reserved. Elite Midnight Gold Build.
+        <div style="margin-top: 100px; text-align: center; border-top: 1px solid var(--border-glass); padding-top: 40px; color: var(--text-muted); font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 800;">
+            &copy; 2026 Print Space India. The Artisan Light Forge.
         </div>
     </footer>
 
-    <!-- Global General Inquiry Modal -->
-    <div class="modal-overlay" id="globalModal">
-        <div class="global-modal">
-            <button class="modal-close" onclick="closeModal()"><i class="ph ph-x"></i></button>
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--text-main); font-family: var(--font-heading);">General Inquiry</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">Describe your enterprise requirement and we'll route it to the Kolkata or Delhi office.</p>
-            
-            <form onsubmit="submitGlobalModal(event)">
-                <label for="m_name">Point of Contact</label>
-                <input type="text" id="m_name" class="input-field" placeholder="Name & Company" required>
+    <!-- Master Floating CTA Pill -->
+    <div class="quick-pill">
+        <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Direct Line: +91 7982060969</div>
+        <div style="width: 1px; height: 15px; background: rgba(0,0,0,0.15);"></div>
+        <a href="javascript:void(0)" onclick="openModal('Quick Start')" style="color: var(--accent-gold); text-decoration: none; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;">Start Infinite Quote</a>
+    </div>
 
-                <label for="m_req">Requirement Details</label>
-                <textarea id="m_req" class="input-field" rows="3" placeholder="e.g. Need 500 Custom Gift Boxes and Letterheads..." required></textarea>
-
-                <label for="m_date">Expected Timeline</label>
-                <input type="date" id="m_date" class="input-field" required>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px;">
-                    Send Inquiry to WhatsApp <i class="ph ph-arrow-right"></i>
-                </button>
+    <!-- Global Light Modal -->
+    <div class="modal-overlay" id="globalModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(16px); z-index: 9999; display: none; justify-content: center; align-items: center;">
+        <div class="modal-obsidian" style="width: 90%; max-width: 500px; padding: 60px; border-radius: 40px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+                <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-pure);">The Project Forge</h2>
+                <button onclick="closeModal()" style="background: none; border: none; color: var(--text-pure); font-size: 2rem; cursor: pointer; opacity: 0.4;"><i class="ph ph-x"></i></button>
+            </div>
+            <form onsubmit="window.submitQuote(event)">
+                <input type="hidden" id="q_product" value="Modal Inquiry">
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Full Identity</label>
+                    <input type="text" id="q_name_modal" style="width: 100%; padding: 18px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-glass); border-radius: 15px; color: var(--text-pure); font-family: var(--font-body);" placeholder="Firm or Client Name" required>
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Direct Contact</label>
+                    <input type="text" id="q_contact_modal" style="width: 100%; padding: 18px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-glass); border-radius: 15px; color: var(--text-pure); font-family: var(--font-body);" placeholder="WhatsApp Phone" required>
+                </div>
+                <div style="margin-bottom: 40px;">
+                    <label style="display: block; font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 10px;">Industrial Brief</label>
+                    <textarea id="q_req_modal" style="width: 100%; padding: 18px; background: rgba(0,0,0,0.04); border: 1px solid var(--border-glass); border-radius: 15px; color: var(--text-pure); font-family: var(--font-body);" rows="4" placeholder="Materials, Volume, Timelines..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; padding: 25px; border-radius: 20px; font-size: 1rem;">Launch Project Forge</button>
             </form>
         </div>
     </div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"  id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Page Transition Curtain -->
+    <div class="page-curtain" id="pageCurtain"></div>
 
     <script>
-        // Modal Logic
-        function openModal() {
-            document.getElementById('globalModal').classList.add('active');
+        /* ──────────────────────────────────────
+           MODAL
+        ────────────────────────────────────── */
+        function openModal(topic = "General Inquiry") {
+            document.getElementById('globalModal').style.display = 'flex';
         }
         function closeModal() {
-            document.getElementById('globalModal').classList.remove('active');
-        }
-        function submitGlobalModal(e) {
-            e.preventDefault();
-            const name = document.getElementById('m_name').value;
-            const req = document.getElementById('m_req').value;
-            const date = document.getElementById('m_date').value;
-
-            const waNumber = "917982060969";
-            const text = `*GENERAL ENTERPRISE INQUIRY* %0A%0A` +
-                         `*Contact/Company:* ${name} %0A` +
-                         `*Requirement Details:* ${req} %0A` +
-                         `*Expected Timeline:* ${date} %0A%0A` +
-                         `*Initiated via Global Desktop Navigation*`;
-
-            window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
-            closeModal();
+            document.getElementById('globalModal').style.display = 'none';
         }
 
-        // Mobile Menu Logic
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            const icon = document.querySelector('.hamburger i');
-            nav.classList.toggle('open');
-            
-            if (nav.classList.contains('open')) {
-                icon.classList.remove('ph-list');
-                icon.classList.add('ph-x');
-            } else {
-                icon.classList.remove('ph-x');
-                icon.classList.add('ph-list');
-            }
+        /* ──────────────────────────────────────
+           CUSTOM CURSOR
+        ────────────────────────────────────── */
+        const cursorDot  = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
+        let rafCursor;
+
+        document.addEventListener('mousemove', (e) => {
+            dotX = e.clientX; dotY = e.clientY;
+            cursorDot.style.left = dotX + 'px';
+            cursorDot.style.top  = dotY + 'px';
+            if (!rafCursor) rafCursor = requestAnimationFrame(animRing);
+        });
+        function animRing() {
+            ringX += (dotX - ringX) * 0.14;
+            ringY += (dotY - ringY) * 0.14;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top  = ringY + 'px';
+            rafCursor = requestAnimationFrame(animRing);
         }
+        document.addEventListener('mouseenter', () => {
+            document.querySelectorAll('a, button, .btn, .bento-item').forEach(el => {
+                el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+            });
+        });
+        document.addEventListener('mousedown', () => cursorRing.classList.add('clicking'));
+        document.addEventListener('mouseup',   () => cursorRing.classList.remove('clicking'));
 
-        // Intelligent Loader Logic based on Navigation API
-        window.addEventListener('DOMContentLoaded', () => {
-            const loader = document.getElementById('printing-loader');
-            
-            // Check if this is a fresh open or a refresh (not a link click across the local site)
-            const navEntries = performance.getEntriesByType("navigation");
-            let shouldShowLoader = true;
-            
-            if (navEntries.length > 0) {
-                const navType = navEntries[0].type;
-                // If it's pure navigation via clicking a link and arriving from an internal page, hide loader
-                if (navType === 'navigate' && document.referrer.includes(window.location.hostname)) {
-                    shouldShowLoader = false;
-                }
-                // If type is 'back_forward', hide loader
-                if (navType === 'back_forward') {
-                    shouldShowLoader = false;
-                }
-            }
-
-            if (shouldShowLoader) {
-                // Show the loader and let CSS animation play
-                loader.classList.remove('js-hide');
-                
-                // Hide loader after animation completes (3 seconds total roughly)
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                    setTimeout(() => loader.style.display = 'none', 1000); // Fully remove from view flow after fade out
-                    reveal(); // Trigger initial reveals
-                }, 3200);
-            } else {
-                // Don't show loader at all
-                setTimeout(() => reveal(), 100); 
-            }
+        /* ──────────────────────────────────────
+           BUTTON RIPPLE
+        ────────────────────────────────────── */
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const r = document.createElement('span');
+                r.classList.add('btn-ripple');
+                r.style.left = e.offsetX + 'px';
+                r.style.top  = e.offsetY + 'px';
+                this.appendChild(r);
+                setTimeout(() => r.remove(), 750);
+            });
         });
 
-        // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        /* ──────────────────────────────────────
+           MAGNETIC BUTTONS
+        ────────────────────────────────────── */
+        document.querySelectorAll('.btn-gold, .btn-outline').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width  / 2) * 0.35;
+                const y = (e.clientY - rect.top  - rect.height / 2) * 0.35;
+                this.style.transform = `translate(${x}px, ${y}px) translateY(-5px)`;
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+
+        /* ──────────────────────────────────────
+           3D HERO CARD — TILT + AUTO FLOAT
+        ────────────────────────────────────── */
+        const masterpiece = document.querySelector('.masterpiece-3d');
+        if (masterpiece) {
+            let floating = true;
+            masterpiece.classList.add('auto-float');
+
+            document.addEventListener('mousemove', (e) => {
+                if (!floating) {
+                    const x = (window.innerWidth  / 2 - e.clientX) / 22;
+                    const y = (window.innerHeight / 2 - e.clientY) / 22;
+                    masterpiece.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
                 }
-            }
+            });
+            masterpiece.addEventListener('mouseenter', () => {
+                floating = false;
+                masterpiece.classList.remove('auto-float');
+                masterpiece.style.transition = 'transform 0.15s ease';
+            });
+            masterpiece.addEventListener('mouseleave', () => {
+                floating = true;
+                masterpiece.style.transform = '';
+                setTimeout(() => {
+                    masterpiece.style.transition = '';
+                    masterpiece.classList.add('auto-float');
+                }, 200);
+            });
         }
-        window.addEventListener("scroll", reveal);
+
+        /* ──────────────────────────────────────
+           INTERSECTION OBSERVER — REVEALS
+        ────────────────────────────────────── */
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('.reveal, .mask-reveal').forEach(el => revealObs.observe(el));
+
+        // Force-activate elements already in viewport on load (fixes blank catalog bug)
+        function activateVisibleReveals() {
+            document.querySelectorAll('.reveal, .mask-reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight + 100 && rect.bottom > -100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        // Run immediately and again after load
+        activateVisibleReveals();
+        window.addEventListener('load', activateVisibleReveals);
+        setTimeout(activateVisibleReveals, 300);
+        setTimeout(activateVisibleReveals, 800);
+
+        /* ──────────────────────────────────────
+           STAGGERED BENTO REVEAL
+        ────────────────────────────────────── */
+        const bentoItems = document.querySelectorAll('.bento-item');
+        bentoItems.forEach((el, i) => {
+            el.classList.add('pre-reveal');
+            el.style.transitionDelay = (i * 0.07) + 's';
+        });
+        const bentoObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    bentoObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        bentoItems.forEach(el => bentoObs.observe(el));
+
+        /* ──────────────────────────────────────
+           STAT BLOCK BOUNCE-IN (stagger)
+        ────────────────────────────────────── */
+        const statBlocks = document.querySelectorAll('.stat-block');
+        const statObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    statObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        statBlocks.forEach((el, i) => {
+            el.style.transitionDelay = (i * 0.15) + 's';
+            statObs.observe(el);
+        });
+
+        /* ──────────────────────────────────────
+           PAGE TRANSITION CURTAIN
+        ────────────────────────────────────── */
+        const curtain = document.getElementById('pageCurtain');
+        document.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('javascript') || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.href;
+                curtain.classList.add('enter');
+                curtain.classList.remove('exit');
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 500);
+            });
+        });
+        window.addEventListener('pageshow', () => {
+            if (curtain.classList.contains('enter')) {
+                curtain.classList.remove('enter');
+                curtain.classList.add('exit');
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll(".product-card"), {
+                    max: 6,
+                    speed: 600,
+                    glare: true,
+                    "max-glare": 0.1,
+                    scale: 1.01,
+                    easing: "cubic-bezier(.16,1,.3,1)"
+                });
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,2069 @@
+
+const products = [
+    {
+        "id": "stay-organized-with",
+        "cat": "marketing",
+        "title": "Stay & organized with",
+        "desc": "High-grade industrial masterpiece crafted specifically for Stay & organized with requirements.",
+        "image": "https://kaagazprints.com/image/cloth_tag_printing_premium_quality.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wear-your-brand-with-pride",
+        "cat": "apparel",
+        "title": "Wear your & brand with pride",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wear your & brand with pride requirements.",
+        "image": "https://kaagazprints.com/image/girl_prinitrng_press_banner.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "signs-posters",
+        "cat": "marketing",
+        "title": "Signs Posters",
+        "desc": "High-grade industrial masterpiece crafted specifically for Signs Posters requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Signs_Posters.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "men-women-t-shirt",
+        "cat": "apparel",
+        "title": "Men-Women T-Shirt",
+        "desc": "High-grade industrial masterpiece crafted specifically for Men-Women T-Shirt requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Men-Women-T-Shirt.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "stickers",
+        "cat": "stickers",
+        "title": "Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/sticker.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "visiting-card",
+        "cat": "stationery",
+        "title": "Visiting Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Visiting Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/visiting-card.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "box-carton-packaging",
+        "cat": "packaging",
+        "title": "Box Carton Packaging",
+        "desc": "High-grade industrial masterpiece crafted specifically for Box Carton Packaging requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Boxes.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "standee",
+        "cat": "marketing",
+        "title": "Standee",
+        "desc": "High-grade industrial masterpiece crafted specifically for Standee requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/standee.png",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "stamp",
+        "cat": "marketing",
+        "title": "Stamp",
+        "desc": "High-grade industrial masterpiece crafted specifically for Stamp requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/stamp.avif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "notepads-notebooks-printing",
+        "cat": "stationery",
+        "title": "Notepads Notebooks Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Notepads Notebooks Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/notepad.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "diary-printing",
+        "cat": "stationery",
+        "title": "Diary Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Diary Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Diary_Printing.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "catalog-design-print",
+        "cat": "marketing",
+        "title": "Catalog Design Print",
+        "desc": "High-grade industrial masterpiece crafted specifically for Catalog Design Print requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Catalog_Design_Print.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "customized-wall-calendar",
+        "cat": "marketing",
+        "title": "Customized Wall Calendar",
+        "desc": "High-grade industrial masterpiece crafted specifically for Customized Wall Calendar requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Customized_Wall_Calendar.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "gift-cards",
+        "cat": "stationery",
+        "title": "Gift Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Gift Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Gift_Card.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "tent-table-card",
+        "cat": "stationery",
+        "title": "Tent Table Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Tent Table Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tent_Table_Card.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "scratch-card-printing",
+        "cat": "stationery",
+        "title": "Scratch Card Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Scratch Card Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/scratch-card.jpeg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "envelope-envelope-printing",
+        "cat": "marketing",
+        "title": "Envelope & Envelope Printing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Envelope & Envelope Printing requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Envelope_%26_Envelope_Printing.gif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "security-sticker",
+        "cat": "stickers",
+        "title": "Security sticker",
+        "desc": "High-grade industrial masterpiece crafted specifically for Security sticker requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Security_sticker.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "permanent-sticker",
+        "cat": "stickers",
+        "title": "Permanent sticker",
+        "desc": "High-grade industrial masterpiece crafted specifically for Permanent sticker requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/permanent_stickers.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "letter-heads",
+        "cat": "stationery",
+        "title": "Letter Heads",
+        "desc": "High-grade industrial masterpiece crafted specifically for Letter Heads requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Letter%20Heads.gif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "notebooks",
+        "cat": "stationery",
+        "title": "Notebooks",
+        "desc": "High-grade industrial masterpiece crafted specifically for Notebooks requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/notebooks.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "caps",
+        "cat": "apparel",
+        "title": "Caps",
+        "desc": "High-grade industrial masterpiece crafted specifically for Caps requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Caps.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "bags",
+        "cat": "packaging",
+        "title": "Bags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Bags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Bags.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "photo-albums",
+        "cat": "photo",
+        "title": "Photo Albums",
+        "desc": "High-grade industrial masterpiece crafted specifically for Photo Albums requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Photo-Albums.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "pens",
+        "cat": "gifts",
+        "title": "Pens",
+        "desc": "High-grade industrial masterpiece crafted specifically for Pens requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/pens.gif",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "magnets-card",
+        "cat": "stationery",
+        "title": "Magnets Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Magnets Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Magnets_Card.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "mugs",
+        "cat": "gifts",
+        "title": "Mugs",
+        "desc": "High-grade industrial masterpiece crafted specifically for Mugs requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Mugs.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "gift-hampers",
+        "cat": "gifts",
+        "title": "Gift Hampers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Gift Hampers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Gift_Hampers.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "qr-code-generator",
+        "cat": "marketing",
+        "title": "QR Code Generator",
+        "desc": "High-grade industrial masterpiece crafted specifically for QR Code Generator requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/QR_Code_Generator.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "paper-embosser",
+        "cat": "marketing",
+        "title": "Paper Embosser",
+        "desc": "High-grade industrial masterpiece crafted specifically for Paper Embosser requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Paper_Embosser.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-mouse-pads",
+        "cat": "stationery",
+        "title": "Custom Mouse Pads",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Mouse Pads requirements.",
+        "image": "https://kaagazprints.com/image/product-image/Custom%20Mouse%20Pads.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-pen-drive",
+        "cat": "gifts",
+        "title": "Custom Pen Drive",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Pen Drive requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Pen-Drive.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "laptop-skins",
+        "cat": "marketing",
+        "title": "Laptop Skins",
+        "desc": "High-grade industrial masterpiece crafted specifically for Laptop Skins requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Laptop_Skins.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "lanyards",
+        "cat": "gifts",
+        "title": "Lanyards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Lanyards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Lanyards.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "id-cards",
+        "cat": "stationery",
+        "title": "ID Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for ID Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/ID_Cards.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "invoice-books",
+        "cat": "marketing",
+        "title": "Invoice Books",
+        "desc": "High-grade industrial masterpiece crafted specifically for Invoice Books requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Invoice_Books.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-certificates",
+        "cat": "marketing",
+        "title": "Custom Certificates",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Certificates requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Certificates.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "awards",
+        "cat": "gifts",
+        "title": "Awards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Awards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Awards.gif",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "coasters",
+        "cat": "marketing",
+        "title": "Coasters",
+        "desc": "High-grade industrial masterpiece crafted specifically for Coasters requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Coasters.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "personalised-notebooks",
+        "cat": "stationery",
+        "title": "Personalised Notebooks",
+        "desc": "High-grade industrial masterpiece crafted specifically for Personalised Notebooks requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Personalised_Notebooks.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "invitations",
+        "cat": "marketing",
+        "title": "Invitations",
+        "desc": "High-grade industrial masterpiece crafted specifically for Invitations requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Invitations.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "save-the-date-cards",
+        "cat": "stationery",
+        "title": "Save The Date Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Save The Date Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Save_The_Date_Cards.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wedding-menu",
+        "cat": "marketing",
+        "title": "Wedding Menu",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wedding Menu requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding-Menu.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wedding-programmes-cards",
+        "cat": "stationery",
+        "title": "Wedding Programmes Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wedding Programmes Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding_Programmes.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "wedding-stationery",
+        "cat": "marketing",
+        "title": "Wedding Stationery",
+        "desc": "High-grade industrial masterpiece crafted specifically for Wedding Stationery requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Wedding_Stationery.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "thank-you-cards",
+        "cat": "stationery",
+        "title": "Thank You Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Thank You Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Thank-You-Cards.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "birthday-invitations",
+        "cat": "marketing",
+        "title": "Birthday Invitations",
+        "desc": "High-grade industrial masterpiece crafted specifically for Birthday Invitations requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Birthday-Invitations.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "party-invitations",
+        "cat": "marketing",
+        "title": "Party invitations",
+        "desc": "High-grade industrial masterpiece crafted specifically for Party invitations requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Party_invitations.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "corporate-events",
+        "cat": "marketing",
+        "title": "Corporate Events",
+        "desc": "High-grade industrial masterpiece crafted specifically for Corporate Events requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Corporate_Events.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "presentation-folders",
+        "cat": "marketing",
+        "title": "Presentation Folders",
+        "desc": "High-grade industrial masterpiece crafted specifically for Presentation Folders requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Presentation_Folders.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "presentation-file-with-pocket",
+        "cat": "marketing",
+        "title": "Presentation File with Pocket",
+        "desc": "High-grade industrial masterpiece crafted specifically for Presentation File with Pocket requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Presentation_File_with_Pocket.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "banner",
+        "cat": "marketing",
+        "title": "Banner",
+        "desc": "High-grade industrial masterpiece crafted specifically for Banner requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Banner.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "tabletop-standees",
+        "cat": "marketing",
+        "title": "Tabletop Standees",
+        "desc": "High-grade industrial masterpiece crafted specifically for Tabletop Standees requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tabletop-Standees.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "loyalty-cards",
+        "cat": "stationery",
+        "title": "Loyalty Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Loyalty Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Loyalty_Cards.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "button-badges",
+        "cat": "gifts",
+        "title": "Button Badges",
+        "desc": "High-grade industrial masterpiece crafted specifically for Button Badges requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Button-Badges.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "paper-bags",
+        "cat": "packaging",
+        "title": "Paper Bags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Paper Bags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Paper_Bags.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "tote-bag",
+        "cat": "packaging",
+        "title": "Tote bag",
+        "desc": "High-grade industrial masterpiece crafted specifically for Tote bag requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Tote_bag.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "water-bottles",
+        "cat": "marketing",
+        "title": "Water Bottles",
+        "desc": "High-grade industrial masterpiece crafted specifically for Water Bottles requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Water_Bottles.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "table-calendar",
+        "cat": "marketing",
+        "title": "Table Calendar",
+        "desc": "High-grade industrial masterpiece crafted specifically for Table Calendar requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Table_Calendar.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "premium-wiro-book",
+        "cat": "marketing",
+        "title": "Premium Wiro Book",
+        "desc": "High-grade industrial masterpiece crafted specifically for Premium Wiro Book requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Premium_Wiro_Book.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "pin-name-badge",
+        "cat": "gifts",
+        "title": "Pin Name Badge",
+        "desc": "High-grade industrial masterpiece crafted specifically for Pin Name Badge requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Pin_Name_Badge.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "shagun-envelope",
+        "cat": "marketing",
+        "title": "Shagun Envelope",
+        "desc": "High-grade industrial masterpiece crafted specifically for Shagun Envelope requirements.",
+        "image": "https://kaagazprints.com/image/product-image/shagun-envelope1.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "save-the-date-sticker",
+        "cat": "stickers",
+        "title": "Save the Date Sticker",
+        "desc": "High-grade industrial masterpiece crafted specifically for Save the Date Sticker requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Save_the_Date_Sticker.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "digital-marketing",
+        "cat": "marketing",
+        "title": "Digital Marketing",
+        "desc": "High-grade industrial masterpiece crafted specifically for Digital Marketing requirements.",
+        "image": "https://kaagazprints.com/image/product-image/digital%20marketing.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "hard-bound-photo-book",
+        "cat": "photo",
+        "title": "Hard-Bound Photo Book",
+        "desc": "High-grade industrial masterpiece crafted specifically for Hard-Bound Photo Book requirements.",
+        "image": "https://kaagazprints.com/image/product-image/hard-bound-photo-book8.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "security-wrist-band",
+        "cat": "marketing",
+        "title": "Security Wrist Band",
+        "desc": "High-grade industrial masterpiece crafted specifically for Security Wrist Band requirements.",
+        "image": "https://kaagazprints.com/image/product-image/wrist-band6.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "table-calendar-stand",
+        "cat": "marketing",
+        "title": "Table Calendar Stand",
+        "desc": "High-grade industrial masterpiece crafted specifically for Table Calendar Stand requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Table_Calendar_Stand.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "sartin-labels",
+        "cat": "stickers",
+        "title": "Sartin Labels",
+        "desc": "High-grade industrial masterpiece crafted specifically for Sartin Labels requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Sartin_Labels.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "switch-board-stickers",
+        "cat": "stickers",
+        "title": "Switch Board Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Switch Board Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Switch_Board_Stickers.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "plane-lanyard",
+        "cat": "gifts",
+        "title": "Plane Lanyard",
+        "desc": "High-grade industrial masterpiece crafted specifically for Plane Lanyard requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Plane%20Lanyard.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "hotel-key-card",
+        "cat": "stationery",
+        "title": "Hotel Key Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Hotel Key Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/hotel-key-card.avif",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "embossed-pvc-cards",
+        "cat": "stationery",
+        "title": "Embossed PVC Cards",
+        "desc": "High-grade industrial masterpiece crafted specifically for Embossed PVC Cards requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Shopping-card.jpg",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "metal-holder",
+        "cat": "marketing",
+        "title": "Metal Holder",
+        "desc": "High-grade industrial masterpiece crafted specifically for Metal Holder requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/metal-holder.jpg",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "round-neck-cotton-t-shirts",
+        "cat": "apparel",
+        "title": "Round Neck Cotton T-Shirts",
+        "desc": "High-grade industrial masterpiece crafted specifically for Round Neck Cotton T-Shirts requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Round_Neck_Cotton_T-Shirts.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "polo-t-shirts",
+        "cat": "apparel",
+        "title": "Polo T-Shirts",
+        "desc": "High-grade industrial masterpiece crafted specifically for Polo T-Shirts requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Polo_T-Shirts.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-hoodies-printed-hoodies",
+        "cat": "apparel",
+        "title": "Custom Hoodies – Printed Hoodies",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Hoodies – Printed Hoodies requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Hoodies%20–%20Printed_Hoodies.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-sports-full-printing-t-shirts",
+        "cat": "apparel",
+        "title": "Custom Sports Full Printing T-Shirts",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Sports Full Printing T-Shirts requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom_Sports_Full_Printing_T-Shirts.webp",
+        "bentoSize": "bento-wide",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "office-wallpaper-customization",
+        "cat": "marketing",
+        "title": "Office Wallpaper Customization",
+        "desc": "High-grade industrial masterpiece crafted specifically for Office Wallpaper Customization requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Office_Wallpaper_Customization.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "room-privacy-door-hanger-sign-tags",
+        "cat": "marketing",
+        "title": "Room Privacy Door Hanger Sign Tags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Room Privacy Door Hanger Sign Tags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/do-not-disturb-signs-of-hotel-room-door-hanger-vector.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-fabric-flags",
+        "cat": "marketing",
+        "title": "Custom Fabric Flags",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Fabric Flags requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Fabric-Flag.jpg",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "customized-atm-pouches",
+        "cat": "marketing",
+        "title": "Customized ATM Pouches",
+        "desc": "High-grade industrial masterpiece crafted specifically for Customized ATM Pouches requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/ATM-Card-Pouches-High-Quality-Waterproof.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "business-card",
+        "cat": "stationery",
+        "title": "Business Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Business Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Bulk-Standard-Business-Cards-Custom-Prints.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "photo-frame",
+        "cat": "photo",
+        "title": "Photo Frame",
+        "desc": "High-grade industrial masterpiece crafted specifically for Photo Frame requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Personalized-Abstract-Gold-Photo-Frames.webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "butterfly-car-door-advertisement-card",
+        "cat": "stationery",
+        "title": "Butterfly Car Door Advertisement Card",
+        "desc": "High-grade industrial masterpiece crafted specifically for Butterfly Car Door Advertisement Card requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Business-Cards-With-Butterflies.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "custom-address-labels-stickers",
+        "cat": "stickers",
+        "title": "Custom Address Labels Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Custom Address Labels Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Return-Address-Labels-(Multi-Color).webp",
+        "bentoSize": "bento-standard",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    },
+    {
+        "id": "personalized-custom-name-label-stickers",
+        "cat": "stickers",
+        "title": "Personalized Custom Name Label Stickers",
+        "desc": "High-grade industrial masterpiece crafted specifically for Personalized Custom Name Label Stickers requirements.",
+        "image": "https://kaagazprints.com/image/home-page-image/Custom-Name-Stickers.webp",
+        "bentoSize": "bento-large",
+        "variants": [
+            {
+                "name": "Standard Base",
+                "price": "Custom"
+            }
+        ],
+        "features": [
+            "Premium Finish",
+            "High Precision",
+            "Industrial Use"
+        ],
+        "specs": {
+            "Grade": "A+",
+            "Tolerance": "Zero",
+            "Lifespan": "Extended"
+        }
+    }
+];
+
+// APPEND TO data.js manually!
